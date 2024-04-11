@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_title_bar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_gravity="top|left" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="top"
+        android:layout_marginTop="36dp"
+        android:background="#00000000"
+        android:gravity="center_vertical"
+        android:hint="请输入歌曲名称"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingLeft="50dp"
+        android:textColor="?android:textColorHighlight"
+        android:textColorHint="?android:textColorHighlight"
+        android:textSize="18dp" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shapeable_search"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="36dp"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="8dp"
+        android:scaleType="fitCenter" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="82dp"
+        android:orientation="vertical" />
+
+</FrameLayout>

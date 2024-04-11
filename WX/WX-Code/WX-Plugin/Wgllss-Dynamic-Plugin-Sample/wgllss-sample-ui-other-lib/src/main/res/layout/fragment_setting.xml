@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view_title_bar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_gravity="left|top" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="设置"
+        android:textColor="?android:textColorHighlight"
+        android:textSize="20dp" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="82dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/material_locker_setting"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="96dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="锁屏歌词"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="20dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/material_switch_settion"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="96dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_loker_des"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="144dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:text="注：开启锁屏歌词需要打开 后台弹窗 权限并开启： 在其他应用上层显示 权限"
+        android:textColor="#999999"
+        android:textSize="16dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/material_notification"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="194dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="通知权限"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="18dp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/material_notification_switch"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="194dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_notification_des"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="239dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="注：开启通知权限后可保证长时间在后台播放音乐"
+        android:textColor="#999999"
+        android:textSize="16dp" />
+
+</FrameLayout>

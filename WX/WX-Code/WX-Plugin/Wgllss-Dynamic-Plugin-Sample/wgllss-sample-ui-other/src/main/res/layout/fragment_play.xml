@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_play_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="26dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="7dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/mater_music_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:gravity="center"
+        android:textSize="25dp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="76dp" />
+
+    <TextView
+        android:id="@+id/tv_current_time"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="120dp"
+        android:gravity="center_vertical|right"
+        android:text="00:00"
+        android:textSize="10dp" />
+
+    <SeekBar
+        android:id="@+id/sb_progress"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="120dp"
+        android:maxHeight="2dp"
+        android:minHeight="2dp" />
+
+    <TextView
+        android:id="@+id/tv_total_time"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="120dp"
+        android:gravity="center_vertical|left"
+        android:text=""
+        android:textSize="10dp" />
+
+    <ImageView
+        android:id="@+id/iv_mode"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_prev"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="20dp" />
+
+    <ImageView
+        android:id="@+id/iv_play"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/pb_load"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateOnly="true"
+        android:padding="5dp"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/iv_next"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp" />
+
+</FrameLayout>

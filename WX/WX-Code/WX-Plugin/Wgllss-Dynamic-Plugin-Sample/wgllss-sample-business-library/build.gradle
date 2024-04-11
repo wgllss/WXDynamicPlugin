@@ -1,0 +1,126 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    implementation project(':wgllss-dynamic-host-skin-resource-lib')
+    compileOnly project(':Wgllss-Dynamic-Plugin-Common-Library')
+    compileOnly project(':wgllss-common-re-library')
+
+    implementation "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.activity:activity-ktx:1.3.0-rc01'
+    implementation 'androidx.fragment:fragment-ktx:1.4.0-alpha04'
+
+    //解析html
+    implementation 'org.jsoup:jsoup:1.15.3'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okio:okio:2.10.0'
+//    implementation 'com.squareup.moshi:moshi:1.14.0'
+//    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
+//    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+
+    //mmkv
+    implementation 'com.tencent:mmkv:1.2.14'
+
+//     Paging库依赖
+//    implementation 'androidx.paging:paging-runtime:2.1.0'
+
+    //datastore
+//    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
+//    implementation "androidx.datastore:datastore-preferences-core:1.0.0-alpha05"
+    //room 数据库
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+}
+
+
+def createCopyTask(buildType) {
+    def workingDirPath = rootProject.ext.workingDirPath
+    def outputFile = file("${workingDirPath}classes_business_lib.jar")
+    def outputDexFile = file("${workingDirPath}classes_business_lib_dex.jar")
+    def lastOutputDexFile = file("${rootProject.getBuildDir()}/classes_business_lib_dex")
+    if (lastOutputDexFile.exists()) {
+        lastOutputDexFile.delete()
+    }
+    if (outputDexFile.exists()) {
+        outputDexFile.delete()
+    }
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    def inputFile = file("${getProject().getBuildDir()}/intermediates/aar_main_jar/${buildType}/classes.jar")
+    def copyTask = tasks.create("assembleCopy${buildType.capitalize()}", Copy) {
+        group = 'other'
+        description = "复制${name}到dx环境中."
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+            rename { outputFile.name }
+        }
+        into(outputFile.getParent())
+    }.dependsOn("assemble${buildType.capitalize()}")
+    def assembleDxCommand = tasks.create("assembleDxCommand", Exec) {
+        group = 'other'
+        description = "${name}到dx执行中..."
+        workingDir workingDirPath
+        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
+    }.dependsOn(copyTask.name)
+
+    return tasks.create("assembleDxCommandAndCopy", Copy) {
+        group = 'other'
+        description = "复制${name}到项目目录里面."
+        from(outputDexFile.getParent()) {
+            include(outputDexFile.name)
+            rename { lastOutputDexFile.name }
+        }
+        into(lastOutputDexFile.getParent())
+    }.dependsOn(assembleDxCommand.name)
+}
+
+tasks.whenTaskAdded { task ->
+//    if (task.name == "assembleDebug") {
+//        createCopyTask("Debug")
+//    }
+    if (task.name == "assembleRelease") {
+        createCopyTask("Release")
+    }
+}

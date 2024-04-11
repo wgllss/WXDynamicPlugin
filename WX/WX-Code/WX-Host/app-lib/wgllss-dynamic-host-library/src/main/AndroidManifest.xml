@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wgllss.host.library">
+
+    <application>
+
+        <activity
+            android:name="com.wgllss.dynamic.ui.HomeActivity"
+            android:exported="true"
+            android:theme="@style/LauncherTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStandardActivity"
+            android:theme="@style/LauncherTheme2" />
+
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceActivity"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTaskActivity"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
+            android:theme="@style/LauncherTheme2" />
+
+        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyService" />
+
+        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService" />
+
+        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService" />
+
+        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService" />
+    </application>
+
+</manifest>

@@ -1,0 +1,104 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    compileOnly project(':Wgllss-Dynamic-Plugin-Common-Library')
+    compileOnly project(':wgllss-common-re-library')
+    compileOnly project(':Wgllss-Dynamic-Plugin-Manager')
+    compileOnly project(':Wgllss-Dynamic-Plugin-Library')
+    compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
+
+    compileOnly libSupportAppcompat
+    compileOnly libSupportRecyclerView
+    compileOnly libSupportdesign
+    compileOnly constraintlayout
+}
+
+//task assembleCopyToHost(type: Copy) {
+//    def workingDirPath = rootProject.ext.workingDirPath
+//    def inputFile = file("${workingDirPath}classes_other2_dex.jar")
+//    if (!inputFile.exists()) {
+//        return
+//    }
+//    def uploadDirMy = rootProject.ext.uploadDirMy
+//    def outputFile = file("${uploadDirMy}classes_other2_dex.jar")
+//    if (outputFile.exists()) {
+//        outputFile.delete()
+//    }
+//    from inputFile.getAbsolutePath()
+//    into outputFile.getParent()
+//}
+
+def commandDex(buildType) {
+    def workingDirPath = rootProject.ext.workingDirPath
+    def outputFile = file("${workingDirPath}classes_other2.jar")
+    def outputDexFile = file("${workingDirPath}classes_other2_dex.jar")
+    def lastOutputDexFile = file("${rootProject.getBuildDir()}/classes_other2_dex")
+    if (lastOutputDexFile.exists()) {
+        lastOutputDexFile.delete()
+    }
+    if (outputDexFile.exists()) {
+        outputDexFile.delete()
+    }
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    def inputFile = file("${getProject().getBuildDir()}/intermediates/aar_main_jar/${buildType}/classes.jar")
+    def copyTask = tasks.create("assembleCopy${buildType.capitalize()}", Copy) {
+        group = 'other'
+        description = "复制${name}到dx环境中."
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+            rename { outputFile.name }
+        }
+        into(outputFile.getParent())
+    }.dependsOn("assemble${buildType.capitalize()}")
+
+    def assembleDxCommand = tasks.create("assembleDxCommand", Exec) {
+        group = 'other'
+        description = "${name}到dx执行中..."
+        workingDir workingDirPath
+        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
+    }.dependsOn(copyTask.name)
+
+    return tasks.create("assembleDxCommandAndCopy", Copy) {
+        group = 'other'
+        description = "复制${name}到项目目录里面."
+        from(outputDexFile.getParent()) {
+            include(outputDexFile.name)
+            rename { lastOutputDexFile.name }
+        }
+        into(lastOutputDexFile.getParent())
+    }.dependsOn(assembleDxCommand.name)
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        commandDex("Release")
+    }
+//    if (task.name == "assembleDxCommand") {
+//        assembleCopyToHost.dependsOn assembleDxCommand
+//    }
+}

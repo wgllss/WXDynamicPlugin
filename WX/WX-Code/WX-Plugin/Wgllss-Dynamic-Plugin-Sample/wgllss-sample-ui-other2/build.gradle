@@ -1,0 +1,84 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+//    compileSdkVersion 32
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+//        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    outputFileName = "classes_other2_res.apk"
+                }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+//    kotlinOptions {
+//        jvmTarget = '1.8'
+//    }
+}
+
+
+def createCopyTask(assembleReleaseTask, buildType) {
+    def inputFile = file("${getProject().getBuildDir()}/outputs/apk/release/classes_other2_res.apk")
+    def outputFile = file("${rootProject.getBuildDir()}/classes_other2_res")
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    return tasks.create("assembleCopy", Copy) {
+        group = 'other'
+        description = "复制json到 指定输出目录"
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+            rename { outputFile.name }
+        }
+        into(outputFile.getParent())
+    }.dependsOn(assembleReleaseTask.name)
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        createCopyTask(task, "release")
+    }
+//    if (task.name == "cleanJson") {
+//        createVersionJson(task, "Release")
+//    }
+}
+
+
+dependencies {
+
+    compileOnly libSupportAppcompat
+    compileOnly libSupportRecyclerView
+    compileOnly libSupportdesign
+    compileOnly constraintlayout
+}

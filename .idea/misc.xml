@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ASMIdeaPluginConfiguration">
+    <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
+    <groovy codeStyle="LEGACY" />
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/splash_preview.xml" value="0.207" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/splash_preview_dark.xml" value="0.207" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.212" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app/src/main/res/drawable/ic_launcher_background.xml" value="0.212" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.212" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Host/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.212" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-skin-resource-apk/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1755" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-skin-resource-apk/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.1755" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-skin-resource-apk/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1845" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-skin-resource-apk/src/main/res/drawable/ic_round_queue_music_24.xml" value="0.1845" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other/src/main/res/layout/activity_play.xml" value="0.23385416666666667" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other/src/main/res/layout/adapter_sample_item.xml" value="0.1" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other/src/main/res/layout/fragment_collection.xml" value="0.39982190560997327" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other/src/main/res/layout/fragment_sample.xml" value="0.5366079703429101" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/activity_other2.xml" value="0.1" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/activity_other3.xml" value="0.37511693171188026" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/fragment_broadcast_sample.xml" value="0.16125860373647985" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/fragment_service_sample.xml" value="0.59375" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

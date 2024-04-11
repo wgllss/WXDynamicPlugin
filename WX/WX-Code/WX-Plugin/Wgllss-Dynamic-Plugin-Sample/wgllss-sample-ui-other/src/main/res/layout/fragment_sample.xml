@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--<layout>-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view_title_bar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_gravity="top|left" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="示例"
+        android:textSize="20dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_s_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="82dp"
+        android:orientation="vertical" />
+</FrameLayout>

@@ -1,0 +1,15 @@
+.letone #sidebar.mibbs_con{background-color:#<?php echo $kv['sign10']; ?>;height:52px;position:relative;}
+.mibbs_con .mibbs_signpanel{height:50px;display:block;position:relative;background-color:#5f8ece;background-image:url(../img/tou.png);background-repeat:no-repeat;background-position:25px 8px;cursor:pointer;border-radius: 0.2rem;}
+.mibbs_con .mibbs_signpanel .font{position:absolute;color:#fff;text-align:center;height:30px;font-size:16px;line-height:30px;top:11px;left:64px;}
+.mibbs_con .mibbs_signpanel .nums{display:none;}
+.mibbs_con .mibbs_signpanel .fblock{height:46px;width:130px;background-color:#fff;padding-left:5px;padding-right:5px;position:absolute;top:2px;right:2px;font-size:14px;color:#606060;background-image: linear-gradient(0deg, #e9ecef, #f8f9fa);border-radius: 0 0.25rem 0.25rem 0;}
+.mibbs_con .mibbs_signpanel .fblock .all{height:23px;line-height:26px;border-bottom:1px solid #e9ecef;color:#606060;}
+.mibbs_con .mibbs_signpanel .fblock .line{height:22px;line-height:24px;color:#606060;}
+.mibbs_con .visted .font{font-size:20px;line-height:25px;width:60px;left:46px;top:8px;text-shadow:0 1px 0 #ff4921;}
+.mibbs_con .mibbs_signpanel .fblock .all, .mibbs_con .mibbs_signpanel .fblock .line{
+	padding-left: 10px;
+}/*span.sign-day {
+    margin-left: -16px;
+    padding-right: 16px;
+	line-height: 35px;
+}*/

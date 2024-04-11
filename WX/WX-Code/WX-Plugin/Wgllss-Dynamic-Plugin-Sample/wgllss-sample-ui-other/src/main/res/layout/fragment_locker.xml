@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainUI"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextClock
+        android:id="@+id/txt_time"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:format12Hour="HH:mm"
+        android:format24Hour="HH:mm"
+        android:gravity="center_vertical"
+        android:text="12.06"
+        android:textSize="45dp" />
+
+    <TextClock
+        android:id="@+id/txt_date"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="100dp"
+        android:format12Hour="MM月dd日"
+        android:format24Hour="MM月dd日"
+        android:gravity="center_vertical"
+        android:text="14:25"
+        android:textSize="18dp" />
+
+    <TextClock
+        android:id="@+id/txt_week"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="130dp"
+        android:format12Hour="EEEE"
+        android:format24Hour="EEEE"
+        android:gravity="center_vertical"
+        android:text="星期二"
+        android:textSize="18dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mater_music_name"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="top|right"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_vertical|right"
+        android:singleLine="true"
+        android:textSize="25dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/music_autor"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="top|right"
+        android:layout_marginLeft="165dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center_vertical|right"
+        android:textSize="20dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_center"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_prev"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="left|bottom"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="120dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_play"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="120dp"
+        android:visibility="visible" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_next"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="120dp" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_buttom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text=">>>滑动解锁"
+        android:textSize="20dp" />
+
+</FrameLayout>

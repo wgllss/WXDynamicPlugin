@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start_service"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: start Servic"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start_service2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: start Servic2"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start_service3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: start Servic3"
+            android:textSize="18dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

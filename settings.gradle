@@ -1,0 +1,90 @@
+rootProject.name = "WXDynamicPlugin"
+include ':app'
+
+include ':wgllss-business-re-library'
+include ':wgllss-common-re-library'
+include ':wgllss-dynamic-host-library'
+include ':wgllss-dynamic-host-skin-resource-lib'
+
+include ':Wgllss-Dynamic-Host-Version-Lib'
+include ':Wgllss-Dynamic-Host-Home-Lib'
+include ':Wgllss-Dynamic-Host-ClassLoader-Lib'
+include ':Wgllss-Dynamic-Host-Runtime-Lib'
+include ':Wgllss-Dynamic-Host-Download-Lib'
+include ':Wgllss-Dynamic-Host-Protobuf-Lib'
+include ':Wgllss-Dynamic-Host-Constant-Lib'
+include ':Wgllss-Dynamic-Host-Loader-Lib'
+include ':Wgllss-Dynamic-Host-Loader-Base-Lib'
+include ':Wgllss-Dynamic-Host-Lib-Impl'
+
+include ':Wgllss-Dynamic-Plugin-Common-Library'
+
+include ':Wgllss-Dynamic-Plugin-Manager'
+include ':Wgllss-Dynamic-Plugin-Loader-Impl'
+include ':Wgllss-Dynamic-Plugin-DownloadFace-Impl'
+
+include ':Wgllss-Dynamic-Plugin-RunTime-Apk'
+include ':Wgllss-Dynamic-Plugin-Library'
+
+include ':wgllss-sample-assets-source-apk'
+include ':wgllss-sample-business-library'
+include ':wgllss-sample-loader-version'
+include ':wgllss-sample-skin-resource-apk'
+include ':wgllss-sample-ui-home'
+include ':wgllss-sample-ui-loading'
+include ':wgllss-sample-ui-other'
+include ':wgllss-sample-ui-other2'
+include ':wgllss-sample-ui-other2-lib2'
+include ':wgllss-sample-ui-other-lib'
+
+include ':wgllss-sample-create-all-app'
+include ':wgllss-sample-create-version-config-annotations'
+include ':wgllss-sample-create-version-config-app'
+include ':wgllss-sample-create-version-config-compiler'
+
+project(':Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
+project(':Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
+
+
+project(':app').projectDir = file('WX/WX-Code/WX-Host/app')
+
+project(':wgllss-business-re-library').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-business-re-library')
+project(':wgllss-common-re-library').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-common-re-library')
+project(':wgllss-dynamic-host-library').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-library')
+project(':wgllss-dynamic-host-skin-resource-lib').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-skin-resource-lib')
+
+project(':Wgllss-Dynamic-Host-Version-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Version-Lib')
+project(':Wgllss-Dynamic-Host-Home-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Home-Lib')
+project(':Wgllss-Dynamic-Host-ClassLoader-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-ClassLoader-Lib')
+project(':Wgllss-Dynamic-Host-Runtime-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Runtime-Lib')
+project(':Wgllss-Dynamic-Host-Download-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Download-Lib')
+project(':Wgllss-Dynamic-Host-Protobuf-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Protobuf-Lib')
+project(':Wgllss-Dynamic-Host-Constant-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Constant-Lib')
+project(':Wgllss-Dynamic-Host-Loader-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Lib')
+project(':Wgllss-Dynamic-Host-Loader-Base-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Base-Lib')
+project(':Wgllss-Dynamic-Host-Lib-Impl').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Lib-Impl')
+
+project(':Wgllss-Dynamic-Plugin-Common-Library').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Common-Library')
+
+project(':Wgllss-Dynamic-Plugin-Manager').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Manager/Wgllss-Dynamic-Plugin-Manager')
+project(':Wgllss-Dynamic-Plugin-Loader-Impl').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Manager/Wgllss-Dynamic-Plugin-Loader-Impl')
+project(':Wgllss-Dynamic-Plugin-DownloadFace-Impl').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Manager/Wgllss-Dynamic-Plugin-DownloadFace-Impl')
+
+project(':Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
+project(':Wgllss-Dynamic-Plugin-Library').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
+
+project(':wgllss-sample-assets-source-apk').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-assets-source-apk')
+project(':wgllss-sample-business-library').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-business-library')
+project(':wgllss-sample-loader-version').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-loader-version')
+project(':wgllss-sample-skin-resource-apk').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-skin-resource-apk')
+project(':wgllss-sample-ui-home').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-home')
+project(':wgllss-sample-ui-loading').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-loading')
+project(':wgllss-sample-ui-other').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other')
+project(':wgllss-sample-ui-other2').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2')
+project(':wgllss-sample-ui-other2-lib2').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2-lib2')
+project(':wgllss-sample-ui-other-lib').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other-lib')
+
+project(':wgllss-sample-create-all-app').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-all-app')
+project(':wgllss-sample-create-version-config-annotations').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-annotations')
+project(':wgllss-sample-create-version-config-app').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-app')
+project(':wgllss-sample-create-version-config-compiler').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-compiler')

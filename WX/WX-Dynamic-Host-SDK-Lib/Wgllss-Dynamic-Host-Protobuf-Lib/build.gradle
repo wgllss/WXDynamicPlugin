@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'com.google.protobuf'
+}
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+            proto {
+                srcDir 'src/main/proto'//这里main下面存放.proto文件的目录名称不能为protobuf
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+//第三部 写入这样一段配置脚本
+
+protobuf {
+    //配置protoc编译器
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.5.1'
+    }
+    //这里配置生成目录，编译后会在build的目录下生成对应的java文件
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                remove java
+            }
+            task.builtins {
+                java {}
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.protobuf:protobuf-java:3.5.1'
+    implementation 'com.google.protobuf:protoc:3.5.1'
+}

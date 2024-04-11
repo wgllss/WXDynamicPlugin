@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    implementation project(path: ':wgllss-sample-create-version-config-annotations')
+    kapt project(path: ':wgllss-sample-create-version-config-compiler')
+}
+
+
+def createVersionJson(assembleReleaseTask, buildType) {
+    def inputFile = file("${getProject().getBuildDir()}/outputs/apk/vc")
+    def outputFile = file("${rootProject.getBuildDir()}/vc")
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    tasks.create("assembleCreateVersion2File${buildType.capitalize()}", Copy) {
+        group = 'other'
+        description = "复制json到指定目录中"
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+        }
+        into(outputFile.getParent())
+    }.dependsOn(assembleReleaseTask.name)
+    return assembleReleaseTask
+            .dependsOn(assemblecleanJson.name)
+            .dependsOn(":wgllss-sample-loader-version:assembleDxCommandAndCopy")
+            .dependsOn(":wgllss-sample-loader-version:assembleRelease")
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        createVersionJson(task, "Release")
+    }
+//    if (task.name == "cleanJson") {
+//        createVersionJson(task, "Release")
+//    }
+}
+
+task assemblecleanJson(type: Delete) {
+    delete buildDir
+}
+
+

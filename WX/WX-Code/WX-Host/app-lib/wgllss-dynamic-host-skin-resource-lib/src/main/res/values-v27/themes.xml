@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LauncherTheme2" parent="Base.Theme.WXDynamicPlugin">
+        <item name="android:windowNoTitle">true</item>
+<!--        <item name="android:windowFullscreen">true</item>-->
+<!--        <item name="statusBarBackground">@color/colorPrimary</item>-->
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowBackground">@drawable/splash_preview</item>
+        <!--指定页面可以延伸到刘海（异性）区域  SDK_INT >= 28，兼容异形屏时用到-->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+</resources>

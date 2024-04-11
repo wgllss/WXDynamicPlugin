@@ -1,0 +1,122 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+//repositories {
+//    flatDir {
+//        dirs 'libs'
+//    }
+//}
+
+dependencies {
+
+    compileOnly project(path: ':Wgllss-Dynamic-Plugin-Common-Library')
+    compileOnly project(path: ':wgllss-common-re-library')
+
+    compileOnly project(path: ':wgllss-sample-business-library')
+    compileOnly project(path: ':wgllss-business-re-library')
+
+    compileOnly project(path: ':wgllss-sample-ui-other-lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Plugin-Manager')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Home-Lib')
+
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Home-Lib:1.0.0.5'
+
+    compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
+
+    compileOnly libSupportAppcompat
+    compileOnly libSupportRecyclerView
+    compileOnly libSupportdesign
+
+
+    compileOnly 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    compileOnly 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    compileOnly 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    compileOnly 'androidx.activity:activity-ktx:1.3.0-rc01'
+    compileOnly 'androidx.fragment:fragment-ktx:1.4.0-alpha04'
+
+    compileOnly 'com.squareup.retrofit2:converter-gson:2.9.0'
+    compileOnly 'com.tencent:mmkv:1.2.14'
+    compileOnly "androidx.startup:startup-runtime:1.1.1"
+}
+
+
+def createCopyTask(buildType) {
+    def workingDirPath = rootProject.ext.workingDirPath
+    def outputFile = file("${workingDirPath}classes_home.jar")
+    def outputDexFile = file("${workingDirPath}classes_home_dex.jar")
+    def lastOutputDexFile = file("${rootProject.getBuildDir()}/classes_home_dex")
+    if (lastOutputDexFile.exists()) {
+        lastOutputDexFile.delete()
+    }
+    if (outputDexFile.exists()) {
+        outputDexFile.delete()
+    }
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    def inputFile = file("${getProject().getBuildDir()}/intermediates/aar_main_jar/${buildType}/classes.jar")
+    def copyTask = tasks.create("assembleCopy${buildType.capitalize()}", Copy) {
+        group = 'other'
+        description = "复制${name}到dx环境中."
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+            rename { outputFile.name }
+        }
+        into(outputFile.getParent())
+    }.dependsOn("assemble${buildType.capitalize()}")
+    def assembleDxCommand = tasks.create("assembleDxCommand", Exec) {
+        group = 'other'
+        description = "${name}到dx执行中..."
+        workingDir workingDirPath
+        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
+    }.dependsOn(copyTask.name)
+
+    return tasks.create("assembleDxCommandAndCopy", Copy) {
+        group = 'other'
+        description = "复制${name}到项目目录里面."
+        from(outputDexFile.getParent()) {
+            include(outputDexFile.name)
+            rename { lastOutputDexFile.name }
+        }
+        into(lastOutputDexFile.getParent())
+    }.dependsOn(assembleDxCommand.name)
+}
+
+tasks.whenTaskAdded { task ->
+//    if (task.name == "assembleDebug") {
+//        createCopyTask("Debug")
+//    }
+    if (task.name == "assembleRelease") {
+        createCopyTask("Release")
+    }
+}
