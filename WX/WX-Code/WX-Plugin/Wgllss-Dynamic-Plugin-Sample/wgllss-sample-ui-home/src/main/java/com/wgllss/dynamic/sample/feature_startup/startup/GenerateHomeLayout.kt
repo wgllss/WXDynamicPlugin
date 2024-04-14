@@ -16,8 +16,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.tabs.TabLayout
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.wgllss.core.ex.getIntToDip
 import com.wgllss.core.ex.initColors
 import com.wgllss.core.widget.DividerGridItemDecoration
@@ -26,9 +24,6 @@ import com.wgllss.core.units.ResourceUtils
 import com.wgllss.core.units.ScreenManager
 import com.wgllss.dynamic.plugin.manager.PluginResource
 import com.wgllss.dynamic.sample.feature_home.pkg.ResourceContains
-import com.wgllss.sample.feature_system.savestatus.MMKVHelp
-import com.wgllss.dynamic.sample.feature_home.adapter.HomeNewsAdapter
-import com.wgllss.sample.data.NewsBean
 
 object GenerateHomeLayout {
 

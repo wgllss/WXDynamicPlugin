@@ -15,12 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
-import com.wgllss.dynamic.plugin.library.HostDelegate;
+import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate;
 
 public class HostPluginActivity extends FragmentActivity {
     private PluginClassLoader pluginDexClassLoader;
     private Resources pluginResources;
-    private HostDelegate mHostDelegate;
+    private WXHostActivityDelegate mHostDelegate;
     private String skinPackageName;
     private boolean isFirst = true;
 
@@ -52,7 +52,7 @@ public class HostPluginActivity extends FragmentActivity {
                     pluginResources = packageManager.getResourcesForApplication(applicationInfo);
                     skinPackageName = applicationInfo.packageName;
 
-                    mHostDelegate = pluginDexClassLoader.getInterface(HostDelegate.class, activityName);
+                    mHostDelegate = pluginDexClassLoader.getInterface(WXHostActivityDelegate.class, activityName);
                     mHostDelegate.attachContext(this, pluginResources);
                     mHostDelegate.onCreate(null);
                 } catch (Exception e) {

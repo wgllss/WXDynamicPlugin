@@ -8,7 +8,7 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
-import com.wgllss.dynamic.plugin.library.HostServiceDelegate;
+import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -16,7 +16,7 @@ import java.util.LinkedHashMap;
 public abstract class HostPluginService extends Service {
 
     private PluginClassLoader pluginDexClassLoader;
-    private HashMap<String, HostServiceDelegate> map;
+    private HashMap<String, WXHostServiceDelegate> map;
 
     @Nullable
     @Override
@@ -32,7 +32,7 @@ public abstract class HostPluginService extends Service {
     @Override
     public void onStart(Intent intent, int startId) {
         if (map != null) {
-            for (HostServiceDelegate service : map.values()) {
+            for (WXHostServiceDelegate service : map.values()) {
                 service.onStart(intent, startId);
             }
         }
@@ -66,7 +66,7 @@ public abstract class HostPluginService extends Service {
     @Override
     public void onDestroy() {
         if (map != null) {
-            for (HostServiceDelegate service : map.values()) {
+            for (WXHostServiceDelegate service : map.values()) {
                 service.onDestroy();
             }
         }
@@ -84,7 +84,7 @@ public abstract class HostPluginService extends Service {
                     String pluginApkPath = intent.getStringExtra(PluginKey.pluginApkPathKey);
                     String privatePackage = intent.getStringExtra(PluginKey.privatePackageKey);
                     pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
-                    HostServiceDelegate serviceDelegate = pluginDexClassLoader.getInterface(HostServiceDelegate.class, serviceName);
+                    WXHostServiceDelegate serviceDelegate = pluginDexClassLoader.getInterface(WXHostServiceDelegate.class, serviceName);
                     serviceDelegate.attachBaseContext(this);
                     serviceDelegate.onCreate();
                     map.put(serviceName, serviceDelegate);

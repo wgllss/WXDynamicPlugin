@@ -1,10 +1,10 @@
-package com.wgllss.dynamic.plugin.library;
+package com.wgllss.dynamic.runtime.library;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 
-public interface HostServiceDelegate {
+public interface WXHostServiceDelegate {
 
     void attachBaseContext(Context newBase);
 

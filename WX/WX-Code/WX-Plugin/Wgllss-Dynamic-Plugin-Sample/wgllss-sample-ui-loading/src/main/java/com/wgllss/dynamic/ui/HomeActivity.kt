@@ -40,7 +40,7 @@ class HomeActivity : Activity() {
             layoutParams = lp
             scaleType = ImageView.ScaleType.CENTER_CROP
         }
-        imageView.setImageResource(com.wgllss.host.skin.R.drawable.icon_loading)
+        imageView.setImageResource(com.wgllss.host.skin.R.drawable.loading)
         setContentView(imageView)
         val intentFilter = IntentFilter(BroadCastAction.DOWNLOAD_HOME_COMPLETE_ACTION)
         registerReceiver(downLoadCompleteBroadCast, intentFilter)

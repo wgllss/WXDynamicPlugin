@@ -1,11 +1,11 @@
-package com.wgllss.dynamic.plugin.library;
+package com.wgllss.dynamic.runtime.library;
 
 import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
 
-public interface HostDelegate {
+public interface WXHostActivityDelegate {
 
     void attachContext(FragmentActivity context, Resources resources);
 

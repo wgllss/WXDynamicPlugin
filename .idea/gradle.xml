@@ -45,6 +45,7 @@
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Base-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Protobuf-Lib" />
+            <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Provider-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Runtime-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Version-Lib" />
           </set>

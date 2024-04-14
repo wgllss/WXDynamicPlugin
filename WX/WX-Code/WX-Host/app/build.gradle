@@ -86,6 +86,8 @@ dependencies {
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.6'
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
 
+    implementation project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+
     implementation project(path: ':wgllss-dynamic-host-skin-resource-lib')
     implementation project(path: ':wgllss-common-re-library')
     implementation project(path: ':wgllss-business-re-library')

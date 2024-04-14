@@ -4,9 +4,9 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import com.wgllss.dynamic.plugin.library.HostServiceDelegate
+import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate
 
-class MyService : HostServiceDelegate {
+class MyServiceWX : WXHostServiceDelegate {
 
     private lateinit var context: Context
 

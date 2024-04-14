@@ -36,6 +36,7 @@
         <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService" />
 
         <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService" />
+
     </application>
 
 </manifest>

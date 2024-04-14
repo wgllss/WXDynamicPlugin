@@ -15,6 +15,7 @@ include ':Wgllss-Dynamic-Host-Protobuf-Lib'
 include ':Wgllss-Dynamic-Host-Constant-Lib'
 include ':Wgllss-Dynamic-Host-Loader-Lib'
 include ':Wgllss-Dynamic-Host-Loader-Base-Lib'
+include ':Wgllss-Dynamic-Host-Provider-Lib'
 include ':Wgllss-Dynamic-Host-Lib-Impl'
 
 include ':Wgllss-Dynamic-Plugin-Common-Library'
@@ -62,6 +63,7 @@ project(':Wgllss-Dynamic-Host-Protobuf-Lib').projectDir = file('WX/WX-Dynamic-Ho
 project(':Wgllss-Dynamic-Host-Constant-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Constant-Lib')
 project(':Wgllss-Dynamic-Host-Loader-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Lib')
 project(':Wgllss-Dynamic-Host-Loader-Base-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Base-Lib')
+project(':Wgllss-Dynamic-Host-Provider-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Provider-Lib')
 project(':Wgllss-Dynamic-Host-Lib-Impl').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Lib-Impl')
 
 project(':Wgllss-Dynamic-Plugin-Common-Library').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Common-Library')

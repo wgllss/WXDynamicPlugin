@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.wgllss.core.activity.BaseViewModePluginActivity
 import com.wgllss.core.viewmodel.BaseViewModel
 import com.wgllss.dynamic.sample.other2.BuildConfig
-import com.wgllss.dynamic.plugin.library.HostDelegate
+import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate
 import com.wgllss.dynamic.plugin.manager.PluginResource
 
-open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME), HostDelegate {
+open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME), WXHostActivityDelegate {
 
     private var isPlugin = false
     protected lateinit var activity: FragmentActivity

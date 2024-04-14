@@ -5,7 +5,9 @@ import android.content.MutableContextWrapper
 import com.tencent.mmkv.MMKV
 import com.wgllss.core.ex.toTheme
 import com.wgllss.core.units.ScreenManager
+import com.wgllss.dynamic.host.lib.provider.WXProviderManager
 import com.wgllss.dynamic.plugin.manager.PluginResource
+import com.wgllss.dynamic.provider.TestContentProvider
 import com.wgllss.dynamic.sample.feature_home.fragment.HomeTabFragment
 import com.wgllss.sample.feature_system.savestatus.MMKVHelp
 import kotlinx.coroutines.CoroutineScope
@@ -15,13 +17,13 @@ import kotlinx.coroutines.launch
 
 object InitHomeFirstInitializeHelp {
 
-    fun initCreate(activity: Context) {
+    fun initCreate(context: Context) {
         CoroutineScope(Dispatchers.IO).launch {
-            ScreenManager.initScreenSize(activity)
-            MMKV.initialize(activity)
+            ScreenManager.initScreenSize(context)
+            MMKV.initialize(context)
 
-            val themeID = activity.resources.getIdentifier("Theme.WXDynamicPlugin", "style", activity.packageName)
-            val context: Context = MutableContextWrapper(activity.toTheme(themeID))
+            val themeID = context.resources.getIdentifier("Theme.WXDynamicPlugin", "style", context.packageName)
+            val context: Context = MutableContextWrapper(context.toTheme(themeID))
             val res = PluginResource.getSkinResources()
             HomeContains.putViewByKey(LaunchInflateKey.home_activity, async {
                 GenerateHomeLayout.syncCreateHomeActivityLayout(context, res)
@@ -59,6 +61,9 @@ object InitHomeFirstInitializeHelp {
                     e.printStackTrace()
                 }
             }
+
+            /** 添加 ContentProvider **/
+            WXProviderManager.instance.addContentProvider(TestContentProvider(context))
         }
     }
 }
