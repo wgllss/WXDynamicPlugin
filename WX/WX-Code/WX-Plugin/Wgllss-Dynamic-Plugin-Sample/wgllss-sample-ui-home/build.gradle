@@ -50,6 +50,7 @@ dependencies {
 
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Home-Lib:1.0.0.5'
     compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+    compileOnly "androidx.sqlite:sqlite-framework:2.2.0"
 
     compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
 

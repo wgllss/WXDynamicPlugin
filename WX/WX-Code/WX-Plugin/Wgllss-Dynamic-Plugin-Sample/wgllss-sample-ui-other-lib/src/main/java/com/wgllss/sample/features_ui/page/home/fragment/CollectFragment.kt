@@ -2,17 +2,22 @@ package com.wgllss.sample.features_ui.page.home.fragment
 
 import android.content.Context
 import android.content.res.Resources
+import android.database.ContentObserver
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wgllss.core.ex.getIntToDip
 import com.wgllss.core.units.ResourceUtils
 import com.wgllss.core.widget.DividerGridItemDecoration
 import com.wgllss.core.widget.OnRecyclerViewItemClickListener
+import com.wgllss.dynamic.host.lib.provider.ProviderAuthority
 import com.wgllss.sample.features_ui.page.base.BasePluginFragment
 import com.wgllss.sample.features_ui.page.base.SkinContains
 import com.wgllss.sample.features_ui.page.home.adapter.CollectionAdapter
@@ -24,6 +29,13 @@ class CollectFragment : BasePluginFragment<CollectViewModel>("fragment_collectio
     private lateinit var view_title_bar_bg: View
     private lateinit var title: TextView
     private lateinit var collectionAdapter: CollectionAdapter
+
+
+    private val content_authority: String = StringBuilder("com.wgllss.dynamic.host.sample").append(ProviderAuthority.authority).toString()
+
+    private val base_content_uri = Uri.parse("content://$content_authority")
+
+    private val uri = base_content_uri.buildUpon().appendPath("com.wgllss.dynamic.provider.TestContentProvider").build()
 
     override fun findView(context: Context, containerView: View) {
         rv_c_list = findViewByID("rv_c_list")
@@ -60,6 +72,17 @@ class CollectFragment : BasePluginFragment<CollectViewModel>("fragment_collectio
                     collectionAdapter.notifyData(it, getSkinResources())
                 }
             }
+        }
+
+
+        activity?.run {
+            contentResolver.registerContentObserver(uri, true, object : ContentObserver(Handler()) {
+                override fun onChange(selfChange: Boolean, uri: Uri?) {
+                    super.onChange(selfChange, uri)
+                    android.util.Log.e("CollectFragment", "uri : $uri  selfChange:$selfChange")
+                    viewModel.start()
+                }
+            })
         }
     }
 

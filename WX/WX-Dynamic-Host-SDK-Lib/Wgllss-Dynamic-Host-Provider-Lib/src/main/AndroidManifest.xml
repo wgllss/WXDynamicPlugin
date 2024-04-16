@@ -5,6 +5,7 @@
     <application>
         <provider
             android:name="com.wgllss.dynamic.host.lib.provider.WXPluginContentProvider"
+            android:exported="true"
             android:authorities="${applicationId}.wx.dynamic.plugin.author" />
     </application>
 

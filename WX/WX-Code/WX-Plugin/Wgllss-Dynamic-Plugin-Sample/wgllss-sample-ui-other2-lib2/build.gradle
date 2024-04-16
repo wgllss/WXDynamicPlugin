@@ -28,6 +28,8 @@ dependencies {
     compileOnly project(':wgllss-common-re-library')
     compileOnly project(':Wgllss-Dynamic-Plugin-Manager')
     compileOnly project(':Wgllss-Dynamic-Plugin-Library')
+    compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
+
     compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
 
     compileOnly libSupportAppcompat
