@@ -37,6 +37,22 @@
 
         <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService" />
 
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyService"
+            android:process=":processSticky" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartNotStickyService"
+            android:process=":processNotSticky" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartRedeliverIntentService"
+            android:process=":processRedeliver" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyCompatibilityService"
+            android:process=":processStickyCompatibility" />
+
     </application>
 
 </manifest>

@@ -41,6 +41,7 @@ dependencies {
     compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Base-Lib')
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'
 }
 
 

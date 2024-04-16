@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.IBinder
 import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate
 
-class MyServiceWX : WXHostServiceDelegate {
+class MyService : WXHostServiceDelegate {
 
     private lateinit var context: Context
 
@@ -45,5 +45,16 @@ class MyServiceWX : WXHostServiceDelegate {
 
     override fun onDestroy() {
         android.util.Log.e("MyService", "onDestroy: ")
+    }
+
+    override fun callMethodByID(methodID: Int): String {
+        return when (methodID) {
+            1 -> {
+                ""
+            }
+            else -> {
+                ""
+            }
+        }
     }
 }

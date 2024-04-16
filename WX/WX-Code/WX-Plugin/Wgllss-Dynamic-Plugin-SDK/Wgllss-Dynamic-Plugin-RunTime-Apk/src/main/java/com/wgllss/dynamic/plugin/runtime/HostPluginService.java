@@ -4,10 +4,12 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
+import android.os.RemoteException;
 
 import androidx.annotation.Nullable;
 
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
+import com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface;
 import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate;
 
 import java.util.HashMap;
@@ -21,7 +23,28 @@ public abstract class HostPluginService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        initPluginService(intent, true);
+        return new WXDynamicAidlInterface.Stub() {
+
+
+            @Override
+            public void onBind(String serviceName) throws RemoteException {
+                initPluginService(new Intent().putExtra(PluginKey.serviceNameKey, serviceName), true);
+            }
+
+            @Override
+            public void onUnbind(String serviceName) throws RemoteException {
+                HostPluginService.this.onUnbind(new Intent().putExtra(PluginKey.serviceNameKey, serviceName));
+            }
+
+            @Override
+            public String onAidlCallBack(String serviceName, int methodID) throws RemoteException {
+                if (map != null && map.containsKey(serviceName)) {
+                    return map.get(serviceName).callMethodByID(methodID);
+                }
+                return null;
+            }
+        };
     }
 
     @Override
@@ -41,7 +64,7 @@ public abstract class HostPluginService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        initPluginService(intent);
+        initPluginService(intent, false);
         String serviceName = intent.getStringExtra(PluginKey.serviceNameKey);
         if (map.containsKey(serviceName)) {
             map.get(serviceName).onStartCommand(intent, flags, startId);
@@ -52,16 +75,16 @@ public abstract class HostPluginService extends Service {
 
     public abstract int onStartCommand();
 
-//    @Override
-//    public boolean onUnbind(Intent intent) {
-//        String serviceName = intent.getStringExtra(PluginKey.serviceNameKey);
-//        if (map.containsKey(serviceName)) {
-//            map.get(serviceName).onUnbind(intent);
-//            String bindKey = new StringBuilder(serviceName).append("_bind").toString();
-//            map.remove(bindKey);
-//        }
-//        return super.onUnbind(intent);
-//    }
+    @Override
+    public boolean onUnbind(Intent intent) {
+        String serviceName = intent.getStringExtra(PluginKey.serviceNameKey);
+        if (map.containsKey(serviceName)) {
+            map.get(serviceName).onUnbind(intent);
+            String bindKey = new StringBuilder(serviceName).append("_bind").toString();
+            map.remove(bindKey);
+        }
+        return super.onUnbind(intent);
+    }
 
     @Override
     public void onDestroy() {
@@ -73,7 +96,7 @@ public abstract class HostPluginService extends Service {
         super.onDestroy();
     }
 
-    private void initPluginService(Intent intent) {
+    private void initPluginService(Intent intent, boolean isOnBind) {
         try {
             if (map == null) {
                 map = new LinkedHashMap();
@@ -89,11 +112,11 @@ public abstract class HostPluginService extends Service {
                     serviceDelegate.onCreate();
                     map.put(serviceName, serviceDelegate);
                 }
-//                String bindKey = new StringBuilder(serviceName).append("_bind").toString();
-//                if (isOnBind && !map.containsKey(bindKey)) {
-//                    map.get(serviceName).onBind(intent);
-//                    map.put(bindKey, null);
-//                }
+                String bindKey = new StringBuilder(serviceName).append("_bind").toString();
+                if (isOnBind && !map.containsKey(bindKey)) {
+                    map.get(serviceName).onBind(intent);
+                    map.put(bindKey, null);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

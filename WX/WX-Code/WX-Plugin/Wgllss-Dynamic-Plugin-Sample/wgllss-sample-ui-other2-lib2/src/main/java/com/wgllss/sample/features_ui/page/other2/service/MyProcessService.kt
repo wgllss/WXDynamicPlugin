@@ -6,44 +6,56 @@ import android.content.Intent
 import android.os.IBinder
 import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate
 
-class MyService3WX : WXHostServiceDelegate {
+class MyProcessService : WXHostServiceDelegate {
 
     private lateinit var context: Context
 
     override fun attachBaseContext(newBase: Context) {
         this.context = newBase
-        android.util.Log.e("MyService3", "attachBaseContext")
+        android.util.Log.e("MyService", "attachBaseContext")
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        android.util.Log.e("MyService3", "onBind")
+        android.util.Log.e("MyService", "onBind")
         return null
     }
 
     override fun onCreate() {
-        android.util.Log.e("MyService3", "onCreate")
+        android.util.Log.e("MyService", "onCreate")
     }
 
     override fun onStart(intent: Intent?, startId: Int) {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onStart: str :$str")
+        android.util.Log.e("MyService", "onStart: str :$str")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onStartCommand: str :$str")
+        android.util.Log.e("MyService", "onStartCommand: str :$str")
 
 
-        return Service.START_STICKY
+        return Service.START_NOT_STICKY
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onUnbind: str :$str")
+        android.util.Log.e("MyService", "onUnbind: str :$str")
         return false
     }
 
     override fun onDestroy() {
-        android.util.Log.e("MyService3", "onDestroy: ")
+        android.util.Log.e("MyService", "onDestroy: ")
+    }
+
+    override fun callMethodByID(methodID: Int): String {
+        return when (methodID) {
+            1 -> {
+                android.util.Log.e("MyProcessService", " 换种方式实现 模拟 AIDL 方法调用 ")
+                "AIDL 调用返回值"
+            }
+            else -> {
+                ""
+            }
+        }
     }
 }

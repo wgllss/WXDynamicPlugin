@@ -14,7 +14,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="启动插件中: start Servic"
+            android:text="启动插件中: start Service"
             android:textSize="18dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -23,7 +23,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="启动插件中: start Servic2"
+            android:text="启动插件中: start Service2"
             android:textSize="18dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -32,7 +32,61 @@
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="启动插件中: start Servic3"
+            android:text="启动插件中: start Service3"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bind_service"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: bind Service"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bind_service2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: bind Service2"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bind_service3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中: bind Service3"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_start_service11"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中(单独进程): start Service"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bind_service11"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="启动插件中(单独进程): bind Service"
+            android:textSize="18dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_bind_service_aidl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="bind service模拟AIDL(单独进程) 获取值"
             android:textSize="18dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

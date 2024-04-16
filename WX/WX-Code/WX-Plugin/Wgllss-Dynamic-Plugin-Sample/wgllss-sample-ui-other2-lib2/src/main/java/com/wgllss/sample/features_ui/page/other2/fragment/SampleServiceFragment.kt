@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.wgllss.core.units.ResourceUtils
+import com.wgllss.core.widget.CommonToast
 import com.wgllss.dynamic.plugin.manager.PluginManager
 import com.wgllss.sample.features_ui.page.base.BasePluginFragment
 import com.wgllss.sample.features_ui.page.base.SkinContains
@@ -21,10 +22,26 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
     private lateinit var btn_start_service2: TextView
     private lateinit var btn_start_service3: TextView
 
+    private lateinit var btn_bind_service: TextView
+    private lateinit var btn_bind_service2: TextView
+    private lateinit var btn_bind_service3: TextView
+
+    private lateinit var btn_start_service11: TextView
+    private lateinit var btn_bind_service11: TextView
+    private lateinit var btn_bind_service_aidl: TextView
+
     override fun findView(context: Context, containerView: View) {
         btn_start_service = findViewByID("btn_start_service")
         btn_start_service2 = findViewByID("btn_start_service2")
         btn_start_service3 = findViewByID("btn_start_service3")
+
+        btn_bind_service = findViewByID("btn_bind_service")
+        btn_bind_service2 = findViewByID("btn_bind_service2")
+        btn_bind_service3 = findViewByID("btn_bind_service3")
+
+        btn_start_service11 = findViewByID("btn_start_service11")
+        btn_bind_service11 = findViewByID("btn_bind_service11")
+        btn_bind_service_aidl = findViewByID("btn_bind_service_aidl")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -32,36 +49,15 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
         btn_start_service.setOnClickListener(this)
         btn_start_service2.setOnClickListener(this)
         btn_start_service3.setOnClickListener(this)
-    }
 
-    private val sc: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName, service: IBinder) {
-            Log.e("SampleServiceFragment", "onServiceConnected sc")
-        }
+        btn_bind_service.setOnClickListener(this)
+        btn_bind_service2.setOnClickListener(this)
+        btn_bind_service3.setOnClickListener(this)
 
-        override fun onServiceDisconnected(name: ComponentName) {
-            Log.e("SampleServiceFragment", "onServiceDisconnected sc")
-        }
-    }
+        btn_start_service11.setOnClickListener(this)
+        btn_bind_service11.setOnClickListener(this)
 
-    private val sc2: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName, service: IBinder) {
-            Log.e("SampleServiceFragment", "onServiceConnected sc2")
-        }
-
-        override fun onServiceDisconnected(name: ComponentName) {
-            Log.e("SampleServiceFragment", "onServiceDisconnected sc2")
-        }
-    }
-
-    private val sc3: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName, service: IBinder) {
-            Log.e("SampleServiceFragment", "onServiceConnected sc3")
-        }
-
-        override fun onServiceDisconnected(name: ComponentName) {
-            Log.e("SampleServiceFragment", "onServiceDisconnected sc3")
-        }
+        btn_bind_service_aidl.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -99,6 +95,48 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
                     )
                 }
             }
+            btn_bind_service -> {
+                activity?.run {
+                    PluginManager.instance.bindNotStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService")
+                }
+            }
+            btn_bind_service2 -> {
+                activity?.run {
+                    PluginManager.instance.bindNotStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService2")
+                }
+            }
+            btn_bind_service3 -> {
+                activity?.run {
+                    PluginManager.instance.bindStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService3")
+                }
+            }
+            btn_start_service11 -> {
+                activity?.run {
+                    PluginManager.instance.startPluginProcessStartNotStickyService(
+                        this, "classes_other2_dex",
+                        "com.wgllss.sample.features_ui.page.other2.service.MyProcessService",
+                        "com.wgllss.dynamic.sample.other2", Intent().apply {
+                            putExtra("service_key", "1321531")
+                        }
+                    )
+                }
+            }
+            btn_bind_service11 -> {
+                activity?.run {
+                    PluginManager.instance.bindProcessNotStickyService(
+                        this, "com.wgllss.sample.features_ui.page.other2.service.MyProcessService",
+                    )
+                }
+            }
+            btn_bind_service_aidl -> {
+                activity?.run {
+                    val result = PluginManager.instance.onProcessAidlNotStickyServiceCallBack(
+                        "com.wgllss.sample.features_ui.page.other2.service.MyProcessService",
+                        1
+                    )
+                    CommonToast.show(result)
+                }
+            }
             else -> {
 
             }
@@ -106,7 +144,7 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
     }
 
     override fun onChangeSkin(skinRes: Resources) {
-        ResourceUtils.setBackgroundColor(skinRes, "colorPrimary", SkinContains.packageName, btn_start_service3, btn_start_service2, btn_start_service)
-        ResourceUtils.setTextColor(skinRes, "colorOnPrimary", SkinContains.packageName, btn_start_service3, btn_start_service2, btn_start_service)
+        ResourceUtils.setBackgroundColor(skinRes, "colorPrimary", SkinContains.packageName, btn_start_service3, btn_start_service2, btn_start_service, btn_bind_service, btn_bind_service2, btn_bind_service3, btn_start_service11, btn_bind_service11, btn_bind_service_aidl)
+        ResourceUtils.setTextColor(skinRes, "colorOnPrimary", SkinContains.packageName, btn_start_service3, btn_start_service2, btn_start_service, btn_bind_service, btn_bind_service2, btn_bind_service3, btn_start_service11, btn_bind_service11, btn_bind_service_aidl)
     }
 }

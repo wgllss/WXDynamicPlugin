@@ -20,4 +20,6 @@ public interface WXHostServiceDelegate {
 
     void onDestroy();
 
+    String callMethodByID(int methodID);
+
 }

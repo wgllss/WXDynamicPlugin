@@ -1,13 +1,17 @@
 package com.wgllss.dynamic.plugin.manager
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.os.IBinder
 import android.text.TextUtils
 import com.wgllss.core.activity.BaseViewPluginResActivity
 import com.wgllss.core.activity.WActivityManager
 import com.wgllss.core.units.WLog
+import com.wgllss.dynamic.host.lib.classloader.PluginKey
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.RESOURCE_SKIN
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.WEB_ASSETS
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.dldir
@@ -15,6 +19,7 @@ import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.versionFile
 import com.wgllss.dynamic.host.lib.impl.WXDynamicLoader
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils.getDlfn
+import com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface
 import com.wgllss.sample.feature_system.savestatus.MMKVHelp
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -47,6 +52,8 @@ class PluginManager private constructor() {
     private val context by lazy { WXDynamicLoader.instance.context }
     private val skinMap by lazy { ConcurrentHashMap<String, Resources>() }
 
+    private val mapAidl by lazy { HashMap<String, WXDynamicAidlInterface>() }
+
     companion object {
         const val pluginApkPathKey = "PLUGIN_APK_PATH_KEY"
         const val activityNameKey = "ACTIVITY_NAME_KEY"
@@ -62,6 +69,12 @@ class PluginManager private constructor() {
         private const val PluginStartNotStickyService = "com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService"
         private const val PluginStartRedeliverIntentService = "com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService"
         private const val PluginStartStickyCompatibilityService = "com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService"
+
+        private const val PluginProcessStartStickyService = "com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyService"
+        private const val PluginProcessStartNotStickyService = "com.wgllss.dynamic.plugin.runtime.PluginProcessStartNotStickyService"
+        private const val PluginProcessStartRedeliverIntentService = "com.wgllss.dynamic.plugin.runtime.PluginProcessStartRedeliverIntentService"
+        private const val PluginProcessStartStickyCompatibilityService = "com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyCompatibilityService"
+
 
         val instance by lazy { PluginManager() }
     }
@@ -189,23 +202,39 @@ class PluginManager private constructor() {
         }
     }
 
-    fun startPluginStartStickyService(context: Context, contentKey: String, serviceName: String, packageName: String, intentOption: Intent? = null) {
-        startPluginService(context, contentKey, PluginStartStickyService, serviceName, packageName, intentOption)
+    fun startPluginStartStickyService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginStartStickyService, pluginServiceName, packageName, intentOption)
     }
 
-    fun startPluginStartNotStickyService(context: Context, contentKey: String, serviceName: String, packageName: String, intentOption: Intent? = null) {
-        startPluginService(context, contentKey, PluginStartNotStickyService, serviceName, packageName, intentOption)
+    fun startPluginStartNotStickyService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginStartNotStickyService, pluginServiceName, packageName, intentOption)
     }
 
-    fun startPluginStartRedeliverIntentService(context: Context, contentKey: String, serviceName: String, packageName: String, intentOption: Intent? = null) {
-        startPluginService(context, contentKey, PluginStartRedeliverIntentService, serviceName, packageName, intentOption)
+    fun startPluginStartRedeliverIntentService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginStartRedeliverIntentService, pluginServiceName, packageName, intentOption)
     }
 
-    fun startStartStickyCompatibilityService(context: Context, contentKey: String, serviceName: String, packageName: String, intentOption: Intent? = null) {
-        startPluginService(context, contentKey, PluginStartStickyCompatibilityService, serviceName, packageName, intentOption)
+    fun startPluginStickyCompatibilityService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginStartStickyCompatibilityService, pluginServiceName, packageName, intentOption)
     }
 
-    private fun getServiceIntent(context: Context, contentKey: String, lunchName: String, serviceName: String, packageName: String, intentOption: Intent? = null): Intent? {
+    fun startPluginProcessStartStickyService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginProcessStartStickyService, pluginServiceName, packageName, intentOption)
+    }
+
+    fun startPluginProcessStartNotStickyService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginProcessStartNotStickyService, pluginServiceName, packageName, intentOption)
+    }
+
+    fun startPluginProcessStartRedeliverIntentService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginProcessStartRedeliverIntentService, pluginServiceName, packageName, intentOption)
+    }
+
+    fun startPluginProcessStickyCompatibilityService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
+        startPluginService(context, contentKey, PluginProcessStartStickyCompatibilityService, pluginServiceName, packageName, intentOption)
+    }
+
+    private fun getServiceIntent(context: Context, contentKey: String, lunchName: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null): Intent? {
         if (!cotd.containsKey(contentKey)) return null
         val clazz = Class.forName(lunchName)
         val intent = intentOption ?: Intent(context, clazz)
@@ -213,7 +242,7 @@ class PluginManager private constructor() {
             intent.setClass(context, clazz)
         }
         intent.apply {
-            putExtra(serviceNameKey, serviceName)
+            putExtra(serviceNameKey, pluginServiceName)
             putExtra(privatePackageKey, packageName)
             val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))
             if (!file.exists()) {
@@ -224,14 +253,82 @@ class PluginManager private constructor() {
         return intent
     }
 
-    private fun startPluginService(context: Context, contentKey: String, lunchName: String, serviceName: String, packageName: String, intentOption: Intent? = null) {
+    private fun startPluginService(context: Context, contentKey: String, lunchName: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
         try {
-            getServiceIntent(context, contentKey, lunchName, serviceName, packageName, intentOption)?.run {
+            getServiceIntent(context, contentKey, lunchName, pluginServiceName, packageName, intentOption)?.run {
                 context.startService(this)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun bindStickyService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginStartStickyService, pluginServiceName)
+    }
+
+    fun bindNotStickyService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginStartNotStickyService, pluginServiceName)
+    }
+
+    fun bindRedeliverService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginStartRedeliverIntentService, pluginServiceName)
+    }
+
+    fun bindCompatibilityService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginStartStickyCompatibilityService, pluginServiceName)
+    }
+
+    fun bindProcessStickyService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginProcessStartStickyService, pluginServiceName)
+    }
+
+    fun bindProcessNotStickyService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginProcessStartNotStickyService, pluginServiceName)
+    }
+
+    fun bindProcessRedeliverService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginProcessStartRedeliverIntentService, pluginServiceName)
+    }
+
+    fun bindProcessCompatibilityService(context: Context, pluginServiceName: String) {
+        bindService(context, PluginProcessStartStickyCompatibilityService, pluginServiceName)
+    }
+
+    private fun bindService(context: Context, hostServiceName: String, serviceName: String) {
+        if (!mapAidl.containsKey(hostServiceName)) {
+            val intent = Intent(context, Class.forName(hostServiceName)).putExtra(PluginKey.serviceNameKey, serviceName)
+            context.bindService(intent, object : ServiceConnection {
+                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                    mapAidl[hostServiceName] = WXDynamicAidlInterface.Stub.asInterface(service)
+                }
+
+                override fun onServiceDisconnected(name: ComponentName?) {
+
+                }
+            }, Context.BIND_AUTO_CREATE)
+        } else {
+            mapAidl[hostServiceName]?.onBind(serviceName)
+        }
+    }
+
+    fun onAidlStickyServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginStartStickyService, PluginSerViceName, methodID)
+    fun onAidlNotStickyServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginStartNotStickyService, PluginSerViceName, methodID)
+    fun onAidlRedeliverServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginStartRedeliverIntentService, PluginSerViceName, methodID)
+    fun onAidlCompatibilityServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginStartStickyCompatibilityService, PluginSerViceName, methodID)
+
+    fun onProcessAidlStickyServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginProcessStartStickyService, PluginSerViceName, methodID)
+    fun onProcessAidlNotStickyServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginProcessStartNotStickyService, PluginSerViceName, methodID)
+    fun onProcessAidlRedeliverServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginProcessStartRedeliverIntentService, PluginSerViceName, methodID)
+    fun onProcessAidlCompatibilityServiceCallBack(PluginSerViceName: String, methodID: Int) = onAidlCallBack(PluginProcessStartStickyCompatibilityService, PluginSerViceName, methodID)
+
+    private fun onAidlCallBack(serviceName: String, PluginSerViceName: String, methodID: Int): String {
+        if (mapAidl.containsKey(serviceName)) {
+            mapAidl[serviceName]?.let {
+                return it.onAidlCallBack(PluginSerViceName, methodID)
+            }
+        }
+        return ""
     }
 
     fun deleteOldFile() {
