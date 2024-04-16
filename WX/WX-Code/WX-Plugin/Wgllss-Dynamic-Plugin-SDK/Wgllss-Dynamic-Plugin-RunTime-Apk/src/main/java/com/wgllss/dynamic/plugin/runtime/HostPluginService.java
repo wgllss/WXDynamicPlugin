@@ -26,10 +26,13 @@ public abstract class HostPluginService extends Service {
         initPluginService(intent, true);
         return new WXDynamicAidlInterface.Stub() {
 
-
             @Override
-            public void onBind(String serviceName) throws RemoteException {
-                initPluginService(new Intent().putExtra(PluginKey.serviceNameKey, serviceName), true);
+            public void onBind(String serviceName, String packageName, String pluginApkPath) throws RemoteException {
+                android.util.Log.e("HostPluginService", "onBind(String serviceName):" + serviceName + "packageName:" + packageName + "pluginApkPath:" + pluginApkPath);
+                initPluginService(new Intent().putExtra(PluginKey.serviceNameKey, serviceName)
+                                .putExtra(PluginKey.privatePackageKey, packageName)
+                                .putExtra(PluginKey.pluginApkPathKey, pluginApkPath),
+                        true);
             }
 
             @Override

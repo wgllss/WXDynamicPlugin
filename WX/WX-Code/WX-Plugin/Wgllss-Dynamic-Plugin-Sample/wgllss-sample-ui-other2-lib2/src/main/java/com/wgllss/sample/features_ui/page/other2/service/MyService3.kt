@@ -12,26 +12,26 @@ class MyService3 : WXHostServiceDelegate {
 
     override fun attachBaseContext(newBase: Context) {
         this.context = newBase
-        android.util.Log.e("MyService3", "attachBaseContext")
+        android.util.Log.e("MyService3", "START_STICKY attachBaseContext")
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        android.util.Log.e("MyService3", "onBind")
+        android.util.Log.e("MyService3", "START_STICKY onBind")
         return null
     }
 
     override fun onCreate() {
-        android.util.Log.e("MyService3", "onCreate")
+        android.util.Log.e("MyService3", "START_STICKY onCreate")
     }
 
     override fun onStart(intent: Intent?, startId: Int) {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onStart: str :$str")
+        android.util.Log.e("MyService3", "START_STICKY onStart: str :$str")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onStartCommand: str :$str")
+        android.util.Log.e("MyService3", "START_STICKY onStartCommand: str :$str")
 
 
         return Service.START_STICKY
@@ -39,12 +39,12 @@ class MyService3 : WXHostServiceDelegate {
 
     override fun onUnbind(intent: Intent?): Boolean {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService3", "onUnbind: str :$str")
+        android.util.Log.e("MyService3", "START_STICKY onUnbind: str :$str")
         return false
     }
 
     override fun onDestroy() {
-        android.util.Log.e("MyService3", "onDestroy: ")
+        android.util.Log.e("MyService3", "START_STICKY onDestroy: ")
     }
 
     override fun callMethodByID(methodID: Int): String {

@@ -97,17 +97,17 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
             }
             btn_bind_service -> {
                 activity?.run {
-                    PluginManager.instance.bindNotStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService")
+                    PluginManager.instance.bindNotStickyService(this, "classes_other2_dex", "com.wgllss.dynamic.sample.other2", "com.wgllss.sample.features_ui.page.other2.service.MyService")
                 }
             }
             btn_bind_service2 -> {
                 activity?.run {
-                    PluginManager.instance.bindNotStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService2")
+                    PluginManager.instance.bindNotStickyService(this, "classes_other2_dex", "com.wgllss.dynamic.sample.other2", "com.wgllss.sample.features_ui.page.other2.service.MyService2")
                 }
             }
             btn_bind_service3 -> {
                 activity?.run {
-                    PluginManager.instance.bindStickyService(this, "com.wgllss.sample.features_ui.page.other2.service.MyService3")
+                    PluginManager.instance.bindStickyService(this, "classes_other2_dex", "com.wgllss.dynamic.sample.other2", "com.wgllss.sample.features_ui.page.other2.service.MyService3")
                 }
             }
             btn_start_service11 -> {
@@ -124,7 +124,9 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
             btn_bind_service11 -> {
                 activity?.run {
                     PluginManager.instance.bindProcessNotStickyService(
-                        this, "com.wgllss.sample.features_ui.page.other2.service.MyProcessService",
+                        this, "classes_other2_dex",
+                        "com.wgllss.dynamic.sample.other2",
+                        "com.wgllss.sample.features_ui.page.other2.service.MyProcessService",
                     )
                 }
             }

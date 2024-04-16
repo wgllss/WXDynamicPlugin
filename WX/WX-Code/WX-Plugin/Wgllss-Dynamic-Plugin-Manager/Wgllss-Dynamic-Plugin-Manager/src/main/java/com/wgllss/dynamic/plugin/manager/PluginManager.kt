@@ -263,44 +263,45 @@ class PluginManager private constructor() {
         }
     }
 
-    fun bindStickyService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginStartStickyService, pluginServiceName)
+    fun bindStickyService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginStartStickyService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindNotStickyService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginStartNotStickyService, pluginServiceName)
+    fun bindNotStickyService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginStartNotStickyService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindRedeliverService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginStartRedeliverIntentService, pluginServiceName)
+    fun bindRedeliverService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginStartRedeliverIntentService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindCompatibilityService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginStartStickyCompatibilityService, pluginServiceName)
+    fun bindCompatibilityService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginStartStickyCompatibilityService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindProcessStickyService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginProcessStartStickyService, pluginServiceName)
+    fun bindProcessStickyService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginProcessStartStickyService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindProcessNotStickyService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginProcessStartNotStickyService, pluginServiceName)
+    fun bindProcessNotStickyService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginProcessStartNotStickyService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindProcessRedeliverService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginProcessStartRedeliverIntentService, pluginServiceName)
+    fun bindProcessRedeliverService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginProcessStartRedeliverIntentService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    fun bindProcessCompatibilityService(context: Context, pluginServiceName: String) {
-        bindService(context, PluginProcessStartStickyCompatibilityService, pluginServiceName)
+    fun bindProcessCompatibilityService(context: Context, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        bindService(context, PluginProcessStartStickyCompatibilityService, contentKey, packageName, pluginServiceName, intentOption)
     }
 
-    private fun bindService(context: Context, hostServiceName: String, serviceName: String) {
+    private fun bindService(context: Context, hostServiceName: String, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
         if (!mapAidl.containsKey(hostServiceName)) {
-            val intent = Intent(context, Class.forName(hostServiceName)).putExtra(PluginKey.serviceNameKey, serviceName)
+            val intent = getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)
             context.bindService(intent, object : ServiceConnection {
                 override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-                    mapAidl[hostServiceName] = WXDynamicAidlInterface.Stub.asInterface(service)
+                    val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
+                    mapAidl[hostServiceName] = aidl
                 }
 
                 override fun onServiceDisconnected(name: ComponentName?) {
@@ -308,7 +309,11 @@ class PluginManager private constructor() {
                 }
             }, Context.BIND_AUTO_CREATE)
         } else {
-            mapAidl[hostServiceName]?.onBind(serviceName)
+            val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))
+            if (!file.exists()) {
+                return
+            }
+            mapAidl[hostServiceName]?.onBind(pluginServiceName, packageName, file.absolutePath)
         }
     }
 

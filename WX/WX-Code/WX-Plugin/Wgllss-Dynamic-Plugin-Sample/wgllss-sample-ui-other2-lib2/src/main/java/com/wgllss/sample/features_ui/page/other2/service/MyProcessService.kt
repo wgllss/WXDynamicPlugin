@@ -12,26 +12,26 @@ class MyProcessService : WXHostServiceDelegate {
 
     override fun attachBaseContext(newBase: Context) {
         this.context = newBase
-        android.util.Log.e("MyService", "attachBaseContext")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY attachBaseContext")
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        android.util.Log.e("MyService", "onBind")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onBind")
         return null
     }
 
     override fun onCreate() {
-        android.util.Log.e("MyService", "onCreate")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onCreate")
     }
 
     override fun onStart(intent: Intent?, startId: Int) {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService", "onStart: str :$str")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onStart: str :$str")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService", "onStartCommand: str :$str")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onStartCommand: str :$str")
 
 
         return Service.START_NOT_STICKY
@@ -39,12 +39,12 @@ class MyProcessService : WXHostServiceDelegate {
 
     override fun onUnbind(intent: Intent?): Boolean {
         val str = intent?.getStringExtra("service_key") ?: ""
-        android.util.Log.e("MyService", "onUnbind: str :$str")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onUnbind: str :$str")
         return false
     }
 
     override fun onDestroy() {
-        android.util.Log.e("MyService", "onDestroy: ")
+        android.util.Log.e("MyProcessService", "START_NOT_STICKY onDestroy: ")
     }
 
     override fun callMethodByID(methodID: Int): String {

@@ -49,12 +49,13 @@ dependencies {
     compileOnly project(path: ':wgllss-business-re-library')
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Manager')
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Runtime-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.6'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.5'
+
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
     compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
 
 //    compileOnly project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
 //    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')

@@ -29,28 +29,48 @@
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
             android:theme="@style/LauncherTheme2" />
 
-        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyService" />
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyService"
+            android:enabled="true"
+            android:exported="true" />
 
-        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService" />
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService"
+            android:enabled="true"
+            android:exported="true" />
 
-        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService" />
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService"
+            android:enabled="true"
+            android:exported="true" />
 
-        <service android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService" />
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService"
+            android:enabled="true"
+            android:exported="true" />
 
         <service
             android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyService"
+            android:enabled="true"
+            android:exported="true"
             android:process=":processSticky" />
 
         <service
             android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartNotStickyService"
+            android:enabled="true"
+            android:exported="true"
             android:process=":processNotSticky" />
 
         <service
             android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartRedeliverIntentService"
+            android:enabled="true"
+            android:exported="true"
             android:process=":processRedeliver" />
 
         <service
             android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyCompatibilityService"
+            android:enabled="true"
+            android:exported="true"
             android:process=":processStickyCompatibility" />
 
     </application>

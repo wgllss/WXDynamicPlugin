@@ -101,13 +101,13 @@ open class BaseLoaderManagerImpl : ILoaderManager {
         mapDlu.forEach { (key, value) ->
             initPlugin(context, key, getDlfn(value.first, value.second))
         }
-        (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).runningAppProcesses?.onEach { p ->
-            p.processName?.takeIf {
-                p.pid == android.os.Process.myPid() && context.packageName == it
-            }?.let {
-                checkConfig(context)
-            }
-        }
+//        (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).runningAppProcesses?.onEach { p ->
+//            p.processName?.takeIf {
+//                p.pid == android.os.Process.myPid() && context.packageName == it
+//            }?.let {
+        checkConfig(context)
+//            }
+//    }
     }
 
     override fun initDynamicRunTime(context: Context, contentKey: String, fileAbsolutePath: String) {

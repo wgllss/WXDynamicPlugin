@@ -41,12 +41,19 @@ dependencies {
     compileOnly project(path: ':wgllss-common-re-library')
     compileOnly project(path: ':wgllss-dynamic-host-skin-resource-lib')
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.6'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.5'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.6'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.5'
 //    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.2'
+
     compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
 
 //    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
 //    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')

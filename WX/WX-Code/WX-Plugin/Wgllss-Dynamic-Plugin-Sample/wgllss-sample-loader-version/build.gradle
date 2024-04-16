@@ -30,13 +30,13 @@ android {
 }
 
 dependencies {
-//    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
 
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
 }
 
 
