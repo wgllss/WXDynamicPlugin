@@ -86,7 +86,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="bind service模拟AIDL(单独进程) 获取值"
+            android:text="模拟AIDL(单独进程) 获取值"
             android:textSize="18dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

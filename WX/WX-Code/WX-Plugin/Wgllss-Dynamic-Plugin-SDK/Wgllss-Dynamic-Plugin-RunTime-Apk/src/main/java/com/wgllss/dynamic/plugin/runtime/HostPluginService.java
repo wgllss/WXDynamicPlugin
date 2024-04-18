@@ -59,7 +59,8 @@ public abstract class HostPluginService extends Service {
     public void onStart(Intent intent, int startId) {
         if (map != null) {
             for (WXHostServiceDelegate service : map.values()) {
-                service.onStart(intent, startId);
+                if (service != null)
+                    service.onStart(intent, startId);
             }
         }
         super.onStart(intent, startId);
@@ -69,7 +70,7 @@ public abstract class HostPluginService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         initPluginService(intent, false);
         String serviceName = intent.getStringExtra(PluginKey.serviceNameKey);
-        if (map.containsKey(serviceName)) {
+        if (map.containsKey(serviceName) && map.get(serviceName) != null) {
             map.get(serviceName).onStartCommand(intent, flags, startId);
             map.get(serviceName).onStart(intent, startId);
         }
@@ -83,6 +84,7 @@ public abstract class HostPluginService extends Service {
         String serviceName = intent.getStringExtra(PluginKey.serviceNameKey);
         if (map.containsKey(serviceName)) {
             map.get(serviceName).onUnbind(intent);
+            map.remove(serviceName);
             String bindKey = new StringBuilder(serviceName).append("_bind").toString();
             map.remove(bindKey);
         }
@@ -93,7 +95,8 @@ public abstract class HostPluginService extends Service {
     public void onDestroy() {
         if (map != null) {
             for (WXHostServiceDelegate service : map.values()) {
-                service.onDestroy();
+                if (service != null)
+                    service.onDestroy();
             }
         }
         super.onDestroy();

@@ -53,6 +53,8 @@ class PluginManager private constructor() {
     private val skinMap by lazy { ConcurrentHashMap<String, Resources>() }
 
     private val mapAidl by lazy { HashMap<String, WXDynamicAidlInterface>() }
+    private val mapConnection by lazy { HashMap<String, ServiceConnection>() }
+    private val mapContextPluginService by lazy { HashMap<String, MutableList<String>>() }
 
     companion object {
         const val pluginApkPathKey = "PLUGIN_APK_PATH_KEY"
@@ -296,9 +298,11 @@ class PluginManager private constructor() {
     }
 
     private fun bindService(context: Context, hostServiceName: String, contentKey: String, packageName: String, pluginServiceName: String, intentOption: Intent? = null) {
+        android.util.Log.e("bindService", "context:${context.javaClass.name}")
+        val connectionKey = StringBuilder(hostServiceName).append(context.javaClass.name).toString()
         if (!mapAidl.containsKey(hostServiceName)) {
             val intent = getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)
-            context.bindService(intent, object : ServiceConnection {
+            val connection = object : ServiceConnection {
                 override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
                     val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
                     mapAidl[hostServiceName] = aidl
@@ -307,13 +311,75 @@ class PluginManager private constructor() {
                 override fun onServiceDisconnected(name: ComponentName?) {
 
                 }
-            }, Context.BIND_AUTO_CREATE)
+            }
+            context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
+            if (!mapConnection.containsKey(connectionKey)) {
+                mapConnection[connectionKey] = connection
+            }
+            if (!mapContextPluginService.containsKey(connectionKey)) {
+                mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+            }
         } else {
             val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))
             if (!file.exists()) {
                 return
             }
             mapAidl[hostServiceName]?.onBind(pluginServiceName, packageName, file.absolutePath)
+
+            if (!mapContextPluginService.containsKey(connectionKey)) {
+                mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+            } else {
+                mapContextPluginService[connectionKey]?.add(pluginServiceName)
+            }
+        }
+    }
+
+    fun unBindStickyService(context: Context) {
+        unBindService(context, PluginStartStickyService)
+    }
+
+    fun unBindNotStickyService(context: Context) {
+        unBindService(context, PluginStartNotStickyService)
+    }
+
+    fun unBindRedeliverService(context: Context) {
+        unBindService(context, PluginStartRedeliverIntentService)
+    }
+
+    fun unBindCompatibilityService(context: Context) {
+        unBindService(context, PluginStartStickyCompatibilityService)
+    }
+
+    fun unBindProcessStickyService(context: Context) {
+        unBindService(context, PluginProcessStartStickyService)
+    }
+
+    fun unBindProcessNotStickyService(context: Context) {
+        unBindService(context, PluginProcessStartNotStickyService)
+    }
+
+    fun unBindProcessRedeliverService(context: Context) {
+        unBindService(context, PluginProcessStartRedeliverIntentService)
+    }
+
+    fun unBindProcessCompatibilityService(context: Context) {
+        unBindService(context, PluginProcessStartStickyCompatibilityService)
+    }
+
+    private fun unBindService(context: Context, hostServiceName: String) {
+        val connectionKey = StringBuilder(hostServiceName).append(context.javaClass.name).toString()
+        if (mapContextPluginService.containsKey(connectionKey)) {
+            mapContextPluginService[connectionKey]?.forEach { v ->
+                if (mapAidl.containsKey(hostServiceName)) {
+                    mapAidl[hostServiceName]?.onUnbind(v)
+                    mapAidl.remove(hostServiceName)
+                }
+            }
+            mapContextPluginService.remove(connectionKey)
+        }
+        if (mapConnection.containsKey(connectionKey)) {
+            context.unbindService(mapConnection[connectionKey]!!)
+            mapConnection.remove(connectionKey)
         }
     }
 

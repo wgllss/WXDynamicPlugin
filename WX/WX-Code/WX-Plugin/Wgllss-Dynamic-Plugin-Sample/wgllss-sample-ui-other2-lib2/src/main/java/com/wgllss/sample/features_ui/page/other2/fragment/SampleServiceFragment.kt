@@ -1,13 +1,9 @@
 package com.wgllss.sample.features_ui.page.other2.fragment
 
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.ServiceConnection
 import android.content.res.Resources
 import android.os.Bundle
-import android.os.IBinder
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.wgllss.core.units.ResourceUtils
@@ -142,6 +138,16 @@ class SampleServiceFragment : BasePluginFragment<SampleActivityViewModel>("fragm
             else -> {
 
             }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        activity?.run {
+            PluginManager.instance.unBindNotStickyService(this)
+            PluginManager.instance.unBindNotStickyService(this)
+            PluginManager.instance.unBindStickyService(this)
+            PluginManager.instance.unBindProcessNotStickyService(this)
         }
     }
 

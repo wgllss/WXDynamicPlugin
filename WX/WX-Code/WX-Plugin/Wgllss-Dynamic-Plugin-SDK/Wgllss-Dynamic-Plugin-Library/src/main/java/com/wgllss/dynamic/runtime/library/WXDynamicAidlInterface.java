@@ -1,14 +1,8 @@
-/*
- * This file is auto-generated.  DO NOT MODIFY.
- */
 package com.wgllss.dynamic.runtime.library;
-// Declare any non-default types here with import statements
 
 public interface WXDynamicAidlInterface extends android.os.IInterface {
-    /**
-     * Default implementation for WXDynamicAidlInterface.
-     */
-    public static class Default implements com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface {
+
+    class Default implements com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface {
         @Override
         public void onBind(java.lang.String serviceName, java.lang.String packageName, java.lang.String pluginApkPath) throws android.os.RemoteException {
         }
@@ -28,23 +22,13 @@ public interface WXDynamicAidlInterface extends android.os.IInterface {
         }
     }
 
-    /**
-     * Local-side IPC implementation stub class.
-     */
-    public static abstract class Stub extends android.os.Binder implements com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface {
+    abstract class Stub extends android.os.Binder implements com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface {
         private static final java.lang.String DESCRIPTOR = "com.wgllss.dynamic.plugin.runtime.WXDynamicAidlInterface";
 
-        /**
-         * Construct the stub at attach it to the interface.
-         */
         public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
 
-        /**
-         * Cast an IBinder object into an com.wgllss.dynamic.plugin.runtime.WXDynamicAidlInterface interface,
-         * generating a proxy if needed.
-         */
         public static com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface asInterface(android.os.IBinder obj) {
             if ((obj == null)) {
                 return null;
@@ -192,9 +176,6 @@ public interface WXDynamicAidlInterface extends android.os.IInterface {
         static final int TRANSACTION_onAidlCallBack = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
 
         public static boolean setDefaultImpl(com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface impl) {
-            // Only one user of this interface can use this function
-            // at a time. This is a heuristic to detect if two different
-            // users in the same process use this function.
             if (Stub.Proxy.sDefaultImpl != null) {
                 throw new IllegalStateException("setDefaultImpl() called twice");
             }
@@ -210,9 +191,9 @@ public interface WXDynamicAidlInterface extends android.os.IInterface {
         }
     }
 
-    public void onBind(java.lang.String serviceName, java.lang.String packageName, java.lang.String pluginApkPath) throws android.os.RemoteException;
+    void onBind(java.lang.String serviceName, java.lang.String packageName, java.lang.String pluginApkPath) throws android.os.RemoteException;
 
-    public void onUnbind(java.lang.String serviceName) throws android.os.RemoteException;
+    void onUnbind(java.lang.String serviceName) throws android.os.RemoteException;
 
-    public java.lang.String onAidlCallBack(java.lang.String serviceName, int methodID) throws android.os.RemoteException;
+    java.lang.String onAidlCallBack(java.lang.String serviceName, int methodID) throws android.os.RemoteException;
 }
