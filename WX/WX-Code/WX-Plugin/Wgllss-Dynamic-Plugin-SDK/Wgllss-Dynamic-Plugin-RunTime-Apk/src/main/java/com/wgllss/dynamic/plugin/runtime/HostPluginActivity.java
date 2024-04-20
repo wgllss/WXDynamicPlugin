@@ -14,10 +14,11 @@ import android.view.WindowManager;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import com.wgllss.core.activity.BaseActivity;
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
 import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate;
 
-public class HostPluginActivity extends FragmentActivity {
+public class HostPluginActivity extends BaseActivity {
     private PluginClassLoader pluginDexClassLoader;
     private Resources pluginResources;
     private WXHostActivityDelegate mHostDelegate;
@@ -107,5 +108,21 @@ public class HostPluginActivity extends FragmentActivity {
                 mHostDelegate.lazyIntValue();
             }
         }
+    }
+
+
+    @Override
+    public void initControl(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void bindEvent() {
+
+    }
+
+    @Override
+    public void initValue() {
+
     }
 }

@@ -30,6 +30,10 @@ dependencies {
     compileOnly project(':Wgllss-Dynamic-Plugin-Manager')
     compileOnly project(':Wgllss-Dynamic-Plugin-Library')
     compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+
     compileOnly 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     compileOnly 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     compileOnly 'androidx.activity:activity-ktx:1.3.0-rc01'
