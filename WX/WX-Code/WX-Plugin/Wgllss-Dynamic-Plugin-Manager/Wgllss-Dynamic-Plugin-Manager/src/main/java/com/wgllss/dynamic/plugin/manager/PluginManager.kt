@@ -204,6 +204,29 @@ class PluginManager private constructor() {
         }
     }
 
+    fun getStandardActivityIntent(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null): Intent? {
+        return getActivityIntent(context, contentKey, PluginStandardActivity, activityName, packageName, intentOption)
+    }
+
+    private fun getActivityIntent(context: Context, contentKey: String, lunchName: String, activityName: String, packageName: String, intentOption: Intent? = null): Intent? {
+        if (!cotd.containsKey(contentKey)) return null
+        val clazz = Class.forName(lunchName)
+        val intent = intentOption ?: Intent(context, clazz)
+        if (intentOption != null) {
+            intent.setClass(context, clazz)
+        }
+        intent.apply {
+            putExtra(activityNameKey, activityName)
+            putExtra(privatePackageKey, packageName)
+            val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))
+            if (!file.exists()) {
+                return null
+            }
+            putExtra(pluginApkPathKey, file.absolutePath)
+        }
+        return intent
+    }
+
     fun startPluginStartStickyService(context: Context, contentKey: String, pluginServiceName: String, packageName: String, intentOption: Intent? = null) {
         startPluginService(context, contentKey, PluginStartStickyService, pluginServiceName, packageName, intentOption)
     }

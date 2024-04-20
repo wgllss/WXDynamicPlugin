@@ -10,10 +10,7 @@ import com.wgllss.core.ex.setFramgment
 import com.wgllss.core.units.ResourceUtils
 import com.wgllss.sample.features_ui.page.base.BasePluginActivity
 import com.wgllss.sample.features_ui.page.base.SkinContains
-import com.wgllss.sample.features_ui.page.other2.fragment.SampleActivityFragment
-import com.wgllss.sample.features_ui.page.other2.fragment.SampleBroadCastFragment
-import com.wgllss.sample.features_ui.page.other2.fragment.SampleContentProviderFragment
-import com.wgllss.sample.features_ui.page.other2.fragment.SampleServiceFragment
+import com.wgllss.sample.features_ui.page.other2.fragment.*
 import com.wgllss.sample.features_ui.page.other2.viewmodel.Other2ViewModel
 
 class Other2Activity : BasePluginActivity<Other2ViewModel>("activity_other2") {
@@ -42,22 +39,18 @@ class Other2Activity : BasePluginActivity<Other2ViewModel>("activity_other2") {
         val actionType = intent?.getIntExtra("action_type", 0)
         val titestr = intent?.getStringExtra("itemName")
         txt_activity_title.text = "示例(${titestr})"
-        when (actionType) {
-            0 -> {
-                activity.setFramgment(SampleActivityFragment(), getPluginID("layout_content"))
-            }
-            1 -> {
-                activity.setFramgment(SampleServiceFragment(), getPluginID("layout_content"))
-            }
-            2 -> {
-                activity.setFramgment(SampleBroadCastFragment(), getPluginID("layout_content"))
-            }
-            3 -> {
-                activity.setFramgment(SampleContentProviderFragment(), getPluginID("layout_content"))
-            }
+        val fragment = when (actionType) {
+            0 -> SampleActivityFragment()
+            1 -> SampleServiceFragment()
+            2 -> SampleBroadCastFragment()
+            3 -> SampleContentProviderFragment()
+            4 -> SampleNotificationFragment()
             else -> {
-
+                null
             }
+        }
+        fragment?.run {
+            this@Other2Activity.activity?.setFramgment(this, getPluginID("layout_content"))
         }
     }
 
