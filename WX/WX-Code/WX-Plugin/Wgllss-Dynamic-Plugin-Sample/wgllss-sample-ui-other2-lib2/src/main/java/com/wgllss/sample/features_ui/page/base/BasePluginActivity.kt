@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
+import com.wgllss.core.activity.BaseActivity
 import com.wgllss.core.activity.BaseViewModePluginActivity
 import com.wgllss.core.viewmodel.BaseViewModel
 import com.wgllss.dynamic.sample.other2.BuildConfig
@@ -29,6 +30,23 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         activity = context
         resourcesP = resources
         attachBaseContext(context)
+    }
+
+    override fun bindEvent() {
+        viewModel?.run {
+            showUIDialog.observe(activity) {
+                activity.takeIf { it is BaseActivity }?.run {
+                    if (it.isShow) {
+                        (activity as BaseActivity).showloading(it.msg)
+                    } else {
+                        (activity as BaseActivity).hideLoading()
+                    }
+                }
+            }
+            errorMsgLiveData.observe(activity) {
+                onToast(it)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

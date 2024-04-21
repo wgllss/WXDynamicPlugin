@@ -8,6 +8,7 @@ data class NewsBean(
     val commentCount: Int,
     val imgsrc3gtype: Int,
     val imgsrc: String,
+    val url: String,
     val ptime: String,
     val imgextra: MutableList<ImgExtraData>
 ) {

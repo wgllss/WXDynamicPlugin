@@ -38,7 +38,7 @@ class HomeNewsAdapter(re: Resources, packageName: String) : BasePluginRecyclerAd
 
     private var cornerRadiusInt: Int = 0
     private val textColor by lazy { Color.parseColor("#999999") }
-    private val footer by lazy { NewsBean("", "", 0, 300, "", "", mutableListOf()) }
+    private val footer by lazy { NewsBean("", "", 0, 300, "", "", "", mutableListOf()) }
     fun addFooter() {
         mData.add(footer)
         notifyItemInserted(mData.size - 1)

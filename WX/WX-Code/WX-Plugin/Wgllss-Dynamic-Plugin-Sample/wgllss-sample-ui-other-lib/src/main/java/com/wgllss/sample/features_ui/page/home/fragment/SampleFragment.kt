@@ -78,14 +78,25 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
 
     private fun onItemClick(item: SampleItemBean) {
         activity?.run {
-            PluginManager.instance.startStandardActivity(
-                this, "classes_other2_res",
-                "com.wgllss.sample.features_ui.page.other2.activity.Other2Activity",
-                "com.wgllss.dynamic.sample.other2", Intent().apply {
-                    putExtra("action_type", item.id)
-                    putExtra("itemName", item.itemName)
-                }
-            )
+            if (item.id == 5) {
+                PluginManager.instance.startStandardActivity(
+                    this, "classes_other2_res",
+                    "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
+                    "com.wgllss.dynamic.sample.other2", Intent().apply {
+                        putExtra("action_type", item.id)
+                        putExtra("itemName", item.itemName)
+                    }
+                )
+            } else {
+                PluginManager.instance.startStandardActivity(
+                    this, "classes_other2_res",
+                    "com.wgllss.sample.features_ui.page.other2.activity.Other2Activity",
+                    "com.wgllss.dynamic.sample.other2", Intent().apply {
+                        putExtra("action_type", item.id)
+                        putExtra("itemName", item.itemName)
+                    }
+                )
+            }
         }
     }
 }

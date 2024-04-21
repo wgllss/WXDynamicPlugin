@@ -14,6 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okio.buffer
+import okio.sink
+import okio.source
+import org.jsoup.Jsoup
+import java.io.File
 
 class NewsRepository private constructor(private val context: Context) {
 
@@ -36,6 +41,33 @@ class NewsRepository private constructor(private val context: Context) {
         }
         val map = Gson().fromJson<MutableMap<String, MutableList<NewsBean>>>(str, object : TypeToken<Map<String, MutableList<NewsBean>>>() {}.type)
         emit(map[path]!!)
+    }
+
+    suspend fun getNewsDetailInfo(url: String) = flow {
+        val html = apiL.getNewsDetailInfo(url)
+        val document = Jsoup.parse(html, "https://m.163.com/")
+        val script = document.select("script")
+        script?.remove()
+        val wyxwapp = document.select(".s-tip js-open-app")
+        wyxwapp?.remove()
+        val nav = document.select("nav")
+        nav?.remove()
+        val newHtml = document.html()
+
+        val dir = "down_dir"
+        val fileName = "a1234234.html"
+        val file = File(StringBuilder(context.filesDir.absolutePath).append(File.separator).append(dir).append(File.separator).append(fileName).toString())
+        File(file.parent).takeUnless { it.exists() }?.run { mkdirs() }
+        val inputStream = newHtml.byteInputStream()
+        if (inputStream != null) {
+            val sinkBuffer = file.sink().buffer()
+            val bufferedSource = inputStream.source().buffer()
+            sinkBuffer.write(bufferedSource.readByteArray())
+            sinkBuffer.close()
+            bufferedSource.close()
+            inputStream.close()
+        }
+        emit(StringBuilder().append("file:///").append(file.absolutePath).toString())
     }
 
     suspend fun addToCollection(it: NewsBean) = flow {
