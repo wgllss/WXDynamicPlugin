@@ -46,6 +46,7 @@ class Other2Activity : BasePluginActivity<Other2ViewModel>("activity_other2") {
             3 -> SampleContentProviderFragment()
             4 -> SampleNotificationFragment()
             6 -> SampleSoFragment()
+            7 -> SampleDialogFragment()
             else -> {
                 null
             }
