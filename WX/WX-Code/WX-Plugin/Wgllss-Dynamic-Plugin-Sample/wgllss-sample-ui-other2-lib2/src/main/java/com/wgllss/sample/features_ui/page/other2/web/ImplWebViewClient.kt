@@ -6,12 +6,14 @@ import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
+import com.wgllss.dynamic.plugin.manager.PluginManager
+import com.wgllss.sample.feature_system.savestatus.MMKVHelp
 
 class ImplWebViewClient : WebViewClient() {
 
 
-    private val strOfflineResources by lazy { "" }
-
+    private val strOfflineResources by lazy { MMKVHelp.getJsPath() }
+    private val webResAssets by lazy { PluginManager.instance.getWebRes().assets }
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest?): WebResourceResponse? {
@@ -23,7 +25,7 @@ class ImplWebViewClient : WebViewClient() {
                 if (strOfflineResources.contains(suffix)) {
                     val mimeType = "text/css"
                     val offlineRes = "css/"
-                    val inputs = view.context.assets.open("$offlineRes$suffix")
+                    val inputs = webResAssets.open("$offlineRes$suffix")
                     return WebResourceResponse(mimeType, "UTF-8", inputs)
                 } else {
                     android.util.Log.e("ImplWebViewClient", "request css :${url}")
@@ -33,7 +35,7 @@ class ImplWebViewClient : WebViewClient() {
                 if (strOfflineResources.contains(suffix)) {
                     val mimeType = "application/x-javascript"
                     val offlineRes = "js/"
-                    val inputs = view.context.assets.open("$offlineRes$suffix")
+                    val inputs = webResAssets.open("$offlineRes$suffix")
                     return WebResourceResponse(mimeType, "UTF-8", inputs)
                 } else {
                     android.util.Log.e("ImplWebViewClient", "request js :${url}")
