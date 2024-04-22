@@ -4,6 +4,7 @@ import com.wgllss.sample.feature_system.untils.UUIDHelp
 
 data class NewsBean(
     val source: String,
+    val docid: String,
     val title: String,
     val commentCount: Int,
     val imgsrc3gtype: Int,

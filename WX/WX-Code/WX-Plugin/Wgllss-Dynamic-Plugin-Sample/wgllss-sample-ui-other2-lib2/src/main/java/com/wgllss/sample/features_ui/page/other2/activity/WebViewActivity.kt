@@ -61,7 +61,9 @@ class WebViewActivity : BasePluginActivity<WebViewModel>("activity_webview") {
             }
             webViewClient = ImplWebViewClient()
         }
-        viewModel.getNewsDetailInfo()
+        val url = intent.getStringExtra("web_url_key") ?: ""
+        val docid = intent.getStringExtra("docid_key") ?: ""
+        viewModel.getNewsDetailInfo(url, docid)
     }
 
 

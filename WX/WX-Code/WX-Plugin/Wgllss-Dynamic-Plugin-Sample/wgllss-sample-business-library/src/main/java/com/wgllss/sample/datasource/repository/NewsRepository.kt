@@ -3,17 +3,13 @@ package com.wgllss.sample.datasource.repository
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.wgllss.core.units.WLog
 import com.wgllss.sample.data.NewsBean
 import com.wgllss.sample.datasource.net.MyApi
 import com.wgllss.sample.datasource.net.RetrofitUtils
 import com.wgllss.sample.feature_system.room.CollectDataBase
 import com.wgllss.sample.feature_system.room.help.RoomDBMigration
 import com.wgllss.sample.feature_system.room.table.CollectTableBean
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import okio.buffer
 import okio.sink
 import okio.source
@@ -43,29 +39,34 @@ class NewsRepository private constructor(private val context: Context) {
         emit(map[path]!!)
     }
 
-    suspend fun getNewsDetailInfo(url: String) = flow {
-        val html = apiL.getNewsDetailInfo(url)
-        val document = Jsoup.parse(html, "https://m.163.com/")
-        val script = document.select("script")
-        script?.remove()
-        val wyxwapp = document.select(".s-tip js-open-app")
-        wyxwapp?.remove()
-        val nav = document.select("nav")
-        nav?.remove()
-        val newHtml = document.html()
-
+    suspend fun getNewsDetailInfo(url: String, fileName: String) = flow {
         val dir = "down_dir"
-        val fileName = "a1234234.html"
         val file = File(StringBuilder(context.filesDir.absolutePath).append(File.separator).append(dir).append(File.separator).append(fileName).toString())
-        File(file.parent).takeUnless { it.exists() }?.run { mkdirs() }
-        val inputStream = newHtml.byteInputStream()
-        if (inputStream != null) {
-            val sinkBuffer = file.sink().buffer()
-            val bufferedSource = inputStream.source().buffer()
-            sinkBuffer.write(bufferedSource.readByteArray())
-            sinkBuffer.close()
-            bufferedSource.close()
-            inputStream.close()
+        if (!file.exists()) {
+            File(file.parent).takeUnless { it.exists() }?.run { mkdirs() }
+            val html = apiL.getNewsDetailInfo(url)
+            val document = Jsoup.parse(html, "https://m.163.com/")
+            val script = document.select("script")
+            script?.remove()
+            val figure = document.select("figure")
+            figure?.forEach {
+                it.select("div")?.takeIf { d ->
+                    d.size > 1
+                }?.get(1)?.remove()
+            }
+            val nav = document.select("nav")
+            nav?.remove()
+            val newHtml = document.html()
+
+            val inputStream = newHtml.byteInputStream()
+            if (inputStream != null) {
+                val sinkBuffer = file.sink().buffer()
+                val bufferedSource = inputStream.source().buffer()
+                sinkBuffer.write(bufferedSource.readByteArray())
+                sinkBuffer.close()
+                bufferedSource.close()
+                inputStream.close()
+            }
         }
         emit(StringBuilder().append("file:///").append(file.absolutePath).toString())
     }

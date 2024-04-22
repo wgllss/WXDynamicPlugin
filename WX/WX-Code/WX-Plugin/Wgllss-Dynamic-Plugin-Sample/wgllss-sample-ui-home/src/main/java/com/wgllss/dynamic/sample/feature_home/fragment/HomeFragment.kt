@@ -1,5 +1,6 @@
 package com.wgllss.dynamic.sample.feature_home.fragment
 
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.wgllss.core.fragment.BaseViewModelFragment
 import com.wgllss.core.units.WLog
 import com.wgllss.core.widget.DividerGridItemDecoration
 import com.wgllss.core.widget.OnRecyclerViewItemClickListener
+import com.wgllss.dynamic.plugin.manager.PluginManager
 import com.wgllss.dynamic.plugin.manager.PluginResource
 import com.wgllss.dynamic.sample.feature_home.adapter.HomeNewsAdapter
 import com.wgllss.dynamic.sample.feature_home.pkg.ResourceContains
@@ -56,7 +58,7 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
     private lateinit var rvPlList: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-    lateinit var homeNewsAdapter: HomeNewsAdapter
+    private lateinit var homeNewsAdapter: HomeNewsAdapter
 
 //    override fun activitySameViewModel() = true
 
@@ -104,9 +106,18 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
         }
         rvPlList?.run {
             addOnItemTouchListener(object : OnRecyclerViewItemClickListener(this) {
-//                override fun onItemClickListener(itemRootView: View, position: Int) {
-//
-//                }
+                override fun onItemClickListener(itemRootView: View, position: Int) {
+                    activity?.run {
+                        PluginManager.instance.startStandardActivity(
+                            this, "classes_other2_res",
+                            "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
+                            "com.wgllss.dynamic.sample.other2", Intent().apply {
+                                putExtra("web_url_key", homeNewsAdapter.getItem(position).url)
+                                putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
+                            }
+                        )
+                    }
+                }
 
                 override fun onItemLongClickListener(itemRootView: View, position: Int) {
                     viewModel.addToCollection(homeNewsAdapter.getItem(position))

@@ -15,9 +15,10 @@ class WebViewModel : BaseViewModel() {
     override fun start() {
     }
 
-    fun getNewsDetailInfo() {
+    //, "a1234234.html"
+    fun getNewsDetailInfo(url: String, fileName: String) {
         flowAsyncWorkOnViewModelScopeLaunch {
-            newsRepositoryL.getNewsDetailInfo("https://m.163.com/mobile/article/I4D2IC730011819H.html")
+            newsRepositoryL.getNewsDetailInfo(url, fileName)
                 .onEach {
                     livedataHtml.postValue(it)
                 }
