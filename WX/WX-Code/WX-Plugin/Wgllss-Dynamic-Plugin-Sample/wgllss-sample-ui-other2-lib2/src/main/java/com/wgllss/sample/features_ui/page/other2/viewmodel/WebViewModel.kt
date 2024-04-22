@@ -15,7 +15,6 @@ class WebViewModel : BaseViewModel() {
     override fun start() {
     }
 
-    //, "a1234234.html"
     fun getNewsDetailInfo(url: String, fileName: String) {
         flowAsyncWorkOnViewModelScopeLaunch {
             newsRepositoryL.getNewsDetailInfo(url, fileName)

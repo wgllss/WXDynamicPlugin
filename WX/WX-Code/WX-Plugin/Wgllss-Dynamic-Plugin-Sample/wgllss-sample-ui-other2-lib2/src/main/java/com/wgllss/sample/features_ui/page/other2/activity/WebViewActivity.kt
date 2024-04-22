@@ -14,7 +14,6 @@ import com.wgllss.sample.features_ui.page.base.BasePluginActivity
 import com.wgllss.sample.features_ui.page.base.SkinContains
 import com.wgllss.sample.features_ui.page.other2.viewmodel.WebViewModel
 import com.wgllss.sample.features_ui.page.other2.web.ImplWebViewClient
-
 class WebViewActivity : BasePluginActivity<WebViewModel>("activity_webview") {
     private lateinit var txt_activity_title: TextView
     private lateinit var view_title_bar: View
@@ -63,6 +62,11 @@ class WebViewActivity : BasePluginActivity<WebViewModel>("activity_webview") {
         }
         val url = intent.getStringExtra("web_url_key") ?: ""
         val docid = intent.getStringExtra("docid_key") ?: ""
+        val title = intent.getStringExtra("title_key") ?: ""
+
+        txt_activity_title.text = if (title.length > 15) {
+            title.substring(0, 15)
+        } else title
         viewModel.getNewsDetailInfo(url, docid)
     }
 

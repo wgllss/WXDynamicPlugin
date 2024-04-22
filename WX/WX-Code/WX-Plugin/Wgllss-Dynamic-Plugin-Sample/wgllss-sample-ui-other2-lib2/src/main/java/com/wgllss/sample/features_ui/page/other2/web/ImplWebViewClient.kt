@@ -15,6 +15,13 @@ class ImplWebViewClient : WebViewClient() {
     private val strOfflineResources by lazy { MMKVHelp.getJsPath() }
     private val webResAssets by lazy { PluginManager.instance.getWebRes().assets }
 
+    override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?) = true
+
+    override fun onPageFinished(view: WebView, url: String) {
+        super.onPageFinished(view, url)
+        view.loadUrl("javascript:loadImage()")
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun shouldInterceptRequest(view: WebView, request: WebResourceRequest?): WebResourceResponse? {
         val url = request?.url.toString()

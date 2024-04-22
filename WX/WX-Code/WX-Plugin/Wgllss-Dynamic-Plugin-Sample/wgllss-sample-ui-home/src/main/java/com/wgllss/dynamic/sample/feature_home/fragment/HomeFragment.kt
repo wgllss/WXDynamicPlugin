@@ -112,7 +112,8 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
                             this, "classes_other2_res",
                             "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
                             "com.wgllss.dynamic.sample.other2", Intent().apply {
-                                putExtra("web_url_key", homeNewsAdapter.getItem(position).url)
+                                putExtra("web_url_key", homeNewsAdapter.getItem(position).docid)
+                                putExtra("title_key", homeNewsAdapter.getItem(position).title)
                                 putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
                             }
                         )

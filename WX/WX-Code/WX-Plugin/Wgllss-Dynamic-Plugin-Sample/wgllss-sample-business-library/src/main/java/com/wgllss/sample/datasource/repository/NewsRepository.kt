@@ -39,24 +39,44 @@ class NewsRepository private constructor(private val context: Context) {
         emit(map[path]!!)
     }
 
-    suspend fun getNewsDetailInfo(url: String, fileName: String) = flow {
+    suspend fun getNewsDetailInfo(id: String, fileName: String) = flow {
         val dir = "down_dir"
         val file = File(StringBuilder(context.filesDir.absolutePath).append(File.separator).append(dir).append(File.separator).append(fileName).toString())
         if (!file.exists()) {
             File(file.parent).takeUnless { it.exists() }?.run { mkdirs() }
-            val html = apiL.getNewsDetailInfo(url)
-            val document = Jsoup.parse(html, "https://m.163.com/")
-            val script = document.select("script")
-            script?.remove()
+            val html = apiL.getNewsDetailInfo("https://3g.163.com/all/article/${id}.html#offset=1")
+            val document = Jsoup.parse(html, "https://3g.163.com/")
+            document.select("script").remove()
+            document.select(".main-openApp").remove()
+            document.select(".operate").remove()
+            document.select(".js-open-app").remove()
+            document.select(".comment").remove()
+            document.select(".recommend").remove()
+            document.select("head")?.append("<script type=\"text/javascript\" src=\"../js/jquery.js\"></script>")
+            document.select("head")?.append("<script type=\"text/javascript\" src=\"../js/jquery.lazyload.js\"></script>")
+            document.select("head")?.append("<script> function loadImage(){setTimeout(function (){\$(\"img.lazy\").lazyload();window.scrollTo('0','1');window.scrollTo('1','0');}, 300);}</script>")
+
+            val lint = document.select("link")
+            lint?.forEach {
+                val link = it?.attr("abs:href")
+                if (link != null && link!!.contains("0ccc5aad.js")) {
+                    it.remove()
+                }
+            }
+
             val figure = document.select("figure")
             figure?.forEach {
                 it.select("div")?.takeIf { d ->
                     d.size > 1
                 }?.get(1)?.remove()
             }
-            val nav = document.select("nav")
+            val nav = document.select("header")
             nav?.remove()
+
             val newHtml = document.html()
+                .replace("image-lazy image-error", "lazy")
+                .replace("data-src", "data-original")
+                .replace("image-lazy image-reload", "lazy")
 
             val inputStream = newHtml.byteInputStream()
             if (inputStream != null) {

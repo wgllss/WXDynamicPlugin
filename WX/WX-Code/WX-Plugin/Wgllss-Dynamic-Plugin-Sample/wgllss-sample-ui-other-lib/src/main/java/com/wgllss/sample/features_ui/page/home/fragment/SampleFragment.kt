@@ -85,7 +85,8 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
                     "com.wgllss.dynamic.sample.other2", Intent().apply {
                         putExtra("action_type", item.id)
                         putExtra("itemName", item.itemName)
-                        putExtra("web_url_key", "https://m.163.com/mobile/article/I4D2IC730011819H.html")
+                        putExtra("web_url_key", "I4D2IC730011819H")
+                        putExtra("title_key", "红魔五周年发布")
                         putExtra("docid_key", "I4D2IC730011819H.html")
                     }
                 )
