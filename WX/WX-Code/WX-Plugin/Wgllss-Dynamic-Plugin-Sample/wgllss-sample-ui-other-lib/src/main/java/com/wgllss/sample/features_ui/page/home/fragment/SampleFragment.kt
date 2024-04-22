@@ -79,7 +79,7 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
     private fun onItemClick(item: SampleItemBean) {
         activity?.run {
             if (item.id == 5) {
-                PluginManager.instance.startStandardActivity(
+                PluginManager.instance.startPluginSingleTaskActivity(
                     this, "classes_other2_res",
                     "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
                     "com.wgllss.dynamic.sample.other2", Intent().apply {

@@ -108,7 +108,7 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
             addOnItemTouchListener(object : OnRecyclerViewItemClickListener(this) {
                 override fun onItemClickListener(itemRootView: View, position: Int) {
                     activity?.run {
-                        PluginManager.instance.startStandardActivity(
+                        PluginManager.instance.startPluginSingleTaskActivity(
                             this, "classes_other2_res",
                             "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
                             "com.wgllss.dynamic.sample.other2", Intent().apply {
