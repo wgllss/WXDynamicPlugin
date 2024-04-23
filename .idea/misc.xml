@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ASMIdeaPluginConfiguration">
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
-    <groovy codeStyle="LEGACY" />
+    <groovy codeStyle="GROOVIFIER_0_2_0" />
   </component>
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -30,6 +30,16 @@
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/fragment_provider_sample.xml" value="0.1" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/fragment_service_sample.xml" value="0.59375" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Sample/wgllss-sample-ui-other2/src/main/res/layout/fragment_so_sample.xml" value="0.12233549582947173" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/blue-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/brown-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-blue-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-green-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-red-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/green-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/light-green-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/orange-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/pink-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/red-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
       </map>
     </option>
   </component>
