@@ -45,7 +45,8 @@ class Other3Activity : BasePluginActivity<Other2ViewModel>("activity_other3") {
             setImageDrawable(skinRes, "ic_baseline_arrow_back_24", SkinContains.packageName, img_back)
             setBackgroundColor(skinRes, "colorBackground", SkinContains.packageName, layout_content)
             setBackgroundColor(skinRes, "colorPrimary", SkinContains.packageName, view_title_bar)
-            setTextColor(skinRes, "colorOnPrimary", SkinContains.packageName, txt_activity_title, txt3)
+            setTextColor(skinRes, "colorOnPrimary", SkinContains.packageName, txt_activity_title)
+            setTextColor(skinRes, "colorPrimary", SkinContains.packageName, txt3)
         }
     }
 }

@@ -11,8 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 import com.wgllss.core.activity.BaseActivity;
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
@@ -24,6 +24,18 @@ public class HostPluginActivity extends BaseActivity {
     private WXHostActivityDelegate mHostDelegate;
     private String skinPackageName;
     private boolean isFirst = true;
+
+    private String pluginApkPath = "";
+    private String activityName = "";
+    private String privatePackage = "";
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(PluginKey.pluginApkPathKey, pluginApkPath);
+        outState.putString(PluginKey.activityNameKey, activityName);
+        outState.putString(PluginKey.privatePackageKey, privatePackage);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,65 +50,78 @@ public class HostPluginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             if (getIntent() != null) {
-                String pluginApkPath = getIntent().getStringExtra(PluginKey.pluginApkPathKey);
-                String activityName = getIntent().getStringExtra(PluginKey.activityNameKey);
-                String privatePackage = getIntent().getStringExtra(PluginKey.privatePackageKey);
-                pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
-                int flags = (PackageManager.GET_META_DATA | PackageManager.GET_ACTIVITIES | PackageManager.GET_SERVICES
-                        | PackageManager.GET_PROVIDERS | PackageManager.GET_RECEIVERS);
-                PackageManager packageManager = getApplicationContext().getPackageManager();
-                PackageInfo packageInfo = packageManager.getPackageArchiveInfo(pluginApkPath, flags);
-                ApplicationInfo applicationInfo = packageInfo.applicationInfo;
-                applicationInfo.sourceDir = pluginApkPath;
-                applicationInfo.publicSourceDir = pluginApkPath;
-                try {
-                    pluginResources = packageManager.getResourcesForApplication(applicationInfo);
-                    skinPackageName = applicationInfo.packageName;
-
-                    mHostDelegate = pluginDexClassLoader.getInterface(WXHostActivityDelegate.class, activityName);
-                    mHostDelegate.attachContext(this, pluginResources);
-                    mHostDelegate.onCreate(null);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                pluginApkPath = getIntent().getStringExtra(PluginKey.pluginApkPathKey);
+                activityName = getIntent().getStringExtra(PluginKey.activityNameKey);
+                privatePackage = getIntent().getStringExtra(PluginKey.privatePackageKey);
+            } else {
+                throw new RuntimeException("There are no pluginApkPath, activityName, or privatePackage parameters in the intent");
             }
+        } else {
+            pluginApkPath = savedInstanceState.getString(PluginKey.pluginApkPathKey);
+            activityName = savedInstanceState.getString(PluginKey.activityNameKey);
+            privatePackage = savedInstanceState.getString(PluginKey.privatePackageKey);
+        }
+
+        pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
+        int flags = (PackageManager.GET_META_DATA | PackageManager.GET_ACTIVITIES | PackageManager.GET_SERVICES
+                | PackageManager.GET_PROVIDERS | PackageManager.GET_RECEIVERS);
+        PackageManager packageManager = getApplicationContext().getPackageManager();
+        PackageInfo packageInfo = packageManager.getPackageArchiveInfo(pluginApkPath, flags);
+        ApplicationInfo applicationInfo = packageInfo.applicationInfo;
+        applicationInfo.sourceDir = pluginApkPath;
+        applicationInfo.publicSourceDir = pluginApkPath;
+        try {
+            pluginResources = packageManager.getResourcesForApplication(applicationInfo);
+            skinPackageName = applicationInfo.packageName;
+
+            mHostDelegate = pluginDexClassLoader.getInterface(WXHostActivityDelegate.class, activityName);
+            mHostDelegate.attachContext(this, pluginResources);
+            mHostDelegate.onCreate(null);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        mHostDelegate.onRestart();
+        if (mHostDelegate != null)
+            mHostDelegate.onRestart();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mHostDelegate.onStart();
+        if (mHostDelegate != null)
+            mHostDelegate.onStart();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mHostDelegate.onResume();
+        if (mHostDelegate != null)
+            mHostDelegate.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mHostDelegate.onPause();
+        if (mHostDelegate != null)
+            mHostDelegate.onPause();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        mHostDelegate.onStop();
+        if (mHostDelegate != null)
+            mHostDelegate.onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mHostDelegate.onDestroy();
+        if (mHostDelegate != null)
+            mHostDelegate.onDestroy();
     }
 
     @Override
