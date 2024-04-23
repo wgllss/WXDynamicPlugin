@@ -57,4 +57,10 @@ dependencies {
 
     //mmkv
     implementation 'com.tencent:mmkv:1.2.14'
+
+    def exoplayer_version = '2.18.0'
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+    implementation "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
+//    implementation "com.google.android.exoplayer:extension-cast:$exoplayer_version"
 }

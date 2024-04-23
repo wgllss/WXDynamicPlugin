@@ -1,5 +1,6 @@
 package com.wgllss.sample.features_ui.page.base
 
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
@@ -94,6 +95,20 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (!isPlugin) {
+            super.onSaveInstanceState(outState)
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        if (!isPlugin) {
+            super.onConfigurationChanged(newConfig)
+        }
+    }
+
+    override fun getResources() = activity.resources
+
     override fun <T : View> findViewById(id: Int): T {
         return activity.findViewById(id)
     }
@@ -101,6 +116,10 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
     override fun getIntent() = activity.intent
 
     override fun getWindow() = activity.window
+
+    override fun setRequestedOrientation(requestedOrientation: Int) {
+        activity.requestedOrientation = requestedOrientation
+    }
 
     override fun getViewModelStore() = activity.viewModelStore
 

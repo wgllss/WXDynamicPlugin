@@ -83,12 +83,16 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
                     this, "classes_other2_res",
                     "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
                     "com.wgllss.dynamic.sample.other2", Intent().apply {
-                        putExtra("action_type", item.id)
-                        putExtra("itemName", item.itemName)
                         putExtra("web_url_key", "I4D2IC730011819H")
                         putExtra("title_key", "红魔五周年发布")
                         putExtra("docid_key", "I4D2IC730011819H.html")
                     }
+                )
+            } else if (item.id == 8) {
+                PluginManager.instance.startPluginSingleTaskActivity(
+                    this, "classes_other2_res",
+                    "com.wgllss.sample.features_ui.page.other2.activity.VideoActivity",
+                    "com.wgllss.dynamic.sample.other2"
                 )
             } else {
                 PluginManager.instance.startStandardActivity(

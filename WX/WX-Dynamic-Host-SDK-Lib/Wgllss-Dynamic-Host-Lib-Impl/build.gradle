@@ -35,4 +35,5 @@ dependencies {
     implementation project(path: ':Wgllss-Dynamic-Host-Download-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+    implementation project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
 }

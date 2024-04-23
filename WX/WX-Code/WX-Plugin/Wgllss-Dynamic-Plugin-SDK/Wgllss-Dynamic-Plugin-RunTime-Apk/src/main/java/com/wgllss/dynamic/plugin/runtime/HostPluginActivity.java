@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -35,6 +36,8 @@ public class HostPluginActivity extends BaseActivity {
         outState.putString(PluginKey.pluginApkPathKey, pluginApkPath);
         outState.putString(PluginKey.activityNameKey, activityName);
         outState.putString(PluginKey.privatePackageKey, privatePackage);
+        if (mHostDelegate != null)
+            mHostDelegate.onSaveInstanceState(outState);
     }
 
     @Override
@@ -76,7 +79,7 @@ public class HostPluginActivity extends BaseActivity {
 
             mHostDelegate = pluginDexClassLoader.getInterface(WXHostActivityDelegate.class, activityName);
             mHostDelegate.attachContext(this, pluginResources);
-            mHostDelegate.onCreate(null);
+            mHostDelegate.onCreate(savedInstanceState);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,6 +138,12 @@ public class HostPluginActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (mHostDelegate != null)
+            mHostDelegate.onConfigurationChanged(newConfig);
+    }
 
     @Override
     public void initControl(Bundle savedInstanceState) {

@@ -43,6 +43,10 @@ dependencies {
     compileOnly 'com.github.bumptech.glide:glide:4.13.2'
     //解析html
     compileOnly 'org.jsoup:jsoup:1.15.3'
+    def exoplayer_version = '2.18.0'
+    compileOnly "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    compileOnly "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+    compileOnly "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
 
     compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
 
@@ -51,21 +55,6 @@ dependencies {
     compileOnly libSupportdesign
     compileOnly constraintlayout
 }
-
-//task assembleCopyToHost(type: Copy) {
-//    def workingDirPath = rootProject.ext.workingDirPath
-//    def inputFile = file("${workingDirPath}classes_other2_dex.jar")
-//    if (!inputFile.exists()) {
-//        return
-//    }
-//    def uploadDirMy = rootProject.ext.uploadDirMy
-//    def outputFile = file("${uploadDirMy}classes_other2_dex.jar")
-//    if (outputFile.exists()) {
-//        outputFile.delete()
-//    }
-//    from inputFile.getAbsolutePath()
-//    into outputFile.getParent()
-//}
 
 def commandDex(buildType) {
     def workingDirPath = rootProject.ext.workingDirPath
