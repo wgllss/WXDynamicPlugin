@@ -4,13 +4,13 @@ plugins {
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-//    compileSdkVersion 32
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 32
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-//        targetSdkVersion 32
+//        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
     }

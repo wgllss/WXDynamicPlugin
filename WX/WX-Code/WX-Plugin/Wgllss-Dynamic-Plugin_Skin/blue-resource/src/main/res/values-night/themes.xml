@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="Base.Theme.SSMusic" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+<!--        &lt;!&ndash; Customize your light theme here. &ndash;&gt;-->
+<!--        <item name="colorPrimary">@color/colorPrimaryDark</item>-->
+<!--        <item name="android:textColorHighlight">@color/colorOnPrimary</item>-->
+<!--        <item name="android:colorBackground">@color/colorBackground</item>-->
+<!--        <item name="android:textColorPrimary">@color/textColorPrimary</item>-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        <item name="android:statusBarColor">@color/black</item>-->
+<!--        &lt;!&ndash;        <item name="android:colorBackground">?colorSurface</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <item name="android:statusBarColor">?colorSurface</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <item name="android:windowLightStatusBar">true</item>&ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Theme.SSMusic" parent="Base.Theme.SSMusic">-->
+<!--        <item name="android:background">@android:color/transparent</item>-->
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        &lt;!&ndash;        <item name="android:windowAnimationStyle">@style/dialog_Animation_Translucent</item>&ndash;&gt;-->
+<!--    </style>-->
+
+<!--    <style name="Loading" parent="@android:style/Theme.Dialog">-->
+<!--        <item name="android:windowFrame">@null</item>-->
+<!--        <item name="android:windowIsFloating">true</item>-->
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        &lt;!&ndash; 设置背景色 透明&ndash;&gt;-->
+<!--        <item name="android:background">@android:color/transparent</item>-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        &lt;!&ndash; 设置是否显示背景 &ndash;&gt;-->
+<!--        <item name="android:backgroundDimEnabled">true</item>-->
+<!--        &lt;!&ndash; 设置背景透明度 &ndash;&gt;-->
+<!--        <item name="android:backgroundDimAmount">0</item>-->
+<!--        &lt;!&ndash; 设置点击空白不消失 &ndash;&gt;-->
+<!--        <item name="android:windowCloseOnTouchOutside">false</item>-->
+<!--    </style>-->
+
+<!--    <style name="LauncherTheme" parent="android:Theme.NoTitleBar.Fullscreen">-->
+
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowFullscreen">true</item>-->
+<!--        <item name="android:windowBackground">@color/white</item>-->
+<!--    </style>-->
+
+<!--    <style name="LauncherTheme2" parent="Base.Theme.SSMusic">-->
+<!--        &lt;!&ndash;        该方式看不到启动页&ndash;&gt;-->
+
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        &lt;!&ndash;        <item name="android:windowFullscreen">true</item>&ndash;&gt;-->
+<!--        <item name="android:windowBackground">@drawable/splash_preview_dark</item>-->
+
+<!--    </style>-->
+
+<!--    <style name="Transparent" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--        <item name="android:background">@android:color/transparent</item>-->
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        <item name="android:windowFullscreen">true</item>-->
+<!--        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
+<!--    </style>-->
+
+
+<!--    <style name="CircleStyle">-->
+<!--        <item name="cornerFamily">rounded</item>-->
+<!--        <item name="cornerSize">50%</item>-->
+<!--    </style>-->
+
+<!--    <style name="RippleWhite80" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+<!--        <item name="android:colorControlHighlight">#FF4081</item>-->
+<!--        &lt;!&ndash;        <item name="paddingStart">20dp</item>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <item name="android:paddingTop">20dp</item>&ndash;&gt;-->
+<!--        <item name="android:radius">20dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="onTextOff" parent="Theme.SSMusic">-->
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--        <item name="android:textSize">16dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="ssStyle" parent="Theme.SSMusic">-->
+<!--        <item name="colorControlActivated">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorSwitchThumbNormal">@color/color_999999</item>-->
+<!--        <item name="android:colorForeground">@color/colorPrimary</item>-->
+<!--    </style>-->
+
+<!--    <style name="TabLayout.TextAppearance" parent="TextAppearance.AppCompat">-->
+<!--        &lt;!&ndash;        <item name="android:textStyle">nomal</item>&ndash;&gt;-->
+<!--        <item name="android:textSize">20dp</item>-->
+<!--    </style>-->
+</resources>

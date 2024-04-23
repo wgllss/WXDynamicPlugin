@@ -43,6 +43,17 @@ include ':wgllss-sample-create-version-config-annotations'
 include ':wgllss-sample-create-version-config-app'
 include ':wgllss-sample-create-version-config-compiler'
 
+include ':dark-green-resource'
+include ':green-resource'
+include ':red-resource'
+include ':blue-resource'
+include ':pink-resource'
+include ':brown-resource'
+include ':orange-resource'
+include ':dark-red-resource'
+include ':light-green-resource'
+include ':dark-blue-resource'
+
 project(':Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
 project(':Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
 
@@ -90,3 +101,15 @@ project(':wgllss-sample-create-all-app').projectDir = file('WX/WX-Code/WX-Plugin
 project(':wgllss-sample-create-version-config-annotations').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-annotations')
 project(':wgllss-sample-create-version-config-app').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-app')
 project(':wgllss-sample-create-version-config-compiler').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-compiler')
+
+
+project(':dark-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-green-resource')
+project(':green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/green-resource')
+project(':red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/red-resource')
+project(':blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/blue-resource')
+project(':pink-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/pink-resource')
+project(':brown-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/brown-resource')
+project(':orange-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/orange-resource')
+project(':dark-red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-red-resource')
+project(':light-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/light-green-resource')
+project(':dark-blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-blue-resource')

@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+//    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+//        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    outputFileName = "dark_red.apk"
+                }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+}

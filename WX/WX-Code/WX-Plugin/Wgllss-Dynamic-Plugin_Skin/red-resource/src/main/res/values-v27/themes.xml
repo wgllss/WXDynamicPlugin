@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    <style name="LauncherTheme2" parent="Base.Theme.SSMusic">-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--&lt;!&ndash;        <item name="android:windowFullscreen">true</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="statusBarBackground">@color/colorPrimary</item>&ndash;&gt;-->
+<!--        <item name="android:statusBarColor">@color/white</item>-->
+<!--        <item name="android:windowBackground">@drawable/splash_preview</item>-->
+<!--        &lt;!&ndash;指定页面可以延伸到刘海（异性）区域  SDK_INT >= 28，兼容异形屏时用到&ndash;&gt;-->
+<!--        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>-->
+<!--    </style>-->
+
+</resources>

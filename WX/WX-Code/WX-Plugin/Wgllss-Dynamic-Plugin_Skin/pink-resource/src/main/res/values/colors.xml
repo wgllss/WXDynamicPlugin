@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#D0006A</color>
+    <color name="colorTrackCheck">#EC507A</color>
+    <color name="colorTrackUnCheck">#DDDEEE</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#005e91</color>
+    <color name="textColorPrimary">#333333</color>
+
+
+    <color name="color_ff2B9E62">#2B9E62</color>
+    <color name="colorAccent">#FF0000</color>
+    <color name="color_FFCD4339">#CD4339</color>
+    <color name="white_24p">#3DFFFFFF</color>
+    <color name="red">#F44336</color>
+    <color name="red_30p">#4CF44336</color>
+    <color name="color_white">#ffffff</color>
+    <color name="color_translucent">#00000000</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_translucent30">#30000000</color>
+    <color name="color_translucent90">#F44336</color>
+    <color name="purple_500">#F44336</color>
+    <!--    <color name="color_select">#0066C0</color>-->
+    <color name="colorBackground">#FFFFFF</color>
+
+    <color name="color_random_1">#CD4339</color>
+    <color name="color_random_2">#158bb8</color>
+    <color name="color_random_3">#5dbe8a</color>
+    <color name="color_random_4">#78D1FF</color>
+    <color name="color_random_5">#93000A</color>
+    <color name="color_random_6">#605A7D</color>
+    <color name="color_random_7">#827717</color>
+    <color name="color_random_8">#F57F17</color>
+    <color name="color_random_9">#EC407A</color>
+    <color name="color_random_0">#4A148C</color>
+    <color name="color_random_10">#4527A0</color>
+    <color name="color_random_11">#0097A7</color>
+
+
+</resources>
