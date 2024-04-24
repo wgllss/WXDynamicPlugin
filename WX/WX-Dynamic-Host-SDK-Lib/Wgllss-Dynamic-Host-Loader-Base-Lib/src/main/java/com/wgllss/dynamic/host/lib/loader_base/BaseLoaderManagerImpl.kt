@@ -1,6 +1,5 @@
 package com.wgllss.dynamic.host.lib.loader_base
 
-import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.CDLFD
@@ -101,13 +100,7 @@ open class BaseLoaderManagerImpl : ILoaderManager {
         mapDlu.forEach { (key, value) ->
             initPlugin(context, key, getDlfn(value.first, value.second))
         }
-//        (context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager).runningAppProcesses?.onEach { p ->
-//            p.processName?.takeIf {
-//                p.pid == android.os.Process.myPid() && context.packageName == it
-//            }?.let {
         checkConfig(context)
-//            }
-//    }
     }
 
     override fun initDynamicRunTime(context: Context, contentKey: String, fileAbsolutePath: String) {
