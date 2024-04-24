@@ -11,7 +11,6 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -50,9 +49,7 @@ dependencies {
     compileOnly libSupportAppcompat
     implementation project(':Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Common-Library')
-
-//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'
-    implementation project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
 }
 
 

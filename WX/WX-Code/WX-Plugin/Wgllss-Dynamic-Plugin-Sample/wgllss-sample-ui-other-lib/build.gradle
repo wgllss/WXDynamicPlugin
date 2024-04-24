@@ -14,22 +14,6 @@ android {
         versionName "1.0"
     }
 
-//    buildTypes {
-//        debug {
-//            // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
-//            minifyEnabled false // 开启混淆
-//            shrinkResources false // 启动资源压缩
-//            zipAlignEnabled false // 开启zipalign优化
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//
-//        release {
-//            minifyEnabled true // 开启混淆
-//            shrinkResources true // 启动资源压缩
-//            zipAlignEnabled true // 开启zipalign优化
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -54,14 +38,9 @@ dependencies {
     compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
-    compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
 
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
 
     compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
 

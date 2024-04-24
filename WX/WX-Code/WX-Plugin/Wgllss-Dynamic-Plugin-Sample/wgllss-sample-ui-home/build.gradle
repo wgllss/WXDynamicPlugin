@@ -12,7 +12,6 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -30,12 +29,6 @@ android {
     }
 }
 
-//repositories {
-//    flatDir {
-//        dirs 'libs'
-//    }
-//}
-
 dependencies {
 
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Common-Library')
@@ -46,9 +39,7 @@ dependencies {
 
     compileOnly project(path: ':wgllss-sample-ui-other-lib')
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Manager')
-//    compileOnly project(path: ':Wgllss-Dynamic-Host-Home-Lib')
 
-//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Home-Lib:1.0.0.5'
     compileOnly project(path: ':Wgllss-Dynamic-Host-Home-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
     compileOnly "androidx.sqlite:sqlite-framework:2.2.0"

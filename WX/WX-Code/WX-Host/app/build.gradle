@@ -81,11 +81,6 @@ dependencies {
     implementation libSupportdesign
     implementation constraintlayout
 
-//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
-//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
-//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.6'
-//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
-
     implementation project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
     implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Download-Lib')
