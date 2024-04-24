@@ -40,7 +40,7 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
     private var startItemIndex: Int = 0
     private var startPosition: Long = 0
 
-    private var url = "https://storage.googleapis.com/downloads.webmproject.org/av1/exoplayer/bbb-av1-480p.mp4"
+    private var url = "https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218093206z8V1JuPlpe.mp4"
 
     companion object {
         private const val KEY_ITEM_INDEX = "item_index"
