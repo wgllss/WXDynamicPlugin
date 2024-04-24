@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/view_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_gravity="top|left" />
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="top|left"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="7dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/txt_activity_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center"
+        android:text="示例"
+        android:textSize="18dp" />
+
+    <FrameLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="82dp">
+
+        <TextView
+            android:id="@+id/txt3"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="我是第三层activity"
+            android:textSize="18dp" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <!-- 异常错误提示  by Atar start -->
+    <string name="title_home">首页</string>
+    <string name="title_collection">收藏</string>
+    <string name="title_sample">示例</string>
+    <string name="title_setting">设置</string>
+
+
+</resources>

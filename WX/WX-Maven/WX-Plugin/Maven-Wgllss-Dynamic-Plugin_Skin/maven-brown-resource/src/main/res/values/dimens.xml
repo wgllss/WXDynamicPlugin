@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="navigation_height">56dp</dimen>
+    <dimen name="title_bar_height">82dp</dimen>
+    <dimen name="title_bar_text_height">45dp</dimen>
+    <dimen name="status_bar_height">36dp</dimen>
+    <dimen name="recycler_padding">20dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+</resources>

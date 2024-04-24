@@ -1,0 +1,69 @@
+<resources>
+    <!--    <string name="app_name">WgllssCode</string>-->
+
+    <!-- 异常错误提示  by Atar start -->
+    <string name="ElseNetException">未知错误异常</string>
+    <string name="SocketTimeoutException">网络超时</string>
+    <string name="TimeoutException">网络超时</string>
+    <string name="SocketException">网络错误</string>
+    <string name="ConnectException">网络错误</string>
+    <string name="HttpException">服务器异常</string>
+    <string name="UnknownHostException">无网络连接</string>
+    <string name="HostBaseUrlError">请求地址错误</string>
+    <string name="Mobilenetuseless_msg">当前网络不可用</string>
+    <string name="failed_to_connect_to">无法连接到服务器</string>
+    <string name="JsonSyntaxException">数据错误,json解析错误</string>
+    <!-- 异常错误提示  by end  -->
+
+    <!-- 权限相关提示  by Atar start -->
+
+    <string name="common_permission_hint">授权提示</string>
+    <string name="common_permission_message">使用此功能需要先授予%s</string>
+    <string name="common_permission_granted">授予</string>
+    <string name="common_permission_denied">取消</string>
+
+    <string name="common_permission_alert">授权提醒</string>
+    <string name="common_permission_fail_hint">授权失败，请正确授予权限</string>
+    <string name="common_permission_fail_assign_hint">授权失败，请正确授予%s</string>
+    <string name="common_permission_manual_fail_hint">获取权限失败，请手动授予权限</string>
+    <string name="common_permission_manual_assign_fail_hint">获取权限失败，请手动授予%s</string>
+    <string name="common_permission_background_location_fail_hint">获取后台定位权限失败，\n请您选择《始终允许》</string>
+    <string name="common_permission_background_sensors_fail_hint">获取后台传感器权限失败，\n请您选择《始终允许》</string>
+    <string name="common_permission_media_location_hint_fail">获取媒体位置权限失败\n请清除应用数据后重试</string>
+    <string name="common_permission_goto_setting_page">前往授权</string>
+
+    <string name="common_permission_calendar">日历权限</string>
+    <string name="common_permission_camera">相机权限</string>
+    <string name="common_permission_contacts">通讯录权限</string>
+    <string name="common_permission_location">定位权限</string>
+    <string name="common_permission_location_background">后台定位权限</string>
+    <string name="common_permission_wireless_devices">附近的设备权限</string>
+    <string name="common_permission_microphone">麦克风权限</string>
+    <string name="common_permission_phone">电话权限</string>
+    <string name="common_permission_call_log">通话记录权限</string>
+    <string name="common_permission_sensors">身体传感器权限</string>
+    <string name="common_permission_sensors_background">后台身体传感器权限</string>
+    <string name="common_permission_activity_recognition_29">健身运动权限</string>
+    <string name="common_permission_activity_recognition_30">身体活动权限</string>
+    <string name="common_permission_media_location">读取媒体文件位置权限</string>
+    <string name="common_permission_sms">短信权限</string>
+    <string name="common_permission_storage">存储权限</string>
+    <string name="common_permission_post_notifications">发送通知权限</string>
+    <string name="common_permission_image_and_video">照片和视频权限</string>
+    <string name="common_permission_audio">音乐和音频权限</string>
+
+    <string name="common_permission_manage_storage">所有文件访问权限</string>
+    <string name="common_permission_install">安装应用权限</string>
+    <string name="common_permission_window">悬浮窗权限</string>
+    <string name="common_permission_setting">修改系统设置权限</string>
+    <string name="common_permission_notification">通知权限</string>
+    <string name="common_permission_notification_listener">通知栏监听权限</string>
+    <string name="common_permission_task">查看使用情况权限</string>
+    <string name="common_permission_alarm">查看闹钟提醒权限</string>
+    <string name="common_permission_not_disturb">勿扰权限</string>
+    <string name="common_permission_ignore_battery">忽略电池优化权限</string>
+    <string name="common_permission_picture_in_picture">画中画权限</string>
+    <string name="common_permission_vpn">\tVPN\t权限</string>
+
+    <!-- 权限相关提示  by end -->
+</resources>

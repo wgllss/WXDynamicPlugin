@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/ic_play_loading"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:indeterminateDuration="500"
+    tools:ignore="MissingDefaultResource" />

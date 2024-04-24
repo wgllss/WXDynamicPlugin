@@ -58,6 +58,41 @@
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Provider-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Runtime-Lib" />
             <option value="$PROJECT_DIR$/WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Version-Lib" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Host/sample" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-business-re-library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-common-re-library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Common-Library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-all-app" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-annotations" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-app" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-compiler" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Loader-Impl" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Manager" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-Library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-RunTime-Apk" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-assets-source-apk" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-business-library" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-skin-resource-apk" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-home" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-loading" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other-lib" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2-lib2" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-blue-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-brown-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-blue-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-green-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-red-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-green-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-light-green-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-orange-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-pink-resource" />
+            <option value="$PROJECT_DIR$/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-red-resource" />
           </set>
         </option>
       </GradleProjectSettings>

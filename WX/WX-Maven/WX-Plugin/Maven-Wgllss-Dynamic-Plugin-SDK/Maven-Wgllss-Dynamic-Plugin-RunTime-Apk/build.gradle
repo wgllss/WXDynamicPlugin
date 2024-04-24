@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        debug {
+            // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled false // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    outputFileName = "classes_wgllss_dynamic_plugin_runtime"
+                }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compileOnly libSupportAppcompat
+    implementation project(':Maven-Wgllss-Dynamic-Plugin-Library')
+    compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Common-Library')
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'
+}
+
+
+def createCopyTask(assembleReleaseTask, buildType) {
+    def inputFile = file("${getProject().getBuildDir()}/outputs/apk/release/classes_wgllss_dynamic_plugin_runtime")
+    def outputFile = file("${rootProject.getBuildDir()}/classes_wgllss_dynamic_plugin_runtime")
+    if (outputFile.exists()) {
+        outputFile.delete()
+    }
+    return tasks.create("assembleCopy", Copy) {
+        group = 'other'
+        description = "复制json到 指定输出目录"
+        from(inputFile.getParent()) {
+            include(inputFile.name)
+            rename { outputFile.name }
+        }
+        into(outputFile.getParent())
+    }.dependsOn(assembleReleaseTask.name)
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        createCopyTask(task, "release")
+    }
+}

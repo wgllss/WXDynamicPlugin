@@ -13,14 +13,56 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 10000
         versionName "1.0000"
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    signingConfigs {
+        def password = "WXSample"
+        def alias = "WXSample"
+        def filePath = "./sign/WXSample.jks"
+
+        debug {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+        release {
+            keyAlias alias
+            keyPassword password
+            storeFile file(filePath)
+            storePassword(password)
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
+        debug {
+            // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            minifyEnabled true // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled true // 开启zipalign优化
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled true // 开启混淆
+            shrinkResources false // 启动资源压缩
+            zipAlignEnabled true // 开启zipalign优化
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        applicationVariants.all {
+            variant ->
+                variant.outputs.all {
+                    outputFileName = "WXDynamicPlugin_Sample_${variant.buildType.name}.apk"
+                }
         }
     }
     compileOptions {
@@ -34,14 +76,18 @@ android {
 
 dependencies {
 
-//    implementation 'androidx.appcompat:appcompat:1.3.0'
-//    implementation 'com.google.android.material:material:1.4.0'
-//    testImplementation 'junit:junit:4.13.2'
-//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
     implementation libSupportAppcompat
     implementation libSupportRecyclerView
     implementation libSupportdesign
     implementation constraintlayout
+
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.8'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
+
+    implementation project(path: ':maven-wgllss-dynamic-host-skin-resource-lib')
+    implementation project(path: ':maven-wgllss-common-re-library')
+    implementation project(path: ':maven-wgllss-business-re-library')
+    implementation project(path: ':maven-wgllss-dynamic-host-library')
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nav_host_fragment_activity_main" type="id" />
+    <item name="rv_pl_list" type="id" />
+    <item name="home_recycle_view" type="id" />
+    <item name="homeTabLayout" type="id" />
+    <item name="view_title_bg" type="id" />
+    <item name="homeViewPager2" type="id" />
+    <item name="fmt_a" type="id" />
+    <item name="fmt_b" type="id" />
+    <item name="fmt_c" type="id" />
+    <item name="fmt_d" type="id" />
+    <item name="fmt_e" type="id" />
+    <item name="buttom_navigation" type="id" />
+</resources>

@@ -34,7 +34,6 @@ dependencies {
     compileOnly project(path: ':wgllss-common-re-library')
     compileOnly project(path: ':wgllss-dynamic-host-skin-resource-lib')
 
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
