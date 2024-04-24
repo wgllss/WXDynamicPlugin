@@ -25,7 +25,7 @@ public interface WXHostActivityDelegate {
 
     void onDestroy();
 
-    void lazyIntValue();
+    void lazyInitValue();
 
     void onSaveInstanceState(Bundle outState);
 

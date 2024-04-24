@@ -17,7 +17,8 @@ class SampleViewModel : BaseViewModel() {
                 SampleItemBean(5, "WebView"),
                 SampleItemBean(6, "SO加载"),
                 SampleItemBean(7, "Dialog"),
-                SampleItemBean(8, "视频")
+                SampleItemBean(8, "视频"),
+                SampleItemBean(9, "音频")
             )
         )
     }

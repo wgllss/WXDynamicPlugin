@@ -50,12 +50,11 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
     override fun initControl(savedInstanceState: Bundle?) {
         super.initControl(savedInstanceState)
         layout_content = findViewById(getPluginID("layout_content"))
-
         playerView = StyledPlayerView(activity).apply {
             layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT)
         }
         layout_content.addView(playerView)
-//        playerView = findViewById(getPluginID("player_view"))
+
         layout_title = findViewById(getPluginID("layout_title"))
         img_back = findViewById(getPluginID("img_back"))
         title = findViewById(getPluginID("title"))
@@ -108,16 +107,15 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     private fun initializePlayer(): Boolean {
         if (player == null) {
-            val playerBuilder = ExoPlayer.Builder( /* context= */activity)
-                .setMediaSourceFactory(DefaultMediaSourceFactory(/* context= */ activity))
+            val playerBuilder = ExoPlayer.Builder(activity)
+                .setMediaSourceFactory(DefaultMediaSourceFactory(activity))
                 .setRenderersFactory(DefaultRenderersFactory(activity))
                 .setLoadControl(DefaultLoadControl())
             player = playerBuilder.build()
-            player?.setAudioAttributes(AudioAttributes.DEFAULT,  /* handleAudioFocus= */true)
+            player?.setAudioAttributes(AudioAttributes.DEFAULT, true)
             player?.playWhenReady = true
             playerView.player = player
         }
-        android.util.Log.e("VideoActivity", "initializePlayer----startItemIndex:$startItemIndex startPosition:$startPosition")
         val playUri: Uri = Uri.parse(url)
         val mediaSource: MediaSource = buildMediaSource(playUri)
         player?.prepare(mediaSource, true, false)
@@ -127,7 +125,6 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     override fun onStart() {
         super.onStart()
-        android.util.Log.e("VideoActivity", "onStart")
         if (Build.VERSION.SDK_INT > 23) {
             initializePlayer()
             if (playerView != null) {
@@ -138,7 +135,6 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     override fun onResume() {
         super.onResume()
-        android.util.Log.e("VideoActivity", "onResume")
         if (Build.VERSION.SDK_INT <= 23 || player == null) {
             initializePlayer()
             if (playerView != null) {
@@ -149,7 +145,6 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     override fun onPause() {
         super.onPause()
-        android.util.Log.e("VideoActivity", "onPause")
         if (Build.VERSION.SDK_INT <= 23) {
             if (playerView != null) {
                 playerView.onPause()
@@ -160,7 +155,6 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     override fun onStop() {
         super.onStop()
-        android.util.Log.e("VideoActivity", "onStop")
         if (Build.VERSION.SDK_INT > 23) {
             if (playerView != null) {
                 playerView.onPause()
@@ -171,8 +165,6 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
 
     private fun releasePlayer() {
         if (player != null) {
-
-            log("releasePlayer if (player != null) {")
             updateStartPosition()
             player?.release()
             player = null
@@ -184,28 +176,19 @@ class VideoActivity : BasePluginActivity<Other2ViewModel>("activity_video") {
     private fun updateStartPosition() {
         if (player != null) {
             startItemIndex = player!!.currentMediaItemIndex
-            log("log(player!!.contentPosition)--${player?.contentPosition}")
             startPosition = Math.max(0, player!!.contentPosition)
-            android.util.Log.e("VideoActivity", "startItemIndex:$startItemIndex startPosition:$startPosition")
         }
-    }
-
-    private fun log(message: String) {
-        android.util.Log.e("VideoActivity", message)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        android.util.Log.e("VideoActivity", "onSaveInstanceState")
         updateStartPosition()
         outState.putInt(KEY_ITEM_INDEX, startItemIndex)
         outState.putLong(KEY_POSITION, startPosition)
-        android.util.Log.e("VideoActivity", "startItemIndex:$startItemIndex")
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        log("    newConfig.orientation ：${newConfig.orientation}")
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (layout_title.visibility == View.VISIBLE)
                 layout_title.layoutParams.height = activity.getIntToDip(45f).toInt()

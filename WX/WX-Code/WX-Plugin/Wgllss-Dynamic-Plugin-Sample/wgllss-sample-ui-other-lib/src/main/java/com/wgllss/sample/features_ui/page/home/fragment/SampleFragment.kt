@@ -79,6 +79,7 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
     private fun onItemClick(item: SampleItemBean) {
         activity?.run {
             if (item.id == 5) {
+                //webview
                 PluginManager.instance.startPluginSingleTaskActivity(
                     this, "classes_other2_res",
                     "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
@@ -88,7 +89,15 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
                         putExtra("docid_key", "I4D2IC730011819H.html")
                     }
                 )
+            } else if (item.id == 9) {
+                //音频
+                PluginManager.instance.startPluginSingleTaskActivity(
+                    this, "classes_other2_res",
+                    "com.wgllss.sample.features_ui.page.other2.activity.AudioActivity",
+                    "com.wgllss.dynamic.sample.other2"
+                )
             } else if (item.id == 8) {
+                //视频
                 PluginManager.instance.startPluginSingleTaskActivity(
                     this, "classes_other2_res",
                     "com.wgllss.sample.features_ui.page.other2.activity.VideoActivity",

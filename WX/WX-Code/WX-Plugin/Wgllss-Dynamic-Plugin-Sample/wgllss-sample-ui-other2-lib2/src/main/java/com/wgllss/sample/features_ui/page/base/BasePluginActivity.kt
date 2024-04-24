@@ -133,6 +133,9 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         return mDefaultFactory
     }
 
-    override fun lazyIntValue() {
+    override fun lazyInitValue() {
+        if (!isPlugin) {
+            super.lazyInitValue()
+        }
     }
 }

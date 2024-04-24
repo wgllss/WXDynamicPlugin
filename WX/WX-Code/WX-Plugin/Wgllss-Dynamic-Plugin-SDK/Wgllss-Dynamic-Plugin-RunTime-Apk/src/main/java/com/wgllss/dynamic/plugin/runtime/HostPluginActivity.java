@@ -133,7 +133,7 @@ public class HostPluginActivity extends BaseActivity {
         if (hasFocus) {
             if (isFirst) {
                 isFirst = false;
-                mHostDelegate.lazyIntValue();
+                mHostDelegate.lazyInitValue();
             }
         }
     }
