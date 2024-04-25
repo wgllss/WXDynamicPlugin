@@ -47,7 +47,7 @@ class SettingViewModel : BaseViewModel() {
         flowAsyncWorkOnViewModelScopeLaunch {
             flow {
                 val face = WXDynamicLoader.instance.loader.getDownloadFace()
-                emit(DynamicDownloadPlugin(face).initDynamicPlugin(context, StringBuilder().append(face.getHostL()).append("WXDynamicPlugin").append("/skins/").append(skinPluginBean.skinUrl).toString(), "skin", skinPluginBean.dlfn))
+                emit(DynamicDownloadPlugin(face).initDynamicPlugin(context, StringBuilder().append(face.getHostL()).append("/skins/").append(skinPluginBean.skinUrl).toString(), "skin", skinPluginBean.dlfn))
             }.onEach {
                 downloadResult.postValue(it)
             }

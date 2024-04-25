@@ -19,10 +19,10 @@ class FaceImpl : IDynamicDownLoadFace {
 
     private var baseXL: String = ""
 
-    //    override fun getHostL() = "http://192.168.3.21:8080/assets/"
-//    override fun getHostL() = "http://192.168.1.9:8080/assets/"
+    //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
+//    override fun getHostL() = "http://192.168.1.9:8080/assets/WXDynamicPlugin/"
     override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource"
-    
+
     /** 0:WXDynamicPlugin 动态化插件框架 理论上已经做到了可以完全不动宿主,但是如果一定要动宿主 可以提供以下思路:
      *  1:可以根据 宿主版本号得到 宿主版本支持的 的插件,
      *  2:当宿主必须 需要升级时,升级后原版本的插件不可用了，插件配置在新宿主版本文件夹下面，原宿主版本文件夹可可以先动态配置 在启动页 升级下载新的宿主
@@ -30,7 +30,7 @@ class FaceImpl : IDynamicDownLoadFace {
      */
     override fun getBaseL(): String {
         if (TextUtils.isEmpty(baseXL)) {
-            baseXL = StringBuilder().append(getHostL()).append("WXDynamicPlugin/").append(DeviceIdUtil.getDeviceId()).append("/").append(BuildConfig.VERSION_CODE).append("/").toString()
+            baseXL = StringBuilder().append(getHostL()).append(DeviceIdUtil.getDeviceId()).append("/").append(BuildConfig.VERSION_CODE).append("/").toString()
         }
         return baseXL
     }

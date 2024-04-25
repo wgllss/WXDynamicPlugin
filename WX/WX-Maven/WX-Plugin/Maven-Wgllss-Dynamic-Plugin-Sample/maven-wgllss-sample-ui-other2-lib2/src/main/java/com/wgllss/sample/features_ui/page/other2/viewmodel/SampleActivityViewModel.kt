@@ -27,7 +27,7 @@ class SampleActivityViewModel : BaseViewModel() {
                 //todo so 一般比较大了，很难做到只有 40~50k左右，故不放在 版本控制里面去，需要单独业务区控制 下载完成之后 再调用
                 //todo 如果启动就下载 ，需要耗费大量下载时间与资源，影响启动性能
                 val face = WXDynamicLoader.instance.loader.getDownloadFace()
-                DynamicDownloadPlugin(face).initDynamicPlugin(context, StringBuilder().append(face.getHostL()).append("WXDynamicPlugin").append("/so/lib/").append(Build.CPU_ABI).append("/libnativex.so").toString(), "so", "libnativex.so").run {
+                DynamicDownloadPlugin(face).initDynamicPlugin(context, StringBuilder().append(face.getHostL()).append("/so/lib/").append(Build.CPU_ABI).append("/libnativex.so").toString(), "so", "libnativex.so").run {
                     System.load(fileAbsolutePath)
                 }
                 emit(0)
