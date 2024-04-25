@@ -16,7 +16,7 @@ class SettingRepository private constructor() {
 
     suspend fun getSkinConfig(): Flow<MutableList<SkinPluginBean>> = flow {
         val face = WXDynamicLoader.instance.loader.getDownloadFace()
-        val json = HttpUrlConnectionRequest.getServerJson(StringBuilder().append(face.getHostL()).append("WXDynamicPlugin").append("/skins/skins.txt").toString())
+        val json = HttpUrlConnectionRequest.getServerJson(StringBuilder().append(face.getHostL()).append("/skins/skins.txt").toString())
         val list = Gson().fromJson<MutableList<SkinPluginBean>>(json, object : TypeToken<MutableList<SkinPluginBean>>() {}.type)
         emit(list)
     }
