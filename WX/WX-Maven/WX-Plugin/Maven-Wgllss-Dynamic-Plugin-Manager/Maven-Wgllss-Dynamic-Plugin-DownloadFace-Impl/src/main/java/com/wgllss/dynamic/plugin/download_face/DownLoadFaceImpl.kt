@@ -14,8 +14,9 @@ import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.WEB_ASSETS
 import com.wgllss.dynamic.host.lib.download.IDynamicDownLoadFace
 
 class DownLoadFaceImpl : IDynamicDownLoadFace {
-    override fun getHostL() = "http://192.168.3.21:8080/assets/"
-//    override fun getHostL() = "http://192.168.1.9:8080/assets/"
+    //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
+//    override fun getHostL() = "http://192.168.1.9:8080/assets/WXDynamicPlugin/"
+    override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/"
 
     override fun getBaseL() = "${getHostL()}10000_Test/"
 
