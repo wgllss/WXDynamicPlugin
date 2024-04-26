@@ -15,6 +15,7 @@
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>
 
 
 * **WXDynamicPlugin是由本人自住研发的Android插件框架**
