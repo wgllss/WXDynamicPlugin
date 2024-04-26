@@ -96,10 +96,26 @@
 | WX-Maven                | 示例工程maven依赖仓库方式接入工程 | 接入方式二：maven引入host包 |    
 
 
-* **特别说明**：WX-Code   和 WX-Maven   下实际代码内容一样，唯一区别接入全动态host代码方式不一样，另外WX-Maven 下所有文件夹和项目工程名多了 maven前缀，用于在同一工程下区分成 2个不同的项目
+* **特别说明**：WX-Code   和 WX-Maven   下实际代码内容一样，目录结构一样，唯一区别接入全动态host代码方式不一样，另外WX-Maven 下所有文件夹和项目工程名多了 maven前缀，用于在同一工程下区分成 2个不同的项目
 
 #### 推荐用方式二： Maven接入方式
 
+##### 以 WX-Maven下目录结构介绍为例：
+WX-Host
+   sample
+     |______________________________
+   sample-lib
+        maven-wgllss-business-re-library
+        maven-wgllss-common-re-library
+        maven-wgllss-dynamic-host-library
+        maven-wgllss-dynamic-host-skin-resource-lib
+WX-Plugin
+   Maven-Wgllss-Dynamic-Plugin-Common-Library
+   Maven-Wgllss-Dynamic-Plugin-Generate
+   Maven-Wgllss-Dynamic-Plugin-Manager
+   Maven-Wgllss-Dynamic-Plugin-Sample
+   Maven-Wgllss-Dynamic-Plugin-SDK
+   Maven-Wgllss-Dynamic-Plugin_Skin
 
 
 
