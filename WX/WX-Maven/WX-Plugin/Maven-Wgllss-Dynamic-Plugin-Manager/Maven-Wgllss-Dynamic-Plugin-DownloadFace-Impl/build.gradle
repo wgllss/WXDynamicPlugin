@@ -32,6 +32,7 @@ android {
 dependencies {
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
+    implementation project(path: ':wgllss-common-re-library')
 }
 
 
