@@ -5,6 +5,16 @@
 !![输入图片说明](WX-Resource/wx-pic/Qrcode.png)
 ## 示例Sample截图
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cs.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_20240426_125043_com.wgllss.dynamic.host.sample.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>
 
 
 * **WXDynamicPlugin是由本人自住研发的Android插件框架**
