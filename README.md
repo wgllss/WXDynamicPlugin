@@ -101,21 +101,21 @@
 #### 推荐用方式二： Maven接入方式
 
 ##### 以 WX-Maven下目录结构介绍为例：
-WX-Host
-   sample  
-     |______________________________  
-   sample-lib  
-        maven-wgllss-business-re-library  
-        maven-wgllss-common-re-library  
-        maven-wgllss-dynamic-host-library  
-        maven-wgllss-dynamic-host-skin-resource-lib    
-WX-Plugin   
-   Maven-Wgllss-Dynamic-Plugin-Common-Library   
-   Maven-Wgllss-Dynamic-Plugin-Generate   
-   Maven-Wgllss-Dynamic-Plugin-Manager   
-   Maven-Wgllss-Dynamic-Plugin-Sample  
-   Maven-Wgllss-Dynamic-Plugin-SDK  
-   Maven-Wgllss-Dynamic-Plugin_Skin  
+WX-Host   
+&emsp;&emsp;sample  
+&emsp;&emsp;&emsp;______________________________  
+&emsp;&emsp;sample-lib  
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library  
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library  
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib    
+&emsp;&emsp;WX-Plugin   
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library   
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager   
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  
 
 
 
