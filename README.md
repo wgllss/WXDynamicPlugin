@@ -1,5 +1,6 @@
 # WXDynamicPlugin
-
+## 示例Sample
+!![输入图片说明](WX-Resource/wx-pic/Qrcode.png)
 ## 介绍
 
 WXDynamicPlugin是由本人自住研发的Android插件框架
