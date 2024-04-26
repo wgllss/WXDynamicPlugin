@@ -85,6 +85,6 @@
   <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_sample.jpeg" width="578" height="38"/>
 
 ## 项目工程目录介绍
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/project_img.jpeg" width="331" height="631"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/project_img.png" width="331" height="631"/>
 
 
