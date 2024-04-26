@@ -102,20 +102,20 @@
 
 ##### 以 WX-Maven下目录结构介绍为例：
 WX-Host
-   sample
-     |______________________________
-   sample-lib
-        maven-wgllss-business-re-library
-        maven-wgllss-common-re-library
-        maven-wgllss-dynamic-host-library
-        maven-wgllss-dynamic-host-skin-resource-lib
-WX-Plugin
-   Maven-Wgllss-Dynamic-Plugin-Common-Library
-   Maven-Wgllss-Dynamic-Plugin-Generate
-   Maven-Wgllss-Dynamic-Plugin-Manager
-   Maven-Wgllss-Dynamic-Plugin-Sample
-   Maven-Wgllss-Dynamic-Plugin-SDK
-   Maven-Wgllss-Dynamic-Plugin_Skin
+   sample  
+     |______________________________  
+   sample-lib  
+        maven-wgllss-business-re-library  
+        maven-wgllss-common-re-library  
+        maven-wgllss-dynamic-host-library  
+        maven-wgllss-dynamic-host-skin-resource-lib    
+WX-Plugin   
+   Maven-Wgllss-Dynamic-Plugin-Common-Library   
+   Maven-Wgllss-Dynamic-Plugin-Generate   
+   Maven-Wgllss-Dynamic-Plugin-Manager   
+   Maven-Wgllss-Dynamic-Plugin-Sample  
+   Maven-Wgllss-Dynamic-Plugin-SDK  
+   Maven-Wgllss-Dynamic-Plugin_Skin  
 
 
 
