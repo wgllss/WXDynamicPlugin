@@ -1,9 +1,15 @@
 # WXDynamicPlugin
+
 ## 介绍
+
 ### 自研零反射，零HooK,全动态化，插件化框架，全网唯一结合启动优化的插件化架构
+
 ## 示例Sample
+
 !![输入图片说明](WX-Resource/wx-pic/Qrcode.png)
+
 ## 示例Sample截图
+
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>
@@ -16,7 +22,6 @@
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>
-
 
 * **WXDynamicPlugin是由本人自住研发的Android插件框架**
 
@@ -65,6 +70,15 @@
 |  下载逻辑代码动态化 | 不支持  | 支持 ✅  |
 |  版本控制代码动态化 | 不支持  | 支持 ✅  |
 
+## 编译与开发环境
+
+#### 环境准备
+
+* **打开工程下 local.properties**
+* 以下为我本地电脑配置，需要改成自己配置 配置:workingDirPath=D\:\\android_software\\android_sdk\\android_sdk\\build-tools\\32.0.0\\
+  然后在IDE中选择app或sample模块直接运行，分别体验同一份代码在正常安装情况下和插件情况下的运行情况。如下
+  <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_app.jpeg" width="100" height="56"/>
+  <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_sample.jpeg" width="160" height="56"/>
 
 
 
