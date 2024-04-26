@@ -75,9 +75,11 @@
 #### 环境准备
 
 * **打开工程下 local.properties**
-以下为我本地电脑配置，需要改成自己配置 配置:workingDirPath=D\:\\android_software\\android_sdk\\android_sdk\\build-tools\\32.0.0\\
-然后在IDE中选择app或sample模块直接运行，分别体验同一份代码在正常安装情况下和插件情况下的运行情况。如下
+#######  以下为我本地电脑配置，需要改成自己配置 
+#######  配置:workingDirPath=D\:\\android_software\\android_sdk\\android_sdk\\build-tools\\32.0.0\\
+#######  然后在IDE中选择app或sample模块直接运行，分别体验同一份代码在正常安装情况下和插件情况下的运行情况。如下
   <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_app.jpeg" width="181" height="56"/>
+#######
   <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_sample.jpeg" width="578" height="38"/>
 
 
