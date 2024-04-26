@@ -86,7 +86,11 @@
 
 ## 项目工程目录截图
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/project_img.png" width="331" height="631"/>
+
+
 ## 项目工程目录介绍
+
+
 | WX-Code                 | 全源码级接入方式工程      |
 |-------------------------|-----------------|
 | WX-Dynamic-Host-SDK-Lib | 宿主工程所依赖的SDK源码   |
