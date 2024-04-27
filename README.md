@@ -101,20 +101,20 @@
 #### 推荐用方式二： Maven接入方式
 
 ##### 以 WX-Maven下目录结构介绍为例：
-WX-Host   __________________________________________________ 下面全部为host宿主项目代码    
-&emsp;&emsp;sample  ______________________________________________host宿主真实工程app      
-&emsp;&emsp;sample-lib  __________________________________________下面为宿主工程依赖的4个工程模块       
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library _________涉及到app的公共业务带res资源的模块lib       
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  __________涉及到公共代码带res资源的模块lib        
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library_________宿主里面含有manifest注册所必备的四大组件等lib          
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib___宿主所必须的资源样式主题等lib        
-WX-Plugin___________________________________________该文件夹下面的所有工程都是插件的形式，不存在宿主里面       
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library  ______ 插件中公共代码    
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   ___________ 插件中打包所用的apt工程   
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager  _____________ 插件中管理插件，管理动态代码的3个工程   
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  ______________ 插件中真正业务代码插件工程   
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  _________________ 插件中四大组件插件SDK框架代码，以插件形式存在  
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  ________________ 插件中换皮肤资源  
+WX-Host:下面全部为host宿主项目代码    
+&emsp;&emsp;sample:host宿主真实工程app      
+&emsp;&emsp;sample-lib:下面为宿主工程依赖的4个工程模块       
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library:涉及到app的公共业务带res资源的模块lib       
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library:涉及到公共代码带res资源的模块lib        
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library:宿主里面含有manifest注册所必备的四大组件等lib          
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib:宿主所必须的资源样式主题等lib        
+WX-Plugin:该文件夹下面的所有工程都是插件的形式，不存在宿主里面       
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library:插件中公共代码    
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate:插件中打包所用的apt工程   
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager:插件中管理插件，管理动态代码的3个工程   
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample:插件中真正业务代码插件工程   
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK:插件中四大组件插件SDK框架代码，以插件形式存在  
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin:插件中换皮肤资源  
 
 
 
