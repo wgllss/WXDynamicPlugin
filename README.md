@@ -101,20 +101,19 @@
 #### 推荐用方式二： Maven接入方式
 
 ##### 以 WX-Maven下目录结构介绍为例：
-WX-Host   
-&emsp;&emsp;sample  ___________________________________    
-&emsp;&emsp;sample-lib  ___________________________________    
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library ___________________________________     
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  ___________________________________    
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library___________________________________      
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib___________________________________     
-&emsp;&emsp;WX-Plugin___________________________________    
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library  ___________________________________    
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   ___________________________________    
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager  ___________________________________     
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  ___________________________________    
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  ___________________________________    
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  ___________________________________    
+WX-Host   _____________________________________________________________________ 下面全部为host宿主项目代码    
+&emsp;&emsp;sample  ___________________________________________________________ host宿主真实工程app      
+&emsp;&emsp;sample-lib  _______________________________________________________ 下面为宿主工程依赖的4个工程模块       
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library ______________________ 涉及到该app的公共业务带res资源的模块lib     
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  _______________________ 涉及到该android公共代码带res资源的模块lib      
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library______________________ 宿主里面含有manifest注册所必备的四大组件等lib        
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib____________ 宿主所必须的资源样式主题等lib      
+&emsp;&emsp;WX-Plugin__________________________________________________________ 该文件夹下面的所有工程都是插件的形式，不存在宿主里面   emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library  ____________ 插件中公共代码  
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   ________________ 插件中打包所用的apt工程 
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager  __________________ 插件中管理插件，管理动态代码的3个工程 
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  ___________________ 插件中真正业务代码插件工程 
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  ______________________ 插件中四大组件插件SDK框架代码，以插件形式存在
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  _____________________ 插件中换皮肤资源
 
 
 
