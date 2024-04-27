@@ -106,7 +106,7 @@ WX-Host:下面全部为host宿主项目代码
 &emsp;&emsp;sample-lib:下面为宿主工程依赖的4个工程模块       
 &emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library:涉及到app的公共业务带res资源的模块lib       
 &emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library:涉及到公共代码带res资源的模块lib        
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library:宿主里面含有manifest注册所必备的四大组件等lib          
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library:宿主里manifest注册所必备的四大组件等lib          
 &emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib:宿主所必须的资源样式主题等lib        
 WX-Plugin:该文件夹下面的所有工程都是插件的形式，不存在宿主里面       
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library:插件中公共代码    
