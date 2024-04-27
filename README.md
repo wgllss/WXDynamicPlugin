@@ -113,7 +113,7 @@ WX-Plugin:  该文件夹下面的所有工程都是插件的形式，不存在�
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate:  插件中打包所用的apt工程   
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager:  插件中管理插件，管理动态代码的3个工程   
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample:  插件中真正业务代码插件工程   
-&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK:  插件中四大组件插件SDK框架代码，以插件形式存在  
+&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK:  插件框架四大组件SDK代码，以插件形式存在  
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin:  插件中换皮肤资源  
 
 
