@@ -102,20 +102,19 @@
 
 ##### 以 WX-Maven下目录结构介绍为例：
 WX-Host   
-&emsp;&emsp;sample  
-&emsp;&emsp;&emsp;______________________________  
-&emsp;&emsp;sample-lib  
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library  
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library  
-&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib    
-&emsp;&emsp;WX-Plugin   
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library   
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager   
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  
-&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  
+&emsp;&emsp;sample  ___________________________________    
+&emsp;&emsp;sample-lib  ___________________________________    
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-business-re-library ___________________________________     
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-common-re-library  ___________________________________    
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-library___________________________________      
+&emsp;&emsp;&emsp;&emsp;maven-wgllss-dynamic-host-skin-resource-lib___________________________________     
+&emsp;&emsp;WX-Plugin___________________________________    
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Common-Library  ___________________________________    
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Generate   ___________________________________    
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Manager  ___________________________________     
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-Sample  ___________________________________    
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK  ___________________________________    
+&emsp;&emsp;&emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin  ___________________________________    
 
 
 
