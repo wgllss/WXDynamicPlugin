@@ -116,6 +116,8 @@
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin-SDK:  插件框架四大组件SDK代码，以插件形式存在  
 &emsp;&emsp;Maven-Wgllss-Dynamic-Plugin_Skin:  插件中换皮肤资源  
 
+### WX-Resource: 为项目已经打包好的插件，so,皮肤包等 存放的文件夹
+
 
 
 
