@@ -130,8 +130,6 @@
 #### 上面介绍 直接 run运行 ,打开app 进入宿主，直接下载的插件 为我已经准好的服务器上面  
 
 &emsp;&emsp;可以通过源码工程自行打包，上传到自己的服务器上部署，方法如下:  
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/server_address.jpg" width="1859" height="851"/>
-
 找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl  
 ```
   //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
@@ -160,7 +158,7 @@
 
 点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
 14个文件生成在以下目录:可以拷贝到自己的服务器上面下载  
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpeg" width="610" height="260"/>
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
 
 
