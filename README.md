@@ -130,7 +130,7 @@
 #### 上面介绍 直接 run运行 ,打开app 进入宿主，直接下载的插件 为我已经放在准好的服务器上面了
 
 &emsp;&emsp;可以通过源码工程自行打包，上传到自己的服务器上部署，方法如下:  
-找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl
+&emsp;&emsp;找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl
 
 ```
   //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
@@ -152,13 +152,13 @@
     }
 ```
 
-修改 getHostL() 地址为自己服务器地址, 修改 getBaseL() 中主要路劲,确保修改后地址可以访问通  
-然后将打包好的14个文件 放入getHostL()+getBaseL() 服务器文件夹下面  
-该 14个文件打包如下:  
+&emsp;&emsp;修改 getHostL() 地址为自己服务器地址, 修改 getBaseL() 中主要路劲,确保修改后地址可以访问通  
+&emsp;&emsp;然后将打包好的14个文件 放入getHostL()+getBaseL() 服务器文件夹下面  
+&emsp;&emsp;该 14个文件打包如下:  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
 
-点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
-14个文件生成在以下目录:可以拷贝到自己的服务器上面下载  
+&emsp;&emsp;点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
+&emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面下载  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
 
