@@ -2,7 +2,7 @@
 
 ## 介绍
 
-####   * **WXDynamicPlugin是由本人自住研发的Android插件框架**
+####    * **WXDynamicPlugin是由本人自住研发的Android插件框架**
 
 ### 零反射，零HooK,全动态化，插件化框架，全网唯一结合启动优化的插件化架构
 
@@ -127,10 +127,11 @@
 
 ### WX-Resource: 为项目已经打包好的插件，so,皮肤包文件等 存放的文件夹
 
-#### 上面介绍 直接 run运行 ,打开app 进入宿主，直接下载的插件 为我已经准好的服务器上面  
+#### 上面介绍 直接 run运行 ,打开app 进入宿主，直接下载的插件 为我已经放在准好的服务器上面了
 
 &emsp;&emsp;可以通过源码工程自行打包，上传到自己的服务器上部署，方法如下:  
-找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl  
+找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl
+
 ```
   //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
 //    override fun getHostL() = "http://192.168.1.9:8080/assets/WXDynamicPlugin/"
