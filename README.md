@@ -158,7 +158,7 @@
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
 
 &emsp;&emsp;点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
-&emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面下载  
+&emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面下载:即上面修改的 getHostL()+getBaseL() 服务器文件夹下面  ,同时把我准备的WX-Resource/so 文件夹和 WX-Resource/skins 文件夹拷贝过去，这是供sample 工程演示所用的，另外皮肤资源包多个apk文件也可以自行通过源码工程打包  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
 ####  [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
