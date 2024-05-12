@@ -158,8 +158,8 @@
 该 14个文件打包如下:  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
 
-点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令
-14个文件生成在以下目录:可以拷贝到自己的服务器上面下载
+点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
+14个文件生成在以下目录:可以拷贝到自己的服务器上面下载  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/createfile.jpeg" width="610" height="260"/>
 
 
