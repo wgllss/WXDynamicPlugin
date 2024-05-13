@@ -103,11 +103,11 @@
 #### Maven-Wgllss-Dynamic-Plugin-Manager 插件中管理插件，管理动态代码的3个工程   
 * **管理插件中 activity跳转,service 启动绑定 ，皮肤，资源等** (Maven-Wgllss-Dynamic-Plugin-Manager) 设计成插件下载 必须有
 * **动态实现更换下载插件地址，文件，已经debug 等** (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用
-* ** 动态实现根据版本下载插件，加载插件** (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用
+* **动态实现根据版本下载插件，加载插件** (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用
 
 #### Maven-Wgllss-Dynamic-Plugin-Generate 一个命令执行打包所有插件 apt工程
 * **注解处理器annotations 工程** (maven-wgllss-sample-create-version-config-annotations) 
-* ** 注解处理器 工程** (maven-wgllss-sample-create-version-config-compiler) 
+* **注解处理器 工程** (maven-wgllss-sample-create-version-config-compiler) 
 * **一键打包14个文件配置命令工程** (maven-wgllss-sample-create-all-app) 
 * **一键打包版本配置的2个文件配置命令工程** (maven-wgllss-sample-create-version-config-app) 
 
