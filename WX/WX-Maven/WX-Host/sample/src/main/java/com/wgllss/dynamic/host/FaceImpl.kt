@@ -42,19 +42,23 @@ class FaceImpl : IDynamicDownLoadFace {
     override fun getOtherDLU() = realUrl("vc")
 
     override fun getMapDLU() = mutableMapOf(
-        VERSION to realUrl("classes_version_dex"),
-        COMMON to realUrl("classes_common_lib_dex"),
-        WEB_ASSETS to realUrl("classes_business_web_res"),
-        COMMON_BUSINESS to realUrl("classes_business_lib_dex"),
-        HOME to realUrl("classes_home_dex"),
-        RESOURCE_SKIN to realUrl("classes_common_skin_res"),
-        RUNTIME to realUrl("classes_wgllss_dynamic_plugin_runtime"),
-        MANAGER to realUrl("classes_manager_dex"),
-        FIRST to realUrl("classes_loading_dex"),
-        CLMD to realUrl("class_loader_impl_dex"),
-        CDLFD to realUrl("classes_downloadface_impl_dex")
+        VERSION to realUrl("classes_version_dex"), // 对应 maven-wgllss-sample-loader-version打包后插件
+        COMMON to realUrl("classes_common_lib_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Common-Library打包后插件
+        WEB_ASSETS to realUrl("classes_business_web_res"), // 对应 maven-wgllss-sample-assets-source-apk打包后插件
+        COMMON_BUSINESS to realUrl("classes_business_lib_dex"), // 对应 maven-wgllss-sample-business-library打包后插件
+        HOME to realUrl("classes_home_dex"), // 对应 maven-wgllss-sample-ui-home打包后插件
+        RESOURCE_SKIN to realUrl("classes_common_skin_res"), // 对应 maven-wgllss-sample-skin-resource-apk打包后插件
+        RUNTIME to realUrl("classes_wgllss_dynamic_plugin_runtime"),// 对应 Maven-Wgllss-Dynamic-Plugin-RunTime-Apk打包后插件
+        MANAGER to realUrl("classes_manager_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Manager打包后插件
+        FIRST to realUrl("classes_loading_dex"), // 对应 maven-wgllss-sample-ui-loading打包后插件
+        CLMD to realUrl("class_loader_impl_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Loader-Impl打包后插件
+        CDLFD to realUrl("classes_downloadface_impl_dex") // 对应 Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl打包后插件
     )
 
+    /** 1:首次启动用 宿主里面的 VersionImpl,当有版本更新时用 WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version
+     *  2:首次时两个地方文件配置成一样
+     *  3: 以后每次修改插件，升级插件 ，需要修改 WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version 下面配置
+     **/
     override fun getLoadVersionClassName() = "com.wgllss.loader.version.LoaderVersionImpl"
 
     private fun realUrl(name: String) = StringBuilder().append(getBaseL()).append(name).toString()

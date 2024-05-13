@@ -5,7 +5,7 @@ import com.wgllss.dynamic.host.lib.version.ILoaderVersion
 
 class VersionImpl : ILoaderVersion {
 
-    override fun getV() = 1000
+    override fun getV() = 1000 //总版本号 下面每个地方改一下 此处版本号要往上加+1
 
     override fun isMustShowLoading() = false
 
