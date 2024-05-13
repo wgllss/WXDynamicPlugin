@@ -102,7 +102,7 @@
 
 #### Maven-Wgllss-Dynamic-Plugin-Manager 插件中管理插件，管理动态代码的3个工程   
 * **管理插件中 activity跳转,service 启动绑定 ，皮肤，资源等** (Maven-Wgllss-Dynamic-Plugin-Manager) 设计成插件下载 必须有
-* **动态实现更换下载插件地址，文件，已经debug 等** (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用
+* **动态实现更换下载插件地址，文件，以及debug 等** (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用
 * **动态实现根据版本下载插件，加载插件** (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用
 
 #### Maven-Wgllss-Dynamic-Plugin-Generate 一个命令执行打包所有插件 apt工程
@@ -163,4 +163,49 @@ class FaceImpl : IDynamicDownLoadFace {
 
 }
 ```
+## 宿主中VersionImpl 介绍及注释
+```
+class VersionImpl : ILoaderVersion {
+
+    override fun getV() = 1000 //总版本号 只要下面每个地方改一下 此处版本号要往上加+1，下面可同一时间改多个，上面加一下版本号
+
+    override fun isMustShowLoading() = false//下次下载插件 是否显示主下载loading 页面
+
+    override fun getClfd() = Triple(
+        //配置loading 页插件实现 及版本号 对应 maven-wgllss-sample-loader-version 工程
+        "com.wgllss.dynamic.impl.ILoadHomeImpl",
+        "loading",
+        1000
+    )
+
+    //配置 动态实现根据版本下载插件 及版本号 对应 Maven-Wgllss-Dynamic-Plugin-Loader-Impl 工程
+    override fun getClmd() = Triple("", "", 0)
+
+    //动态实现更换下载插件地址，文件，已经debug  Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl
+    override fun getCdlfd() = Triple("", "", 0)
+
+    override fun getMapDLU() = linkedMapOf(
+        DynamicPluginConstant.COMMON to Pair("classes_common_lib_dex", 1000), //Maven-Wgllss-Dynamic-Plugin-Common-Library 插件工程 和 版本号
+        DynamicPluginConstant.WEB_ASSETS to Pair("classes_business_web_res", 1000), //maven-wgllss-sample-assets-source-apk 插件工程 和版本号
+        DynamicPluginConstant.COMMON_BUSINESS to Pair("classes_business_lib_dex", 1000),//maven-wgllss-sample-business-library 插件工程 和 版本号
+        DynamicPluginConstant.RUNTIME to Pair("classes_wgllss_dynamic_plugin_runtime", 1000), //Maven-Wgllss-Dynamic-Plugin-RunTime-Apk 插件工程 和 版本号
+        DynamicPluginConstant.MANAGER to Pair("classes_manager_dex", 1000), // Maven-Wgllss-Dynamic-Plugin-Manager 插件工程 和 版本号
+        DynamicPluginConstant.RESOURCE_SKIN to Pair("classes_common_skin_res", 1000), // maven-wgllss-sample-skin-resource-apk 插件工程 和 版本号
+        DynamicPluginConstant.HOME to Pair("classes_home_dex", 1000) //maven-wgllss-sample-ui-home 插件工程 和 版本号
+    )
+
+    override fun getOthers() = mutableMapOf(
+        "classes_other_dex" to 1000,  //maven-wgllss-sample-ui-other-lib 插件工程 和 版本号
+        "classes_other_res" to 1000,  //maven-wgllss-sample-ui-other 插件工程 和 版本号
+        "classes_other2_dex" to 1000, //maven-wgllss-sample-ui-other2-lib2 插件工程 和 版本号
+        "classes_other2_res" to 1000  //maven-wgllss-sample-ui-other2 插件工程 和 版本号
+    )
+}
+```
+
+## 特别注意 
+* **首次打包 maven-wgllss-sample-ui-loading工程 生成的 classes_loading_dex 文件 需要重名命改为 loading_1000 放到宿主工程 assets 下面**
+* **首次打包 宿主默认包含3部分,其一:loading_1000 其二:VersionImpl类，其三:FaceImpl类**
+* **之后每次都可以不动宿主,直接修改 loading ,VersionImpl类，FaceImpl类 和其他插件工程，插件框架SDK 等完全全动态插件化，无需动宿主**
+
 

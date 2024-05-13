@@ -9,6 +9,11 @@ import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.RUNTIME
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.WEB_ASSETS
 import com.wgllss.dynamic.host.lib.version.ILoaderVersion
 
+/** 特别提示:
+ *  1:首次启动用 宿主里面的 VersionImpl,当有版本更新时用 WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version
+ *  2:首次时两个地方文件配置成一样
+ *  3: 以后每次修改插件，升级插件 ，需要修改 WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version 下面配置
+ **/
 class LoaderVersionImpl : ILoaderVersion {
 
     override fun getV() = 1000
@@ -25,6 +30,7 @@ class LoaderVersionImpl : ILoaderVersion {
 
     override fun getCdlfd() = Triple("", "", 0)
 
+    /**  上面两个方法 默认 没有，如果需要动态 配置，见下面 已经注释掉的 方式配置 **/
 //    override fun getClmd() = Triple("com.wgllss.dynamic.plugin.loader.LoaderManagerImpl", "class_loader_impl_dex", 1000)
 //
 //    override fun getCdlfd() = Triple("com.wgllss.dynamic.plugin.download_face.DownLoadFaceImpl", "classes_downloadface_impl_dex", 1000)
