@@ -226,7 +226,7 @@ class VersionImpl : ILoaderVersion {
 
 * **上面配置15个task,所打包后的插件都在 WXDynamicPlugin\build\，外加一个vc文件 总共16个 ,Maven-Wgllss-Dynamic-Plugin-Loader-Impl 和 Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl 可以不用，总共14个文件**
 * **一次性打包task assembleCreateAllFileRelease 供首次使用生成14个文件**
-* **以后每次修改单独插件模块，可以单独用各自task单独打包，然后还需要修改配置版本文件VersionImpl类后，再执行assembleCreateVersion2FileRelease Task打包，会同时生成classes_version_dex和vc文件**
+* **以后每次修改单独插件模块，可以单独用各自task单独打包，然后还需要修改配置版本文件VersionImpl类后，再执行assembleCreateVersion2FileRelease Task打包，会同时生成classes_version_dex和vc文件，然后把修改后的文件全部放到下载服务器上面，下次启动就可以无感知更新了**
 
 ## 特别注意 
 * **首次打包 maven-wgllss-sample-ui-loading工程 生成的 classes_loading_dex 文件 需要重名命改为 loading_1000 放到宿主工程 assets 下面**
