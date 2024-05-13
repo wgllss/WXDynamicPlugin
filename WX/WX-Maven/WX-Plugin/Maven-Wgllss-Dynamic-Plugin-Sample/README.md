@@ -80,10 +80,36 @@
 &emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面供下载:即上面修改的 getHostL()+getBaseL() 服务器文件夹下面  ,同时把我准备的WX-Resource/so 文件夹和 WX-Resource/skins 文件夹拷贝过去，这是供sample 工程演示所用的，另外皮肤资源包多个apk文件也可以自行通过源码工程打包  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
+## 插件设计详解 (以WX-Maven为例)
 
 
+&emsp;&emsp; * ** app 公共代码库插件模块** (Maven-Wgllss-Dynamic-Plugin-Common-Library):设计成插件下载，该模块内代码理论上可以很多app 来依赖，公司内A,B,C,D等app 都可以依赖，其他公司的app也可用的
 
+#### Maven-Wgllss-Dynamic-Plugin-Sample 真正插件app 下需要实现代码模块
+&emsp;&emsp; * ** app 公共业务代码库插件模块** (maven-wgllss-sample-business-library):设计成插件下载，该模块内代码为一个app内公用的业务逻辑，比如服务类业务代码，很多地方调用，某些接口，很多地方调用等，公司内整体一套网络传输数据加密 token的设计
+&emsp;&emsp; * ** app Assets资源插件模块** (maven-wgllss-sample-assets-source-apk):设计成插件下载，该模块内代码为app内用到的assets下存放资源
+&emsp;&emsp; * ** app 皮肤插件模块** (maven-wgllss-sample-skin-resource-apk):设计成插件下载，该模块内代码全是皮肤资源，如图片，颜色，也可含有多语言String 下资源
+&emsp;&emsp; * ** app 启动页插件模块** (maven-wgllss-sample-ui-loading):设计成插件下载，首次打开app展示的启动页面，在该页面停留，下载其他插件
+&emsp;&emsp; * ** app 首页插件模块** (maven-wgllss-sample-ui-home):设计成插件下载，app主页面，为了提高启动速度，启动页面只有展示一屏的代码，像首页HomeActivity的第2,3,4...等tab下fragment则不在该模块中
+&emsp;&emsp; * ** app 首页之外fragment插件模块** (maven-wgllss-sample-ui-other-lib):设计成插件下载，除开首页HomActivity maven-wgllss-sample-ui-home中存在的之外的 该Homactivity 持有的fragment相关代码
+&emsp;&emsp; * ** app 首页之外fragment布局资源插件模块** (maven-wgllss-sample-ui-other):设计成插件下载，maven-wgllss-sample-ui-other-lib对应的相关布局资源
+&emsp;&emsp; * ** app 首页之外的Activity插件模块** (maven-wgllss-sample-ui-other2-lib2):设计成插件下载，除开首页HomActivity 之外其他activity 模块代码
+&emsp;&emsp; * ** app 首页之外的Activity插件模块布局资源** (maven-wgllss-sample-ui-other2):设计成插件下载，maven-wgllss-sample-ui-other2-lib2 模块对应的布局资源
+&emsp;&emsp; * ** app 各个插件版本模块** (maven-wgllss-sample-loader-version):设计成插件下载，各个插件版本配置相关，后面特殊介绍
+#### Maven-Wgllss-Dynamic-Plugin-SDK  真正插件框架SDK代码
+&emsp;&emsp; * ** 插件框架SDK中代理接口  ** (Maven-Wgllss-Dynamic-Plugin-Library) : 插件框架中代理接口
+&emsp;&emsp; * ** 插件框架SDK中代理接口实现 ** (Maven-Wgllss-Dynamic-Plugin-RunTime-Apk):设计成插件下载，插件框架SDK中代理接口 依赖 Maven-Wgllss-Dynamic-Plugin-Library，最终会参与到插件SDK 打包
 
+#### Maven-Wgllss-Dynamic-Plugin-Manager 插件中管理插件，管理动态代码的3个工程   
+&emsp;&emsp; * ** 管理插件中 activity跳转,service 启动绑定 ，皮肤，资源等 ** (Maven-Wgllss-Dynamic-Plugin-Manager) 设计成插件下载 必须有
+&emsp;&emsp; * ** 动态实现更换下载插件地址，文件，已经debug 等 ** (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用
+&emsp;&emsp; * ** 动态实现根据版本下载插件，加载插件 ** (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用
+
+#### Maven-Wgllss-Dynamic-Plugin-Generate 一个命令执行打包所有插件 apt工程
+&emsp;&emsp; * ** 注解处理器annotations 工程 ** (maven-wgllss-sample-create-version-config-annotations) 
+&emsp;&emsp; * ** 注解处理器 工程 ** (maven-wgllss-sample-create-version-config-compiler) 
+&emsp;&emsp; * ** 一键打包14个文件配置命令工程 ** (maven-wgllss-sample-create-all-app) 
+&emsp;&emsp; * ** 一键打包版本配置的2个文件配置命令工程 ** (maven-wgllss-sample-create-version-config-app) 
 
 
 
