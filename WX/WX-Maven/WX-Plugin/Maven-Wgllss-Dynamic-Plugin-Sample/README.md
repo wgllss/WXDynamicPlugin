@@ -83,11 +83,11 @@
 ## 插件设计详解 (以WX-Maven为例)
 
 
-&emsp;&emsp; * ** app 公共代码库插件模块** (Maven-Wgllss-Dynamic-Plugin-Common-Library):设计成插件下载，该模块内代码理论上可以很多app 来依赖，公司内A,B,C,D等app 都可以依赖，其他公司的app也可用的
+* ** &emsp;&emsp;app 公共代码库插件模块** (Maven-Wgllss-Dynamic-Plugin-Common-Library):设计成插件下载，该模块内代码理论上可以很多app 来依赖，公司内A,B,C,D等app 都可以依赖，其他公司的app也可用的
 
 #### Maven-Wgllss-Dynamic-Plugin-Sample 真正插件app 下需要实现代码模块
-&emsp;&emsp; * ** app 公共业务代码库插件模块** (maven-wgllss-sample-business-library):设计成插件下载，该模块内代码为一个app内公用的业务逻辑，比如服务类业务代码，很多地方调用，某些接口，很多地方调用等，公司内整体一套网络传输数据加密 token的设计
-&emsp;&emsp; * ** app Assets资源插件模块** (maven-wgllss-sample-assets-source-apk):设计成插件下载，该模块内代码为app内用到的assets下存放资源
+* ** &emsp;&emsp;app 公共业务代码库插件模块** (maven-wgllss-sample-business-library):设计成插件下载，该模块内代码为一个app内公用的业务逻辑，比如服务类业务代码，很多地方调用，某些接口，很多地方调用等，公司内整体一套网络传输数据加密 token的设计
+* ** &emsp;&emsp;app Assets资源插件模块** (maven-wgllss-sample-assets-source-apk):设计成插件下载，该模块内代码为app内用到的assets下存放资源
 &emsp;&emsp; * ** app 皮肤插件模块** (maven-wgllss-sample-skin-resource-apk):设计成插件下载，该模块内代码全是皮肤资源，如图片，颜色，也可含有多语言String 下资源
 &emsp;&emsp; * ** app 启动页插件模块** (maven-wgllss-sample-ui-loading):设计成插件下载，首次打开app展示的启动页面，在该页面停留，下载其他插件
 &emsp;&emsp; * ** app 首页插件模块** (maven-wgllss-sample-ui-home):设计成插件下载，app主页面，为了提高启动速度，启动页面只有展示一屏的代码，像首页HomeActivity的第2,3,4...等tab下fragment则不在该模块中
