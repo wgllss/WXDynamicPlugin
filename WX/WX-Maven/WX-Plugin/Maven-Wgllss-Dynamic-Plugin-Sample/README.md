@@ -203,6 +203,30 @@ class VersionImpl : ILoaderVersion {
 }
 ```
 
+### 各个插件模块对应的打包命令 如下：  
+
+| 工程名                                           | 打包插件task                 |
+|-----------------------------------------------|--------------------------|
+| Maven-Wgllss-Dynamic-Plugin-Common-Library    | assembleDxCommandAndCopy |
+| Maven-Wgllss-Dynamic-Plugin-Manager           | assembleDxCommandAndCopy |
+| Maven-Wgllss-Dynamic-Plugin-Loader-Impl       | assembleDxCommandAndCopy |
+| Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl | assembleDxCommandAndCopy |
+| maven-wgllss-sample-assets-source-apk         | assembleCopy             |
+| maven-wgllss-sample-business-library          | assembleDxCommandAndCopy |
+| maven-wgllss-sample-loader-version            | assembleDxCommandAndCopy |
+| maven-wgllss-sample-skin-resource-apk         | assembleCopy             |
+| maven-wgllss-sample-ui-home                   | assembleDxCommandAndCopy |
+| maven-wgllss-sample-ui-loading                | assembleDxCommandAndCopy |
+| maven-wgllss-sample-ui-other                  | assembleCopy             |
+| maven-wgllss-sample-ui-other2                 | assembleCopy             |
+| maven-wgllss-sample-ui-other2-lib2            | assembleDxCommandAndCopy |
+| maven-wgllss-sample-ui-other-lib              | assembleDxCommandAndCopy |
+| Maven-Wgllss-Dynamic-Plugin-RunTime-Apk       | assembleCopy             |
+| 其他工程为配置                                 | 系统自带assembleRelease   |
+
+
+
+
 ## 特别注意 
 * **首次打包 maven-wgllss-sample-ui-loading工程 生成的 classes_loading_dex 文件 需要重名命改为 loading_1000 放到宿主工程 assets 下面**
 * **首次打包 宿主默认包含3部分,其一:loading_1000 其二:VersionImpl类，其三:FaceImpl类**
