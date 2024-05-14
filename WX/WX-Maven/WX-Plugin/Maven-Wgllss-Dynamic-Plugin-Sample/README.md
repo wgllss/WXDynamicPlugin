@@ -163,7 +163,7 @@ class FaceImpl : IDynamicDownLoadFace {
 
 }
 ```
-* *注意 FaceImpl.getMapDLU内不需要的可以删除不用的模块*
+* **注意 FaceImpl.getMapDLU内不需要的可以删除不用的插件模块，也可以添加插件模块**
 ## 宿主中VersionImpl 介绍及注释
 ```
 class VersionImpl : ILoaderVersion {
@@ -203,8 +203,8 @@ class VersionImpl : ILoaderVersion {
     )
 }
 ```
-* *注意 VersionImpl.getMapDLU内不需要的可以删除不用的模块,也可以添加模块*
-* *注意 VersionImpl.getOthers内不需要的可以删除不用的模块,也可以添加模块*
+* **注意 VersionImpl.getMapDLU内不需要的可以删除不用的插件模块,也可以添加插件模块**
+* **注意 VersionImpl.getOthers内不需要的可以删除不用的插件模块,也可以添加插件模块**
 ### 各个插件模块对应的打包命令 如下：  
 
 | 工程名                                           | 打包插件task                 |
