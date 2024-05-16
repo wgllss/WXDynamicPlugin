@@ -163,9 +163,8 @@
 
 ####  [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
 
-
+#### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力
 ## 欢迎光临：  
-##### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力 
 #### * **[我的另一个插件示例工程（WXMusic 在线音乐）](https://gitee.com/wgllss888/WXMusic)**  
 
 #### * **[我的掘金地址](https://juejin.cn/user/356661835082573)**     
