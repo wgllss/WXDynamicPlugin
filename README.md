@@ -47,6 +47,8 @@
 
 * 四大组件 Activity ,Service , ContentProvider ,Broadcaster
 * 跨进程使用插件Service
+* fragment
+* assets
 * 插件访问宿主类
 * 插件之间可以互不依赖，也可以存在有依赖关系
 * 通知栏
