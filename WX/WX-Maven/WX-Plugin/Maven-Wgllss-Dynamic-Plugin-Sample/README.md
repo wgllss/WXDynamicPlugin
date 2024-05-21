@@ -235,4 +235,8 @@ class VersionImpl : ILoaderVersion {
 * **首次打包 宿主默认包含3部分,其一:loading_1000 其二:VersionImpl类，其三:FaceImpl类**
 * **之后每次都可以不动宿主,直接修改 LoaderManagerImpl ,LoaderVersionImpl类，DownLoadFaceImpl类 和其他插件工程，插件框架SDK 等完全全动态插件化，无需动宿主**
 
+## 首次接入哪些可以接入宿主依赖
+* **宿主host里面包含哪些呢?**
+* **自己公司app 主要业务开发人员应该知道，比如，自己app 总要有网络请求框架吧，retrofit,okhttp,或者权限框架吧，比如自己做音乐类app,视频类app,可以把想用的音视频sdk ，第一次就接入,因为这些基本万年不修改，没有必要做成插件，浪费下载，加载插件性能?**
+###### 哪些是必须要接入的呢
 
