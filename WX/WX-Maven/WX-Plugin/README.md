@@ -3,7 +3,7 @@
 #### 特别注意：前期没完全明白前先，先按照下面的工程目录设计方式接入，等自己接入成功后，完整接入后再考虑，建议优化都可以，或许会明白为什么这样设计，同时确保已经看完了 [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
 
 ### 一、接入Host设计（参照示例工程）
- <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/host.jpeg" width="578" height="38"/>    
+ <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/host.jpeg" width="1014" height="364"/>    
   
 1. host总共设计成5个工程，其中1个宿主sample工程 4个宿主工程依赖的sammple-lib工程,
 2. host中主工程sample 依赖内容也先按照我的依赖设计 ，依赖4个我的动态化框架（Constant-Lib，Download-Lib，Lib-Impl,Version-Lib），4个设计的sample-lib 工程，4个ui需要的（appcompat，recyclerview，material，constraintlayout）,主工程sample必须要有4个文件（FaceImpl，VersionImpl，SampleApplication，assets下loading_1000）
