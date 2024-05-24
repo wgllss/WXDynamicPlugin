@@ -97,5 +97,40 @@
     )
 ```
 
+### 三、如何动态修改插件化框架SDK？
+插件化代理分发实现,目前只添加了最基本的：如下
+
+```
+public interface WXHostActivityDelegate {
+
+    void attachContext(FragmentActivity context, Resources resources);
+
+    void onCreate(Bundle savedInstanceState);
+
+    void onRestart();
+
+    void onStart();
+
+    void onResume();
+
+    void onPause();
+
+    void onStop();
+
+    void onDestroy();
+
+    void lazyInitValue();
+
+    void onSaveInstanceState(Bundle outState);
+
+    void onConfigurationChanged(Configuration newConfig);
+}
+
+```
+比如：开发过程中想用 onSaveInstanceState，onBackPressed等，那么直接修改 Maven-Wgllss-Dynamic-Plugin-SDK工程下，Maven-Wgllss-Dynamic-Plugin-Library的WXHostActivityDelegate ，在里面添加 onSaveInstanceState，onBackPressed等，然后再去 Maven-Wgllss-Dynamic-Plugin-RunTime-Apk下HostPluginActivity内修改代理改方法，其他的或者service 依次类推
+
+
+
+
 
 
