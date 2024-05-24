@@ -1,6 +1,6 @@
 # WXDynamicPlugin 全动态化框架 接入详细指南
 
-#### 特别注意：前期没完全明白前先，先按照下面的工程目录设计方式接入，等自己接入成功后，完整接入后再考虑，建议优化都可以，或许会明白为什么这样设计，同时确保已经看完了 [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
+#### 特别注意：前期没完全明白前，先按照下面的工程目录设计方式接入，等自己接入成功后，完整接入后再考虑，建议优化都可以，或许会明白为什么这样设计，同时确保已经看完了 [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
 
 ### 一、接入Host设计（参照示例工程）
  <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/host.jpeg" width="1014" height="364"/>    
@@ -98,7 +98,7 @@
 ```
 
 ### 三、如何动态修改插件化框架SDK？
-插件化代理分发实现,目前只添加了最基本的：如下
+1. 插件化代理分发实现,目前只添加了最基本的：如下
 
 ```
 public interface WXHostActivityDelegate {
@@ -127,7 +127,144 @@ public interface WXHostActivityDelegate {
 }
 
 ```
-比如：开发过程中想用 onSaveInstanceState，onBackPressed等，那么直接修改 Maven-Wgllss-Dynamic-Plugin-SDK工程下，Maven-Wgllss-Dynamic-Plugin-Library的WXHostActivityDelegate ，在里面添加 onSaveInstanceState，onBackPressed等，然后再去 Maven-Wgllss-Dynamic-Plugin-RunTime-Apk下HostPluginActivity内修改代理改方法，其他的或者service 依次类推
+比如：开发过程中想用 onBackPressed等，那么直接修改 Maven-Wgllss-Dynamic-Plugin-SDK工程下，Maven-Wgllss-Dynamic-Plugin-Library的WXHostActivityDelegate ，在里面添加 onBackPressed等，然后再去 Maven-Wgllss-Dynamic-Plugin-RunTime-Apk下HostPluginActivity内修改代理改方法，其他的或者service 依次类推。   
+2. 为什么不一次性像shadow把所有方法全部处理完？  
+   按需处理，处理越多插件SDK体积越大，下载越耗时，所以自己需要根据自己项目需求，需要什么添加什么，做到全动态化
+
+### 四、插件开发过程中注意事项
+
+1. 首页模块启动后，需要检查之前旧版本本地插件是否需要删除：  
+   需要调用一句代码` PluginManager.instance.deleteOldFile()`  
+   示例工程中是这样的： 在maven-wgllss-sample-ui-home工程下 HomeActivity内
+
+```
+    override fun lazyInitValue() {
+        window.setBackgroundDrawable(null)//去掉主题背景颜色
+        if (viewModel.isFirst) {
+            viewModel.lazyTabView()
+            viewModel.isFirst = false
+        }
+        initNavigation()
+        addContentView(navigationView, navigationView.layoutParams)
+        initNavigation(navigationView)
+        lifecycleScope.launch(Dispatchers.IO) {
+            PluginManager.instance.deleteOldFile()//检查是否有旧版本插件文件需要删除
+        }
+    }
+```
+
+2. 首页单独设计成插件，首页HomeActivity是真实注册在宿主AndroidManifest中的：如下：  
+在宿主 WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library/AndroidManifest.xml中：
+
+```
+ <application>
+
+        <activity
+            android:name="com.wgllss.dynamic.ui.HomeActivity"
+            android:exported="true"
+            android:theme="@style/LauncherTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+```
+所以maven-wgllss-sample-ui-home工程中所有开发，context上下文和原生一样，唯一注意时：HomeActivity的包名路径com.wgllss.dynamic.ui最好不要动，否则要动宿主host中AndroidManifest中注册路径，我示例框架已经考虑到这个了，不同工程迁移，HomeActivity设计成不随业务动，所以如下：  
+<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/home.jpeg" width="564" height="584"/>  
+如上图所示：UI/HomeActivity 已经不在sample包下面，不在业务模块包下面了，把我整个工程目录copy过去，自己业务包名更改，只需修改sample，HomeActivity页不受影响
+
+3. 上面2中所提到的com.wgllss.dynamic.ui.HomeActivity注册到AndroidManifest中注册路径，实际上也是maven-wgllss-sample-ui-loading工程下com.wgllss.dynamic.ui.HomeActivity，两个工程下的HomeActivity包路径必须保持一直
+
+4. maven-wgllss-sample-ui-other-lib工程页面所对应的Activity实际也是com.wgllss.dynamic.ui.HomeActivity
+
+5. 插件占坑位的相关Activity,service注册在宿主下  WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library/AndroidManifest.xml中：如下：     
+
+```
+   <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStandardActivity"
+            android:theme="@style/LauncherTheme2" />
+
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceActivity"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTaskActivity"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
+            android:theme="@style/LauncherTheme2" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStartStickyCompatibilityService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":processSticky" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartNotStickyService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":processNotSticky" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartRedeliverIntentService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":processRedeliver" />
+
+        <service
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginProcessStartStickyCompatibilityService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":processStickyCompatibility" />
+```
+
+对应的代码code就是插件化框架SDK:  WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK下面的工程  
+实际插件代理 假的Activity,Service示例工程代码在  WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2-lib2 工程里面  
+##### 这里在other2-lib2工程里面特别注意：里面的上下文Activity的this,需要用 maven-wgllss-sample-ui-other2-lib2下BasePluginActivity的activity如下：  
+
+
+```
+ override fun <T : View> findViewById(id: Int): T {
+        return activity.findViewById(id)
+    }
+
+    override fun getIntent() = activity.intent
+
+    override fun getWindow() = activity.window
+
+    override fun setRequestedOrientation(requestedOrientation: Int) {
+        activity.requestedOrientation = requestedOrientation
+    }
+```
+这里本来可以 this.intent要用 activity.intent   ，this.window要用 activity.window，或者要用到的，在BasePluginActivity里面都给转成 activity.xxx等
+
+##### 而 HomeActivity里面的this,则不需要
+
+
+
+
 
 
 
