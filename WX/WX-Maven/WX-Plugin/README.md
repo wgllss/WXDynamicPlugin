@@ -26,7 +26,8 @@
 2个用于动态更新宿主里面逻辑的：  
 &emsp;&emsp;1.1：动态实现更换下载插件地址，文件，以及debug 等 (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用  
 &emsp;&emsp;1.2：动态实现根据版本下载插件，加载插件 (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用）   
-2. 哪些插件工程程是必须？    
+2. 哪些插件工程程是必须？ 
+ 可对照[插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)   内相对应的模块详细说明研究   
 
 | 工程名                                      | 介绍          | 是否必须 |
 |--------------------------------------------|-------------|------|
