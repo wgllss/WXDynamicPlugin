@@ -238,5 +238,17 @@ class VersionImpl : ILoaderVersion {
 ## 首次接入哪些可以接入宿主依赖
 * **宿主host里面包含哪些呢?**
 * **自己公司app 主要业务开发人员应该知道，比如，自己app 总要有网络请求框架吧，retrofit,okhttp,或者权限框架吧，比如自己做音乐类app,视频类app,可以把想用的音视频sdk ，第一次就接入,因为这些基本万年不修改，没有必要做成插件，浪费下载，加载插件性能?**
-###### 哪些是必须要接入的呢
+#### 哪些是必须要接入的呢
+| 依赖项目                                                   | 涉及功能                  | 是否必须     |
+|--------------------------------------------------------|-----------------------|----------|
+| androidx.activity:activity-ktx:1.3.0-rc01              | kt协程相关                | 必须       |
+| androidx.fragment:fragment-ktx:1.4.0-alpha04           | kt协程相关                | 必须       |
+| androidx.core:core-ktx:$rootProject.ext.kotlin_version | kt协程相关                | 必须       |
+| com.github.bumptech.glide:glide:4.13.2                 | 图片加载                  | 必须       |
+| androidx.startup:startup-runtime:1.1.1                 | 启动框架                  | 必须       |
+| com.squareup.retrofit2:retrofit:2.9.0等                 | retrofit,okttp（包含好几个） | 必须       |
+| jetpack 相关库                                            | jetpack等              | 可以根据自己项目 |
+| 其他自己三方相关库                                              | 万年不动的                 | 可以接入     |
+|                                                        |                       |          |
+
 
