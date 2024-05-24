@@ -52,7 +52,7 @@
 3. 配置里面哪些能改哪些不能改？  
 &emsp;&emsp;3.1宿主中VersionImpl对应 升级插件时修改maven-wgllss-sample-loader-version工程里 LoaderVersionImpl  ，不动宿主  
 &emsp;&emsp;3.2宿主中FaceImpl对于升级插件时 修改Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl工程里DownLoadFaceImpl ，不动宿主  
-&emsp;&emsp;3.3宿主中SampleApplication内 ` WXDynamicLoader.instance.installPlugin(base, FaceImpl(), VersionImpl())`内部怎么判断下再，  
+&emsp;&emsp;3.3宿主中SampleApplication内 ` WXDynamicLoader.instance.installPlugin(base, FaceImpl(), VersionImpl())`内部怎么判断下载，  
 &emsp;&emsp;&emsp;&emsp;什么时候下载，什么时候加载如果逻辑需要修改，则修改Maven-Wgllss-Dynamic-Plugin-Loader-Impl内的 LoaderManagerImpl类下方法，  
 &emsp;&emsp;&emsp;&emsp;可以自己在该工程下见文件实现自己修改，父类方法可以重载修改，里面内容代码也可以全部copy过来全部自己实现，不动宿主    
 &emsp;&emsp;3.4、要添加删除的模块还有哪些不能自定义？  
