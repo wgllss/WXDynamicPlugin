@@ -27,13 +27,25 @@
 &emsp;&emsp;1.1：动态实现更换下载插件地址，文件，以及debug 等 (Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl) 宿主默认有一份， 可以不用  
 &emsp;&emsp;1.2：动态实现根据版本下载插件，加载插件 (Maven-Wgllss-Dynamic-Plugin-Loader-Impl) 宿主默认有一份，可以不用）   
 2. 哪些插件工程程是必须？    
-| 工程名                                        | 介绍          | 是否必须 |
+
+| 工程名                                      | 介绍          | 是否必须 |
 |--------------------------------------------|-------------|------|
 | Maven-Wgllss-Dynamic-Plugin-Common-Library | 公共代码库插件模块   | 是    |
 | maven-wgllss-sample-business-library       | 公共业务代码库插件模块 | 是    |
-
-
-
+| maven-wgllss-sample-assets-source-apk       | Assets资源插件模块 | 如果没有可不用    |
+| maven-wgllss-sample-skin-resource-apk       | 皮肤插件模块 | 是    |
+| maven-wgllss-sample-ui-loading       | 启动页插件模块 | 是    |
+| maven-wgllss-sample-ui-home       | 首页插件模块 | 是    |
+| maven-wgllss-sample-ui-other-lib       | 首页之外fragment插件模块 | 如果没有可不用    |
+| maven-wgllss-sample-ui-other       | 首页之外fragment布局资源插件模块 | 如果没有可不用    |
+| maven-wgllss-sample-ui-other2-lib2       | 首页之外的Activity插件模块 | 如果没有可不用    |
+| maven-wgllss-sample-ui-other2       | 首页之外的Activity插件模块布局资源 | 如果没有可不用    |
+| maven-wgllss-sample-loader-version       | 各个插件版本模块 | 是    |
+| Maven-Wgllss-Dynamic-Plugin-SDK下面2个工程       | 真正插件框架SDK代码  | 是    |
+| Maven-Wgllss-Dynamic-Plugin-Generate下4个工程       | 辅助打包 | 是    |
+| Maven-Wgllss-Dynamic-Plugin-Manager       | 管理插件中 activity跳转,service 启动绑定 ，皮肤，资源等 | 是    |
+| Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl       | 动态实现更换下载插件地址，文件，以及debug 等 | 可不用    |
+| Maven-Wgllss-Dynamic-Plugin-Loader-Impl       | 动态实现根据版本下载插件，加载插件 | 可不用    |
 
 
 
