@@ -25,6 +25,11 @@ class VersionImpl : ILoaderVersion {
     //动态实现更换下载插件地址，文件，已经debug  Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl
     override fun getCdlfd() = Triple("", "", 0)
 
+
+    /**
+     * 下面要添加删除 map内内容 map的key 不能自定义
+     * 即:COMMON,WEB_ASSETS,COMMON_BUSINESS,RUNTIME,MANAGER,RESOURCE_SKIN,HOME不能动
+     */
     override fun getMapDLU() = linkedMapOf(
         DynamicPluginConstant.COMMON to Pair("classes_common_lib_dex", 1000), //Maven-Wgllss-Dynamic-Plugin-Common-Library 插件工程 和 版本号
         DynamicPluginConstant.WEB_ASSETS to Pair("classes_business_web_res", 1000), //maven-wgllss-sample-assets-source-apk 插件工程 和版本号

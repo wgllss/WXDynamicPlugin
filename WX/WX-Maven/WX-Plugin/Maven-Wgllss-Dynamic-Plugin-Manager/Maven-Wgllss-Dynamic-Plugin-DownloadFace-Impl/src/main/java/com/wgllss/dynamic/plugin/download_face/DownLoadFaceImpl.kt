@@ -39,6 +39,10 @@ class DownLoadFaceImpl : IDynamicDownLoadFace {
 
     override fun getOtherDLU() = "${getBaseL()}vc"
 
+    /**
+     * 下面要添加删除 map内内容 map的key 不能自定义
+     * 即:VERSION,COMMON,WEB_ASSETS,COMMON_BUSINESS,HOME,RESOURCE_SKIN,RUNTIME,MANAGER,FIRST,CLMD,CDLFD不能动
+     */
     override fun getMapDLU() = mutableMapOf(
         VERSION to "${getBaseL()}classes_version_dex",
         COMMON to "${getBaseL()}classes_common_lib_dex",

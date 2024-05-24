@@ -41,6 +41,10 @@ class FaceImpl : IDynamicDownLoadFace {
 
     override fun getOtherDLU() = realUrl("vc")
 
+    /**
+     * 下面要添加删除 map内内容 map的key 不能自定义
+     * 即:VERSION,COMMON,WEB_ASSETS,COMMON_BUSINESS,HOME,RESOURCE_SKIN,RUNTIME,MANAGER,FIRST,CLMD,CDLFD不能动
+     */
     override fun getMapDLU() = mutableMapOf(
         VERSION to realUrl("classes_version_dex"), // 对应 maven-wgllss-sample-loader-version打包后插件
         COMMON to realUrl("classes_common_lib_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Common-Library打包后插件
