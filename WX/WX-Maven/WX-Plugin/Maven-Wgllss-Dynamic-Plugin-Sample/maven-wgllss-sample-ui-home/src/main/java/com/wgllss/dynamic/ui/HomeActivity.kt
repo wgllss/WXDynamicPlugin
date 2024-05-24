@@ -75,7 +75,7 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
         addContentView(navigationView, navigationView.layoutParams)
         initNavigation(navigationView)
         lifecycleScope.launch(Dispatchers.IO) {
-            PluginManager.instance.deleteOldFile()
+            PluginManager.instance.deleteOldFile()//检查是否有旧版本插件文件需要删除
         }
     }
 
