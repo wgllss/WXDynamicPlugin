@@ -49,6 +49,53 @@
 | Maven-Wgllss-Dynamic-Plugin-Loader-Impl       | 动态实现根据版本下载插件，加载插件 | 可不用    |
 
 
+3. 配置里面哪些能改哪些不能改？  
+&emsp;&emsp;3.1宿主中VersionImpl对应 升级插件时修改maven-wgllss-sample-loader-version工程里 LoaderVersionImpl  ，不动宿主  
+&emsp;&emsp;3.2宿主中FaceImpl对于升级插件时 修改Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl工程里DownLoadFaceImpl ，不动宿主  
+&emsp;&emsp;3.3宿主中SampleApplication内 ` WXDynamicLoader.instance.installPlugin(base, FaceImpl(), VersionImpl())`内部怎么判断下再，  
+&emsp;&emsp;&emsp;&emsp;什么时候下载，什么时候加载如果逻辑需要修改，则修改Maven-Wgllss-Dynamic-Plugin-Loader-Impl内的 LoaderManagerImpl类下方法，  
+&emsp;&emsp;&emsp;&emsp;可以自己在该工程下见文件实现自己修改，父类方法可以重载修改，里面内容代码也可以全部copy过来全部自己实现，不动宿主    
+&emsp;&emsp;3.4、要添加删除的模块还有哪些不能自定义？  
+&emsp;&emsp;&emsp;&emsp;FaceImpl和DownLoadFaceImpl中  getMapDLU的map key不能自定义，如下：
+
+```
+ /**
+     * 下面要添加删除 map内内容 map的key 不能自定义
+     * 即:VERSION,COMMON,WEB_ASSETS,COMMON_BUSINESS,HOME,RESOURCE_SKIN,RUNTIME,MANAGER,FIRST,CLMD,CDLFD不能动
+     */
+    override fun getMapDLU() = mutableMapOf(
+        VERSION to realUrl("classes_version_dex"), // 对应 maven-wgllss-sample-loader-version打包后插件
+        COMMON to realUrl("classes_common_lib_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Common-Library打包后插件
+        WEB_ASSETS to realUrl("classes_business_web_res"), // 对应 maven-wgllss-sample-assets-source-apk打包后插件
+        COMMON_BUSINESS to realUrl("classes_business_lib_dex"), // 对应 maven-wgllss-sample-business-library打包后插件
+        HOME to realUrl("classes_home_dex"), // 对应 maven-wgllss-sample-ui-home打包后插件
+        RESOURCE_SKIN to realUrl("classes_common_skin_res"), // 对应 maven-wgllss-sample-skin-resource-apk打包后插件
+        RUNTIME to realUrl("classes_wgllss_dynamic_plugin_runtime"),// 对应 Maven-Wgllss-Dynamic-Plugin-RunTime-Apk打包后插件
+        MANAGER to realUrl("classes_manager_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Manager打包后插件
+        FIRST to realUrl("classes_loading_dex"), // 对应 maven-wgllss-sample-ui-loading打包后插件
+        CLMD to realUrl("class_loader_impl_dex"), // 对应 Maven-Wgllss-Dynamic-Plugin-Loader-Impl打包后插件
+        CDLFD to realUrl("classes_downloadface_impl_dex") // 对应 Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl打包后插件
+    )
+```
+
+&emsp;&emsp;&emsp;&emsp;VersionImpl和LoaderVersionImpl中  getMapDLU的map key不能自定义，如下：
+
+
+```
+ /**
+     * 下面要添加删除 map内内容 map的key 不能自定义
+     * 即:COMMON,WEB_ASSETS,COMMON_BUSINESS,RUNTIME,MANAGER,RESOURCE_SKIN,HOME不能动
+     */
+    override fun getMapDLU() = linkedMapOf(
+        COMMON to Pair("classes_common_lib_dex", 1000), //Maven-Wgllss-Dynamic-Plugin-Common-Library 插件工程 和 版本号
+        WEB_ASSETS to Pair("classes_business_web_res", 1000),  //maven-wgllss-sample-assets-source-apk 插件工程 和版本号
+        COMMON_BUSINESS to Pair("classes_business_lib_dex", 1001), //maven-wgllss-sample-business-library 插件工程 和 版本号
+        RUNTIME to Pair("classes_wgllss_dynamic_plugin_runtime", 1000), //Maven-Wgllss-Dynamic-Plugin-RunTime-Apk 插件工程 和 版本号
+        MANAGER to Pair("classes_manager_dex", 1000), // Maven-Wgllss-Dynamic-Plugin-Manager 插件工程 和 版本号
+        RESOURCE_SKIN to Pair("classes_common_skin_res", 1000), // maven-wgllss-sample-skin-resource-apk 插件工程 和 版本号
+        HOME to Pair("classes_home_dex", 1000)//maven-wgllss-sample-ui-home 插件工程 和 版本号
+    )
+```
 
 
 
