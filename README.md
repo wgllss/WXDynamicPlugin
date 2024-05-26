@@ -8,7 +8,7 @@
 
 ## 示例Sample
 
-!![输入图片说明](WX-Resource/wx-pic/Qrcode.png)
+!![输入图片说明](https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Qrcode.png)
 
 ## 示例Sample截图
 
