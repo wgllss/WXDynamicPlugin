@@ -166,11 +166,11 @@
 &emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面供下载:即上面修改的 getHostL()+getBaseL() 服务器文件夹下面  ,同时把我准备的WX-Resource/so 文件夹和 WX-Resource/skins 文件夹拷贝过去，这是供sample 工程演示所用的，另外皮肤资源包多个apk文件也可以自行通过源码工程打包  
 <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
-####  [插件内部详细介绍](https://gitee.com/wgllss888/WXDynamicPlugin/blob/master/WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample)    
-####  [接入详细指南](https://gitee.com/wgllss888/WXDynamicPlugin/tree/master/WX/WX-Maven/WX-Plugin)
+####  [插件内部详细介绍](https://juejin.cn/post/7368397264026370083)    
+####  [接入详细指南](https://juejin.cn/post/7372393698230550565)
 #### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力
 ## 欢迎光临：  
-#### * **[我的另一个插件示例工程（WXMusic 在线音乐）](https://gitee.com/wgllss888/WXMusic)**  
+#### * **[我的另一个插件示例工程（WXMusic 在线音乐）](https://juejin.cn/post/7347994218235363382)**  
 
 #### * **[我的掘金地址](https://juejin.cn/user/356661835082573)**     
 
