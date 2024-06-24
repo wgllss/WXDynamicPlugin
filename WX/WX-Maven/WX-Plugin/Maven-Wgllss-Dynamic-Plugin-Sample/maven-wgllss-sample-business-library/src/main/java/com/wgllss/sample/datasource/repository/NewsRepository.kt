@@ -38,7 +38,7 @@ class NewsRepository private constructor(private val context: Context) {
         }
         val map = Gson().fromJson<MutableMap<String, MutableList<NewsBean>>>(str, object : TypeToken<Map<String, MutableList<NewsBean>>>() {}.type)
         emit(map[path]!!)
-        if ("BAI6I0O5wangning" == path) {
+        if (start == 0 && "BAI6I0O5wangning" == path) {
             MMKVHelp.saveHomeTab1Data(str)
         }
     }

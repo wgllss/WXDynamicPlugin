@@ -156,7 +156,9 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
             initKey(key)
             result[key]?.observe(viewLifecycleOwner) {
                 WLog.e(this@HomeFragment, key)
-                homeNewsAdapter.notifyData(it, getSkinResources())
+                if ("BAI6I0O5wangning" != key || !viewModel.isLoadOffine) {
+                    homeNewsAdapter.notifyData(it, getSkinResources())
+                }
                 homeNewsAdapter.addFooter()
             }
             enableLoadeMore[key]?.observe(viewLifecycleOwner) {

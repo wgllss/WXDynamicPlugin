@@ -50,17 +50,16 @@ class HomeTabViewModel : BaseViewModel() {
             val start = pageNoMap[key]!!
             val end = start + 10
             newsRepositoryL.getNetTabInfo(key, start, end).onEach {
-                if (!isLoadOffine)
-                    if (pageNoMap[key] == 0) {
-                        WLog.e(this@HomeTabViewModel, key)
-                        result[key]?.postValue(it)
-                    } else {
-                        val list = result[key]?.value
-                        list?.removeAt(list.size - 1)
-                        list?.addAll(it)
-                        result[key]?.postValue(list)
-                    }
-                else isLoadOffine = false
+                if (pageNoMap[key] == 0) {
+                    WLog.e(this@HomeTabViewModel, key)
+                    result[key]?.postValue(it)
+                    isLoadOffine = false
+                } else {
+                    val list = result[key]?.value ?: mutableListOf()
+                    list?.removeAt(list.size - 1)
+                    list?.addAll(it)
+                    result[key]?.postValue(list)
+                }
                 var c = liveDataLoadSuccessCount.value?.plus(1)
                 liveDataLoadSuccessCount.postValue(c)
                 enableLoadeMore[key]?.postValue(it.size == 10)

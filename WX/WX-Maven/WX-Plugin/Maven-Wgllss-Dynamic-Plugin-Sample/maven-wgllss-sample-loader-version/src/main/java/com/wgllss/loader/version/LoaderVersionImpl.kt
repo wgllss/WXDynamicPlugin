@@ -16,7 +16,7 @@ import com.wgllss.dynamic.host.lib.version.ILoaderVersion
  **/
 class LoaderVersionImpl : ILoaderVersion {
 
-    override fun getV() = 1001 //总版本号 只要下面每个地方改一下 此处版本号要往上加+1，下面可同一时间改多个，上面加一下版本号
+    override fun getV() = 1002 //总版本号 只要下面每个地方改一下 此处版本号要往上加+1，下面可同一时间改多个，上面加一下版本号
 
     override fun isMustShowLoading() = false //下次下载插件 是否显示主下载loading 页面
 
@@ -42,11 +42,11 @@ class LoaderVersionImpl : ILoaderVersion {
     override fun getMapDLU() = linkedMapOf(
         COMMON to Pair("classes_common_lib_dex", 1001), //Maven-Wgllss-Dynamic-Plugin-Common-Library 插件工程 和 版本号
         WEB_ASSETS to Pair("classes_business_web_res", 1000),  //maven-wgllss-sample-assets-source-apk 插件工程 和版本号
-        COMMON_BUSINESS to Pair("classes_business_lib_dex", 1002), //maven-wgllss-sample-business-library 插件工程 和 版本号
+        COMMON_BUSINESS to Pair("classes_business_lib_dex", 1003), //maven-wgllss-sample-business-library 插件工程 和 版本号
         RUNTIME to Pair("classes_wgllss_dynamic_plugin_runtime", 1000), //Maven-Wgllss-Dynamic-Plugin-RunTime-Apk 插件工程 和 版本号
         MANAGER to Pair("classes_manager_dex", 1000), // Maven-Wgllss-Dynamic-Plugin-Manager 插件工程 和 版本号
         RESOURCE_SKIN to Pair("classes_common_skin_res", 1000), // maven-wgllss-sample-skin-resource-apk 插件工程 和 版本号
-        HOME to Pair("classes_home_dex", 1001)//maven-wgllss-sample-ui-home 插件工程 和 版本号
+        HOME to Pair("classes_home_dex", 1002)//maven-wgllss-sample-ui-home 插件工程 和 版本号
     )
 
     override fun getOthers() = mutableMapOf(
