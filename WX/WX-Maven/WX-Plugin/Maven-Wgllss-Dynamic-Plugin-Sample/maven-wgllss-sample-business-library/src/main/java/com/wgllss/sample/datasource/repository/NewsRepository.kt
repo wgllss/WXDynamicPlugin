@@ -9,6 +9,7 @@ import com.wgllss.sample.datasource.net.RetrofitUtils
 import com.wgllss.sample.feature_system.room.CollectDataBase
 import com.wgllss.sample.feature_system.room.help.RoomDBMigration
 import com.wgllss.sample.feature_system.room.table.CollectTableBean
+import com.wgllss.sample.feature_system.savestatus.MMKVHelp
 import kotlinx.coroutines.flow.flow
 import okio.buffer
 import okio.sink
@@ -37,6 +38,9 @@ class NewsRepository private constructor(private val context: Context) {
         }
         val map = Gson().fromJson<MutableMap<String, MutableList<NewsBean>>>(str, object : TypeToken<Map<String, MutableList<NewsBean>>>() {}.type)
         emit(map[path]!!)
+        if ("BAI6I0O5wangning" == path) {
+            MMKVHelp.saveHomeTab1Data(str)
+        }
     }
 
     suspend fun getNewsDetailInfo(id: String, fileName: String) = flow {

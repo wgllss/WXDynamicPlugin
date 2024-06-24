@@ -16,6 +16,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.tabs.TabLayout
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.wgllss.core.ex.getIntToDip
 import com.wgllss.core.ex.initColors
 import com.wgllss.core.widget.DividerGridItemDecoration
@@ -23,7 +25,10 @@ import com.wgllss.core.widget.clearLongClickToast
 import com.wgllss.core.units.ResourceUtils
 import com.wgllss.core.units.ScreenManager
 import com.wgllss.dynamic.plugin.manager.PluginResource
+import com.wgllss.dynamic.sample.feature_home.adapter.HomeNewsAdapter
 import com.wgllss.dynamic.sample.feature_home.pkg.ResourceContains
+import com.wgllss.sample.data.NewsBean
+import com.wgllss.sample.feature_system.savestatus.MMKVHelp
 
 object GenerateHomeLayout {
 
@@ -141,12 +146,13 @@ object GenerateHomeLayout {
             itemDecoration.layoutParams = ViewGroup.LayoutParams(size, size)
             itemDecoration.setBackgroundColor(Color.parseColor("#60000000"))
             addItemDecoration(DividerGridItemDecoration(context, GridLayoutManager.VERTICAL, itemDecoration))
-//            val json = MMKVHelp.getHomeTab1Data()
-//            json?.let {
-//                val homeMusicAdapter = HomeNewsAdapter(res, ResourceContains.packageName)
-//                adapter = homeMusicAdapter
-//                homeMusicAdapter.notifyData(Gson().fromJson(json, object : TypeToken<MutableList<NewsBean>>() {}.type), res)
-//            }
+            val json = MMKVHelp.getHomeTab1Data()
+            json?.let {
+                val homeNewsAdapter = HomeNewsAdapter(res, ResourceContains.packageName)
+                adapter = homeNewsAdapter
+                val map = Gson().fromJson<MutableMap<String, MutableList<NewsBean>>>(it, object : TypeToken<Map<String, MutableList<NewsBean>>>() {}.type)
+                homeNewsAdapter.notifyData(map["BAI6I0O5wangning"]!!, PluginResource.getSkinResources())
+            }
         }
         swipeRefreshLayout.addView(homeFragmentView)
         return swipeRefreshLayout

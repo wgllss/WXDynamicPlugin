@@ -70,7 +70,7 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (!this::swipeRefreshLayout.isInitialized) {
-            if ("BBM54PGAwangning" == key) {
+            if ("BAI6I0O5wangning" == key) {
                 runBlocking {
                     swipeRefreshLayout = HomeContains.getViewByKey(inflater.context, LaunchInflateKey.home_fragment)!! as SwipeRefreshLayout
                     rvPlList = swipeRefreshLayout.findViewById(getSkinPluginID("home_recycle_view"))
