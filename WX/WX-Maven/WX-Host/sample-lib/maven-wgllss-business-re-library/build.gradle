@@ -39,7 +39,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     //滑动删除
-    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+//    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     implementation "androidx.startup:startup-runtime:1.1.1"
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
