@@ -17,16 +17,20 @@
 
         <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginStandardActivity"
+            android:launchMode="standard"
             android:theme="@style/LauncherTheme2" />
 
         <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceActivity"
+            android:launchMode="singleInstance"
             android:theme="@style/LauncherTheme2" />
         <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTaskActivity"
+            android:launchMode="singleTask"
             android:theme="@style/LauncherTheme2" />
         <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
+            android:launchMode="singleTop"
             android:theme="@style/LauncherTheme2" />
 
         <service
