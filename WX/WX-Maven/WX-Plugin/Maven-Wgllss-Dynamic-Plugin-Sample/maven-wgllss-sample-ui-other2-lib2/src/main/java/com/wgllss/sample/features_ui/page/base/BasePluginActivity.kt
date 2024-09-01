@@ -9,12 +9,15 @@ import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.wgllss.core.activity.BaseActivity
 import com.wgllss.core.activity.BaseViewModePluginActivity
+import com.wgllss.core.units.ResourceUtils
 import com.wgllss.core.viewmodel.BaseViewModel
 import com.wgllss.dynamic.sample.other2.BuildConfig
 import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate
 import com.wgllss.dynamic.plugin.manager.PluginResource
 
-open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME), WXHostActivityDelegate {
+open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) :
+    BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME),
+    WXHostActivityDelegate {
 
     private var isPlugin = false
     protected lateinit var activity: FragmentActivity
@@ -31,6 +34,10 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         activity = context
         resourcesP = resources
         attachBaseContext(context)
+    }
+
+    override fun initControl(savedInstanceState: Bundle?) {
+        ResourceUtils.setContentLayout(activity, resourcesPlugin, layoutName, packageNamePlugin)
     }
 
     override fun bindEvent() {
@@ -126,7 +133,8 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
     override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory {
         if (!this::mDefaultFactory.isInitialized) {
             mDefaultFactory = SavedStateViewModelFactory(
-                activity.application, activity,
+                activity.application,
+                activity,
                 if (activity.intent != null) activity.intent.extras else null
             )
         }
