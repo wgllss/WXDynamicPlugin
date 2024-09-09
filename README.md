@@ -170,7 +170,7 @@
 ####  [接入详细指南](https://juejin.cn/post/7372393698230550565)
 ####  [大型项目架构：全动态插件化+模块化+Kotlin+协程+Flow+Retrofit+JetPack+MVVM+极限瘦身+极限启动优化+架构示例+全网唯一](https://juejin.cn/post/7381787510071934985)
 ####  [大型项目架构：解析全动态插件化框架WXDynamicPlugin是如何做到全动态化的？](https://juejin.cn/post/7388891131037777929)
-
+####  [还在不断升级发版吗？从0到1带你看懂WXDynamicPlugin全动态插件化框架？](https://juejin.cn/post/7412124636239904819)
 
 #### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力
 ## 欢迎光临：  

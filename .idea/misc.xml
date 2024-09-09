@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ASMIdeaPluginConfiguration">
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
@@ -42,6 +41,11 @@
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/orange-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/pink-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/red-resource/src/main/res/drawable/ic_baseline_grade_24.xml" value="0.165" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/ic_baseline_pause_36.xml" value="0.108" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/ic_baseline_play_arrow_36.xml" value="0.108" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/ic_baseline_skip_next_36.xml" value="0.1385" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/ic_baseline_skip_previous_36.xml" value="0.1385" />
+        <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib/src/main/res/drawable/splash_preview.xml" value="0.108" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.131" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample/src/main/res/drawable/ic_launcher_background.xml" value="0.131" />
         <entry key="..\:/git_project/WXDynamicPlugin/WX/WX-Maven/WX-Host/sample/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.131" />
