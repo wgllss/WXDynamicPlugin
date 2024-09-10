@@ -38,6 +38,9 @@ android {
 }
 
 dependencies {
+    //如果implementation 'com.wang.avi:library:2.1.3' 拉取不下来 放开下面这句注释，用本地的包
+//    implementation files('libs/com_wang_avi_library-2.1.3.aar')
+
     implementation libSupportAppcompat
     implementation 'androidx.activity:activity-ktx:1.3.0-rc01'
     implementation 'androidx.fragment:fragment-ktx:1.4.0-alpha04'

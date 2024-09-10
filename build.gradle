@@ -42,7 +42,6 @@ allprojects {
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
         maven { url 'https://jitpack.io' }
-//        maven { url uri('../WXDynamicMusic/WX-Groovy-Plugin/repo') }
         maven { url 'https://repo1.maven.org/maven2/' }
         maven { url 'https://s01.oss.sonatype.org/content/repositories/releases/' }
     }
