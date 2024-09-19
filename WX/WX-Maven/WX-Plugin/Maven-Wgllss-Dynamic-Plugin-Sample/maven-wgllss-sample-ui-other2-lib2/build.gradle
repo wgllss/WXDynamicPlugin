@@ -88,7 +88,12 @@ def commandDex(buildType) {
         group = 'other'
         description = "${name}到dx执行中..."
         workingDir workingDirPath
-        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
+        if (System.getProperty('os.name').toLowerCase(Locale.ROOT).contains('windows')) {
+            it.commandLine 'cmd', '/c', "d8 --output ${outputDexFile.name} ${outputFile.name}"
+        } else {
+            it.commandLine bash, '-c ', "d8 --output ${outputDexFile.name} ${outputFile.name}"
+        }
+//        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
     }.dependsOn(copyTask.name)
 
     return tasks.create("assembleDxCommandAndCopy", Copy) {
