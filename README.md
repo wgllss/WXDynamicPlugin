@@ -2,13 +2,13 @@
 
 ## 介绍
 
-####      * **WXDynamicPlugin是由本人自住研发的Android插件框架**
+####      **WXDynamicPlugin是由本人自住研发的Android插件框架**
 
 ### 零反射，零HooK,全动态化，插件化框架，全网唯一结合启动优化的插件化架构
 
 ## 示例Sample
 
-!![输入图片说明](https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Qrcode.png)
+![扫码下载](https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Qrcode.png)
 
 ## 示例Sample截图
 
