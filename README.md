@@ -8,40 +8,40 @@
 
 ## 示例Sample
 
-![扫码下载](https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Qrcode.png)
+![扫码下载](https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Qrcode.png)
 
 ## 示例Sample截图
 
-|                                                                                                                                        |                                                                                                                                             |                                                                                                                                        |
-|----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>    | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>           | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>  |
-| <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/> | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>        | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>   |
-| <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>      | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/> | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/> |
-| <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>      | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>      | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>      |
+|                                                                                                                                    |                                                                                                                                             |                                                                                                                                        |
+|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>    | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>           | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>  |
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/> | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>        | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>   |
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>  | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/> | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/> |
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>  | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>      | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>      |
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>)
 
-[//]: # (<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>)
+[//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>)
 
 ## 与市面上其他插件框架相比，WXDynamicPlugin主要具有以下优势和特点
 
@@ -109,12 +109,12 @@
 
 ##### 然后在IDE中选择 app 或 sample 模块直接运行，如下:
 
-  <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_app.jpeg" width="181" height="56"/>
-  <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/run_sample.jpeg" width="578" height="38"/>
+  <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/run_app.jpeg" width="181" height="56"/>
+  <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/run_sample.jpeg" width="578" height="38"/>
 
 ## 项目工程目录截图
 
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/project_img.png" width="331" height="631"/>
+<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/project_img.png" width="331" height="631"/>
 
 ## 项目工程目录介绍
 
@@ -180,11 +180,11 @@
 &emsp;&emsp;修改 getHostL() 地址为自己服务器地址, 修改 getBaseL() 中主要路劲,确保修改后地址可以访问通  
 &emsp;&emsp;然后将打包好的14个文件 放入getHostL()+getBaseL() 服务器文件夹下面  
 &emsp;&emsp;该 14个文件打包如下:  
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
+<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
 
 &emsp;&emsp;点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
 &emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面供下载:即上面修改的 getHostL()+getBaseL() 服务器文件夹下面 ,同时把我准备的WX-Resource/so 文件夹和 WX-Resource/skins 文件夹拷贝过去，这是供sample 工程演示所用的，另外皮肤资源包多个apk文件也可以自行通过源码工程打包  
-<img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
+<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
 ## 全动态插件化框架WXDynamicPlugin介绍文章：
 
