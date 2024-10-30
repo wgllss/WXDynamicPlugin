@@ -1,14 +1,15 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.host.lib.loader_base"
+
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -30,7 +31,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'com.google.protobuf:protobuf-java:3.5.1'
+    implementation libs.protobuf
 
     implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
@@ -38,6 +39,8 @@ dependencies {
     implementation project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Home-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
-    compileOnly activity_ktx
+    implementation libs.androidx.activity
+//    implementation libs.androidx.lifecycle.runtime.ktx
+//    compileOnly activity_ktx
 //    compileOnly fragment_ktx
 }

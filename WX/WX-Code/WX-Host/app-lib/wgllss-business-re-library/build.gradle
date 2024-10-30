@@ -1,16 +1,16 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.sample.library.re"
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -36,32 +36,25 @@ android {
 
 dependencies {
     implementation project(':wgllss-dynamic-host-skin-resource-lib')
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    //滑动删除
-//    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
-    implementation "androidx.startup:startup-runtime:1.1.1"
-
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'com.squareup.okio:okio:2.10.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    implementation libs.glide
+    implementation libs.swiperefreshlayout
+    implementation libs.startup.runtime
+    implementation libs.squareup.retrofit
+    implementation libs.com.squareup.okhttp3.logging.interceptor
+    implementation libs.okhttp3.okhttp
+    implementation libs.okio
+    implementation libs.converter.gson
+    implementation libs.converter.scalars
     //解析html
-    implementation 'org.jsoup:jsoup:1.15.3'
-    implementation "androidx.palette:palette-ktx:1.0.0"
+    implementation libs.org.jsoup.jsoup
+    //noinspection UseTomlInstead
+    implementation libs.palette.ktx
     //room 数据库
-    def room_version = "2.4.3"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-
+    implementation libs.room.runtime
+    kapt libs.room.compiler
     //mmkv
-    implementation 'com.tencent:mmkv:1.2.14'
-
-    def exoplayer_version = '2.18.0'
-    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
-    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
-    implementation "com.google.android.exoplayer:extension-mediasession:$exoplayer_version"
-//    implementation "com.google.android.exoplayer:extension-cast:$exoplayer_version"
+    implementation libs.mmkv
+    implementation libs.exoplayer.core
+    implementation libs.exoplayer.ui
+    implementation libs.google.extension.mediasession
 }

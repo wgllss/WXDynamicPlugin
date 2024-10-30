@@ -1,15 +1,19 @@
 plugins {
-    id 'com.android.library'
+    alias(libs.plugins.android.library)
 }
-
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.host.lib.classloader"
+
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {

@@ -7,6 +7,7 @@ import android.support.v4.media.session.PlaybackStateCompat
 import android.view.View
 import androidx.core.net.toUri
 import androidx.lifecycle.*
+import com.google.android.exoplayer2.extractor.mp4.Track.Transformation
 import com.wgllss.core.units.AppGlobals
 import com.wgllss.core.viewmodel.BaseViewModel
 import com.wgllss.sample.feature_system.globle.Constants.MEDIA_ARTNETWORK_URL_KEY
@@ -113,13 +114,11 @@ class PlayModel : BaseViewModel() {
             flow {
                 while (updatePosition) {
                     val currPosition = playbackState?.value?.currentPlayBackPosition ?: 0
-                    if (mediaPosition.value != currPosition)
-                        mediaPosition.postValue(currPosition)
+                    if (mediaPosition.value != currPosition) mediaPosition.postValue(currPosition)
                     delay(998)
                 }
                 emit(0)
-            }.flowOnIOAndCatch()
-                .collect()
+            }.flowOnIOAndCatch().collect()
         }
     }
 

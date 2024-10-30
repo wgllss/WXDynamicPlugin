@@ -1,16 +1,15 @@
 plugins {
-    id 'com.android.application'
+    alias(libs.plugins.android.application)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-//    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdkVersion 32
+    namespace 'com.wgllss.sample.web.assets.source'
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-//        targetSdkVersion rootProject.ext.targetSdkVersion
-        targetSdkVersion 32
+        applicationId "com.wgllss.sample.web.assets.source"
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }

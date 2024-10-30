@@ -22,7 +22,10 @@ class TestContentProvider(val context: Context) : WXHostContentProviderDelegate 
         try {
             db.beginTransaction()
 //            return db.query("select * from collect_tab")
-            return db.query(selection)
+            selection?.let {
+                return db.query(it)
+            }
+
         } catch (e: Exception) {
             e.printStackTrace()
         } finally {

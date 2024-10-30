@@ -142,8 +142,7 @@ class PluginManager private constructor() {
      */
     fun getWebRes(): Resources {
         val file = DynamicManageUtils.getDxFile(context, dldir, webResFileName)
-        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES
-                or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
+        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
         val packageManager = context.applicationContext.packageManager
         val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, flags)
         val applicationInfo = packageInfo!!.applicationInfo
@@ -155,8 +154,7 @@ class PluginManager private constructor() {
 
 
     private fun getResourcesForApplication(file: File): Resources {
-        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES
-                or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
+        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
         val packageManager = context.applicationContext.packageManager
         val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, flags)
         val applicationInfo = packageInfo!!.applicationInfo
@@ -324,23 +322,25 @@ class PluginManager private constructor() {
         android.util.Log.e("bindService", "context:${context.javaClass.name}")
         val connectionKey = StringBuilder(hostServiceName).append(context.javaClass.name).toString()
         if (!mapAidl.containsKey(hostServiceName)) {
-            val intent = getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)
-            val connection = object : ServiceConnection {
-                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-                    val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
-                    mapAidl[hostServiceName] = aidl
-                }
+//            val intent =
+            getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)?.let {
+                val connection = object : ServiceConnection {
+                    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                        val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
+                        mapAidl[hostServiceName] = aidl
+                    }
 
-                override fun onServiceDisconnected(name: ComponentName?) {
+                    override fun onServiceDisconnected(name: ComponentName?) {
 
+                    }
                 }
-            }
-            context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
-            if (!mapConnection.containsKey(connectionKey)) {
-                mapConnection[connectionKey] = connection
-            }
-            if (!mapContextPluginService.containsKey(connectionKey)) {
-                mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+                context.bindService(it, connection, Context.BIND_AUTO_CREATE)
+                if (!mapConnection.containsKey(connectionKey)) {
+                    mapConnection[connectionKey] = connection
+                }
+                if (!mapContextPluginService.containsKey(connectionKey)) {
+                    mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+                }
             }
         } else {
             val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))

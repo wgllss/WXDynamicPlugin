@@ -1,15 +1,15 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.plugin.download_face.impl"
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -72,14 +72,16 @@ def createCopyTask(buildType) {
 //        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
     }.dependsOn(copyTask.name)
 
-    return tasks.create("assembleDxCommandAndCopy", Copy) {
-        group = 'other'
-        description = "复制${name}到项目目录里面."
-        from(outputDexFile.getParent()) {
-            include(outputDexFile.name)
-            rename { lastOutputDexFile.name }
+    return tasks.create("assembleDxCommandAndCopy") {
+        doLast {
+            copy {
+                from(outputDexFile.getParent()) {
+                    include(outputDexFile.name)
+                    rename { lastOutputDexFile.name }
+                }
+                into(lastOutputDexFile.getParent())
+            }
         }
-        into(lastOutputDexFile.getParent())
     }.dependsOn(assembleDxCommand.name)
 }
 

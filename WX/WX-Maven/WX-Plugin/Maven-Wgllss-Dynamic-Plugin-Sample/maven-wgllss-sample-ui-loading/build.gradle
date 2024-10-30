@@ -1,15 +1,15 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.loading"
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -30,7 +30,9 @@ android {
 }
 
 dependencies {
-    compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
+    implementation libs.kotlin.stdlib
+
+//    compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
     compileOnly project(path: ':maven-wgllss-common-re-library')
     compileOnly project(path: ':maven-wgllss-dynamic-host-skin-resource-lib')
 
@@ -39,11 +41,11 @@ dependencies {
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
 
-    compileOnly "androidx.startup:startup-runtime:1.1.1"
-    compileOnly 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    compileOnly 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    compileOnly 'androidx.activity:activity-ktx:1.3.0-rc01'
-    compileOnly 'androidx.fragment:fragment-ktx:1.4.0-alpha04'
+    compileOnly libs.startup.runtime
+    compileOnly libs.androidx.core.ktx
+    compileOnly libs.androidx.lifecycle.runtime.ktx
+    compileOnly libs.androidx.activity.ktx
+    compileOnly libs.androidx.fragment.ktx
 }
 
 
@@ -83,14 +85,16 @@ def createCopyTask(buildType) {
 //        it.commandLine 'cmd', "/c", "d8 --output ${outputDexFile.name} ${outputFile.name}"
     }.dependsOn(copyTask.name)
 
-    return tasks.create("assembleDxCommandAndCopy", Copy) {
-        group = 'other'
-        description = "复制${name}到项目目录里面."
-        from(outputDexFile.getParent()) {
-            include(outputDexFile.name)
-            rename { lastOutputDexFile.name }
+    return tasks.create("assembleDxCommandAndCopy") {
+        doLast {
+            copy {
+                from(outputDexFile.getParent()) {
+                    include(outputDexFile.name)
+                    rename { lastOutputDexFile.name }
+                }
+                into(lastOutputDexFile.getParent())
+            }
         }
-        into(lastOutputDexFile.getParent())
     }.dependsOn(assembleDxCommand.name)
 }
 

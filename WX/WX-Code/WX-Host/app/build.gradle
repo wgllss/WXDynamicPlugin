@@ -1,16 +1,16 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    namespace 'com.wgllss.dynamic.host'
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
         applicationId "com.wgllss.dynamic.host.sample"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 10000
         versionName "1.0000"
         ndk {
@@ -39,6 +39,10 @@ android {
             v1SigningEnabled true
             v2SigningEnabled true
         }
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
@@ -76,10 +80,10 @@ android {
 
 dependencies {
 
-    implementation libSupportAppcompat
-    implementation libSupportRecyclerView
-    implementation libSupportdesign
-    implementation constraintlayout
+    implementation libs.appcompat
+    implementation libs.androidx.recyclerview
+    implementation libs.google.material
+    implementation libs.constraintlayout
 
     implementation project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
     implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')

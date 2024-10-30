@@ -1,14 +1,15 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.host.lib.loader"
+
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }

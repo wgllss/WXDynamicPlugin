@@ -1,3 +1,35 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/releases/' }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/releases/' }
+        mavenCentral()
+//        flatDir { dirs "${rootProject.projectDir}/WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-common-re-library/libs/" }
+    }
+}
+
+
 rootProject.name = "WXDynamicPlugin"
 /***********************   以下 源码级接入方式 ***************************************/
 include ':app'
@@ -6,7 +38,7 @@ include ':wgllss-business-re-library'
 include ':wgllss-common-re-library'
 include ':wgllss-dynamic-host-library'
 include ':wgllss-dynamic-host-skin-resource-lib'
-
+//
 include ':Wgllss-Dynamic-Host-Version-Lib'
 include ':Wgllss-Dynamic-Host-Home-Lib'
 include ':Wgllss-Dynamic-Host-ClassLoader-Lib'
@@ -18,6 +50,7 @@ include ':Wgllss-Dynamic-Host-Loader-Lib'
 include ':Wgllss-Dynamic-Host-Loader-Base-Lib'
 include ':Wgllss-Dynamic-Host-Provider-Lib'
 include ':Wgllss-Dynamic-Host-Lib-Impl'
+
 
 include ':Wgllss-Dynamic-Plugin-Common-Library'
 
@@ -43,22 +76,22 @@ include ':wgllss-sample-create-all-app'
 include ':wgllss-sample-create-version-config-annotations'
 include ':wgllss-sample-create-version-config-app'
 include ':wgllss-sample-create-version-config-compiler'
-
-include ':dark-green-resource'
-include ':green-resource'
-include ':red-resource'
-include ':blue-resource'
-include ':pink-resource'
-include ':brown-resource'
-include ':orange-resource'
-include ':dark-red-resource'
-include ':light-green-resource'
-include ':dark-blue-resource'
-
-project(':Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
-project(':Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
-
-
+//
+//include ':dark-green-resource'
+//include ':green-resource'
+//include ':red-resource'
+//include ':blue-resource'
+//include ':pink-resource'
+//include ':brown-resource'
+//include ':orange-resource'
+//include ':dark-red-resource'
+//include ':light-green-resource'
+//include ':dark-blue-resource'
+//
+//project(':Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
+//project(':Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
+//
+//
 project(':app').projectDir = file('WX/WX-Code/WX-Host/app')
 
 project(':wgllss-business-re-library').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-business-re-library')
@@ -102,115 +135,115 @@ project(':wgllss-sample-create-all-app').projectDir = file('WX/WX-Code/WX-Plugin
 project(':wgllss-sample-create-version-config-annotations').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-annotations')
 project(':wgllss-sample-create-version-config-app').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-app')
 project(':wgllss-sample-create-version-config-compiler').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Generate/wgllss-sample-create-version-config-compiler')
-
-
-project(':dark-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-green-resource')
-project(':green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/green-resource')
-project(':red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/red-resource')
-project(':blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/blue-resource')
-project(':pink-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/pink-resource')
-project(':brown-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/brown-resource')
-project(':orange-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/orange-resource')
-project(':dark-red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-red-resource')
-project(':light-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/light-green-resource')
-project(':dark-blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-blue-resource')
-
-
-/*************************************************** 以下 是 maven 依赖接入方式 配置 ***************************************************************/
-
-
-include ':sample'
-
-include ':maven-wgllss-business-re-library'
-include ':maven-wgllss-common-re-library'
-include ':maven-wgllss-dynamic-host-library'
-include ':maven-wgllss-dynamic-host-skin-resource-lib'
-
-
-include ':Maven-Wgllss-Dynamic-Plugin-Common-Library'
-
-include ':Maven-Wgllss-Dynamic-Plugin-Manager'
-include ':Maven-Wgllss-Dynamic-Plugin-Loader-Impl'
-include ':Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl'
-
-include ':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk'
-include ':Maven-Wgllss-Dynamic-Plugin-Library'
-
-include ':maven-wgllss-sample-assets-source-apk'
-include ':maven-wgllss-sample-business-library'
-include ':maven-wgllss-sample-loader-version'
-include ':maven-wgllss-sample-skin-resource-apk'
-include ':maven-wgllss-sample-ui-home'
-include ':maven-wgllss-sample-ui-loading'
-include ':maven-wgllss-sample-ui-other'
-include ':maven-wgllss-sample-ui-other2'
-include ':maven-wgllss-sample-ui-other2-lib2'
-include ':maven-wgllss-sample-ui-other-lib'
-
-include ':maven-wgllss-sample-create-all-app'
-include ':maven-wgllss-sample-create-version-config-annotations'
-include ':maven-wgllss-sample-create-version-config-app'
-include ':maven-wgllss-sample-create-version-config-compiler'
-
-include ':maven-dark-green-resource'
-include ':maven-green-resource'
-include ':maven-red-resource'
-include ':maven-blue-resource'
-include ':maven-pink-resource'
-include ':maven-brown-resource'
-include ':maven-orange-resource'
-include ':maven-dark-red-resource'
-include ':maven-light-green-resource'
-include ':maven-dark-blue-resource'
-
-project(':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
-project(':Maven-Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
-
-
-project(':sample').projectDir = file('WX/WX-Maven/WX-Host/sample')
-
-project(':maven-wgllss-business-re-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-business-re-library')
-project(':maven-wgllss-common-re-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-common-re-library')
-project(':maven-wgllss-dynamic-host-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library')
-project(':maven-wgllss-dynamic-host-skin-resource-lib').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib')
-
-
-project(':Maven-Wgllss-Dynamic-Plugin-Common-Library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Common-Library')
-
-project(':Maven-Wgllss-Dynamic-Plugin-Manager').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Manager')
-project(':Maven-Wgllss-Dynamic-Plugin-Loader-Impl').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Loader-Impl')
-project(':Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl')
-
-project(':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-RunTime-Apk')
-project(':Maven-Wgllss-Dynamic-Plugin-Library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-Library')
-
-project(':maven-wgllss-sample-assets-source-apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-assets-source-apk')
-project(':maven-wgllss-sample-business-library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-business-library')
-project(':maven-wgllss-sample-loader-version').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version')
-project(':maven-wgllss-sample-skin-resource-apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-skin-resource-apk')
-project(':maven-wgllss-sample-ui-home').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-home')
-project(':maven-wgllss-sample-ui-loading').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-loading')
-project(':maven-wgllss-sample-ui-other').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other')
-project(':maven-wgllss-sample-ui-other2').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2')
-project(':maven-wgllss-sample-ui-other2-lib2').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2-lib2')
-project(':maven-wgllss-sample-ui-other-lib').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other-lib')
-
-project(':maven-wgllss-sample-create-all-app').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-all-app')
-project(':maven-wgllss-sample-create-version-config-annotations').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-annotations')
-project(':maven-wgllss-sample-create-version-config-app').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-app')
-project(':maven-wgllss-sample-create-version-config-compiler').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-compiler')
-
-
-project(':maven-dark-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-green-resource')
-project(':maven-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-green-resource')
-project(':maven-red-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-red-resource')
-project(':maven-blue-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-blue-resource')
-project(':maven-pink-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-pink-resource')
-project(':maven-brown-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-brown-resource')
-project(':maven-orange-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-orange-resource')
-project(':maven-dark-red-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-red-resource')
-project(':maven-light-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-light-green-resource')
-project(':maven-dark-blue-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-blue-resource')
+//
+//
+//project(':dark-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-green-resource')
+//project(':green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/green-resource')
+//project(':red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/red-resource')
+//project(':blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/blue-resource')
+//project(':pink-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/pink-resource')
+//project(':brown-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/brown-resource')
+//project(':orange-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/orange-resource')
+//project(':dark-red-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-red-resource')
+//project(':light-green-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/light-green-resource')
+//project(':dark-blue-resource').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin_Skin/dark-blue-resource')
+//
+//
+///*************************************************** 以下 是 maven 依赖接入方式 配置 ***************************************************************/
+//
+//
+//include ':sample'
+//
+//include ':maven-wgllss-business-re-library'
+//include ':maven-wgllss-common-re-library'
+//include ':maven-wgllss-dynamic-host-library'
+//include ':maven-wgllss-dynamic-host-skin-resource-lib'
+//
+//
+//include ':Maven-Wgllss-Dynamic-Plugin-Common-Library'
+//
+//include ':Maven-Wgllss-Dynamic-Plugin-Manager'
+//include ':Maven-Wgllss-Dynamic-Plugin-Loader-Impl'
+//include ':Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl'
+//
+//include ':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk'
+//include ':Maven-Wgllss-Dynamic-Plugin-Library'
+//
+//include ':maven-wgllss-sample-assets-source-apk'
+//include ':maven-wgllss-sample-business-library'
+//include ':maven-wgllss-sample-loader-version'
+//include ':maven-wgllss-sample-skin-resource-apk'
+//include ':maven-wgllss-sample-ui-home'
+//include ':maven-wgllss-sample-ui-loading'
+//include ':maven-wgllss-sample-ui-other'
+//include ':maven-wgllss-sample-ui-other2'
+//include ':maven-wgllss-sample-ui-other2-lib2'
+//include ':maven-wgllss-sample-ui-other-lib'
+//
+//include ':maven-wgllss-sample-create-all-app'
+//include ':maven-wgllss-sample-create-version-config-annotations'
+//include ':maven-wgllss-sample-create-version-config-app'
+//include ':maven-wgllss-sample-create-version-config-compiler'
+//
+//include ':maven-dark-green-resource'
+//include ':maven-green-resource'
+//include ':maven-red-resource'
+//include ':maven-blue-resource'
+//include ':maven-pink-resource'
+//include ':maven-brown-resource'
+//include ':maven-orange-resource'
+//include ':maven-dark-red-resource'
+//include ':maven-light-green-resource'
+//include ':maven-dark-blue-resource'
+//
+//project(':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-RunTime-Apk')
+//project(':Maven-Wgllss-Dynamic-Plugin-Library').projectDir = file('WX-Plugin/Wgllss-Dynamic-Plugin-SDK/Wgllss-Dynamic-Plugin-Library')
+//
+//
+//project(':sample').projectDir = file('WX/WX-Maven/WX-Host/sample')
+//
+//project(':maven-wgllss-business-re-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-business-re-library')
+//project(':maven-wgllss-common-re-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-common-re-library')
+//project(':maven-wgllss-dynamic-host-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library')
+//project(':maven-wgllss-dynamic-host-skin-resource-lib').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib')
+//
+//
+//project(':Maven-Wgllss-Dynamic-Plugin-Common-Library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Common-Library')
+//
+//project(':Maven-Wgllss-Dynamic-Plugin-Manager').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Manager')
+//project(':Maven-Wgllss-Dynamic-Plugin-Loader-Impl').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-Loader-Impl')
+//project(':Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Manager/Maven-Wgllss-Dynamic-Plugin-DownloadFace-Impl')
+//
+//project(':Maven-Wgllss-Dynamic-Plugin-RunTime-Apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-RunTime-Apk')
+//project(':Maven-Wgllss-Dynamic-Plugin-Library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-SDK/Maven-Wgllss-Dynamic-Plugin-Library')
+//
+//project(':maven-wgllss-sample-assets-source-apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-assets-source-apk')
+//project(':maven-wgllss-sample-business-library').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-business-library')
+//project(':maven-wgllss-sample-loader-version').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-loader-version')
+//project(':maven-wgllss-sample-skin-resource-apk').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-skin-resource-apk')
+//project(':maven-wgllss-sample-ui-home').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-home')
+//project(':maven-wgllss-sample-ui-loading').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-loading')
+//project(':maven-wgllss-sample-ui-other').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other')
+//project(':maven-wgllss-sample-ui-other2').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2')
+//project(':maven-wgllss-sample-ui-other2-lib2').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other2-lib2')
+//project(':maven-wgllss-sample-ui-other-lib').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Sample/maven-wgllss-sample-ui-other-lib')
+//
+//project(':maven-wgllss-sample-create-all-app').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-all-app')
+//project(':maven-wgllss-sample-create-version-config-annotations').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-annotations')
+//project(':maven-wgllss-sample-create-version-config-app').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-app')
+//project(':maven-wgllss-sample-create-version-config-compiler').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin-Generate/maven-wgllss-sample-create-version-config-compiler')
+//
+//
+//project(':maven-dark-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-green-resource')
+//project(':maven-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-green-resource')
+//project(':maven-red-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-red-resource')
+//project(':maven-blue-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-blue-resource')
+//project(':maven-pink-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-pink-resource')
+//project(':maven-brown-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-brown-resource')
+//project(':maven-orange-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-orange-resource')
+//project(':maven-dark-red-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-red-resource')
+//project(':maven-light-green-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-light-green-resource')
+//project(':maven-dark-blue-resource').projectDir = file('WX/WX-Maven/WX-Plugin/Maven-Wgllss-Dynamic-Plugin_Skin/maven-dark-blue-resource')
 
 
 

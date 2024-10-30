@@ -1,14 +1,15 @@
 plugins {
-    id 'com.android.application'
+    alias(libs.plugins.android.application)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    namespace 'com.wgllss.dynamic.plugin.runtime'
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        applicationId "com.wgllss.dynamic.plugin.runtime"
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -46,7 +47,8 @@ android {
 }
 
 dependencies {
-    compileOnly libSupportAppcompat
+    compileOnly libs.appcompat
+//    compileOnly libSupportAppcompat
     implementation project(':Maven-Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Common-Library')
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'

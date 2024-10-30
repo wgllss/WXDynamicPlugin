@@ -1,26 +1,25 @@
 plugins {
-    id 'java'
-    id 'java-library'
-    id 'kotlin'
-    id 'kotlin-kapt'
+    alias(libs.plugins.java.library)
+    alias(libs.plugins.java.kotlin)
+    alias(libs.plugins.java)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'com.google.protobuf:protobuf-java:3.5.1'
-
-    implementation "com.google.auto.service:auto-service:1.0-rc4"
-    kapt "com.google.auto.service:auto-service:1.0"
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "com.squareup:kotlinpoet:1.8.0"
+    implementation libs.protobuf
+    implementation libs.auto.service
+    kapt libs.auto.service
+    compileOnly libs.kotlin.stdlib
+    implementation libs.kotlinpoet
     implementation project(path: ':wgllss-sample-create-version-config-annotations')
-    implementation files("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/classes.jar")
+    implementation files("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
+
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
 }

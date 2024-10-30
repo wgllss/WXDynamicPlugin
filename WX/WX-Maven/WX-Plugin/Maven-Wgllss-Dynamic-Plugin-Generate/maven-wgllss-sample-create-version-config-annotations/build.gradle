@@ -1,6 +1,6 @@
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    alias(libs.plugins.java.library)
+    alias(libs.plugins.java.kotlin)
 }
 
 java {
@@ -9,5 +9,6 @@ java {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation libs.kotlin.stdlib
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

@@ -1,16 +1,15 @@
 plugins {
-    id 'com.android.application'
+    alias(libs.plugins.android.application)
 }
 
 android {
-//    compileSdkVersion rootProject.ext.compileSdkVersion
-    compileSdkVersion 32
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    namespace 'com.wgllss.dynamic.sample.other'
+    compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-//        targetSdkVersion rootProject.ext.targetSdkVersion
-        targetSdkVersion 32
+        applicationId "com.wgllss.dynamic.sample.other"
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1
         versionName "1.0"
     }
@@ -74,8 +73,4 @@ tasks.whenTaskAdded { task ->
 
 dependencies {
 
-//    compileOnly libSupportAppcompat
-//    compileOnly libSupportRecyclerView
-//    compileOnly libSupportdesign
-//    compileOnly constraintlayout
 }

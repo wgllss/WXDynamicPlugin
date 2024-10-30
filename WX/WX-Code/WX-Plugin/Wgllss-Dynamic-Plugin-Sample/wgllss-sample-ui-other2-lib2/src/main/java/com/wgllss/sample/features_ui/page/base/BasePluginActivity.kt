@@ -4,20 +4,20 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
 import com.wgllss.core.activity.BaseActivity
 import com.wgllss.core.activity.BaseViewModePluginActivity
 import com.wgllss.core.units.ResourceUtils
 import com.wgllss.core.viewmodel.BaseViewModel
-import com.wgllss.dynamic.sample.other2.BuildConfig
-import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate
 import com.wgllss.dynamic.plugin.manager.PluginResource
+import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate
+import com.wgllss.dynamic.sample.other2.BuildConfig
 
-open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) :
-    BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME),
-    WXHostActivityDelegate {
+open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME), WXHostActivityDelegate {
 
     private var isPlugin = false
     protected lateinit var activity: FragmentActivity
@@ -128,14 +128,14 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) :
         activity.requestedOrientation = requestedOrientation
     }
 
-    override fun getViewModelStore() = activity.viewModelStore
+    override fun getViewModelStore(): ViewModelStore {
+        return activity.viewModelStore
+    }
 
     override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory {
         if (!this::mDefaultFactory.isInitialized) {
             mDefaultFactory = SavedStateViewModelFactory(
-                activity.application,
-                activity,
-                if (activity.intent != null) activity.intent.extras else null
+                activity.application, activity, if (activity.intent != null) activity.intent.extras else null
             )
         }
         return mDefaultFactory

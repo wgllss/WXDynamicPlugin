@@ -1,15 +1,15 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.core.re"
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
         versionCode 1008
         versionName "1.0.0.8"
     }
@@ -30,6 +30,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        buildConfig true
     }
 
     lintOptions {
@@ -38,17 +39,17 @@ android {
 }
 
 dependencies {
-    //如果implementation 'com.wang.avi:library:2.1.3' 拉取不下来 放开下面这句注释，用本地的包
 //    implementation files('libs/com_wang_avi_library-2.1.3.aar')
 
-    implementation libSupportAppcompat
-    implementation 'androidx.activity:activity-ktx:1.3.0-rc01'
-    implementation 'androidx.fragment:fragment-ktx:1.4.0-alpha04'
-    implementation "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
-    implementation 'com.github.bumptech.glide:glide:4.13.2'
-
-    implementation 'com.wang.avi:library:2.1.3'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation libs.appcompat
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.glide
+    implementation libs.converter.gson
     //权限申请框架
-    implementation 'com.github.getActivity:XXPermissions:16.2'
+    implementation libs.xxpermissions
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.fragment.ktx
 }
