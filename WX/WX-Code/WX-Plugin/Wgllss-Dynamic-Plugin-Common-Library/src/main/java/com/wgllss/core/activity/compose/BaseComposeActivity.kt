@@ -5,4 +5,6 @@ import androidx.activity.ComponentActivity
 
 open class BaseComposeActivity : ComponentActivity(){
 
+
+
 }

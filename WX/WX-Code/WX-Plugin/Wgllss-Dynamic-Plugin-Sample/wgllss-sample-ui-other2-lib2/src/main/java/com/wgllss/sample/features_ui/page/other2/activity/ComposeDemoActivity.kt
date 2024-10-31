@@ -1,11 +1,16 @@
 package com.wgllss.sample.features_ui.page.other2.activity
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,6 +42,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.mediumTopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -44,28 +50,42 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.lifecycleScope
 import com.wgllss.sample.features_ui.page.base.BasePluginComposeActivity
+import com.wgllss.sample.features_ui.page.other2.viewmodel.ComposeDemoViewModel
 import com.wx.compose1.ui.ui.theme.WXComposeXXXTheme
+import kotlinx.coroutines.launch
 
 class ComposeDemoActivity : BasePluginComposeActivity() {
 
+    private lateinit var viewModel: ComposeDemoViewModel
+
+    override fun attachContext(context: ComponentActivity, resources: Resources) {
+        super.attachContext(context, resources)
+        viewModel = context.viewModels<ComposeDemoViewModel>().value
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity.setContent {
-            WXComposeXXXTheme {
-                baseUIXXXX({ paddingvalues ->
-                    layoutExamplexxx(paddingvalues)
-                }, onClick = {
-                    Toast.makeText(activity, "我是插件里面的", Toast.LENGTH_SHORT).show()
-                })
+        activity.lifecycleScope.launch {
+            activity.setContent {
+                WXComposeXXXTheme {
+                    baseUIXXXX({ paddingvalues ->
+                        layoutExamplexxx(paddingvalues, viewModel)
+                    }, onClick = {
+                        Toast.makeText(activity, "我是插件里面的", Toast.LENGTH_SHORT).show()
+                    })
+                }
             }
         }
+        viewModel.loadBitmap(resources)
     }
 }
 
@@ -117,8 +137,10 @@ fun baseUIXXXX(content: @Composable (PaddingValues) -> Unit, onClick: () -> Unit
 @SuppressLint("RememberReturnType")
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun layoutExamplexxx(innerPadding: PaddingValues) {
+fun layoutExamplexxx(innerPadding: PaddingValues, viewModel: ComposeDemoViewModel) {
     var offset by remember { mutableStateOf(0) }
+    val bitmap = viewModel.bitmap.observeAsState()
+//    val imageBitmap = remember { bitmap.value?.asImageBitmap() }
 
     val context = LocalContext.current
 
@@ -202,6 +224,24 @@ fun layoutExamplexxx(innerPadding: PaddingValues) {
                 .background(Color.White)
                 .padding(5.dp)
         ) {
+
+            //图片 需要从插件包 apk 里面拿到 resource ，从resource 里面取出drawable，然后转化为 bitmap 再 转化为 imageBitmap 然后显示
+
+//            val imageBitmap: ImageBitmap =
+            bitmap.value?.let {
+                Image(bitmap = it.asImageBitmap(), contentDescription = "小姐姐", modifier = Modifier
+                    .wrapContentHeight()
+                    .wrapContentWidth()
+                    .padding(5.dp)
+                    .weight(1.0f)
+                    .clickable {
+                        Toast
+                            .makeText(context, "Image 点击事件", Toast.LENGTH_SHORT)
+                            .show()
+                    })
+            }
+
+
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -371,19 +411,9 @@ fun layoutExamplexxx(innerPadding: PaddingValues) {
                     .background(Color.LightGray), text = "compose 内容列表:我是插件里面的", textAlign = TextAlign.Center, color = Color.Black
             )
 
-            //图片 需要从插件包 apk 里面拿到 resource ，从resource 里面取出drawable，然后转化为 bitmap 再 转化为 imageBitmap 然后显示
-//                Image(
-////                    painter = painterResource(id = R.drawable.people_4),
-//                    bitmap = imageBitmap, contentDescription = "小姐姐", modifier = Modifier
-//                        .size(80.dp)
-//                        .padding(5.dp)
-//                        .weight(1.0f)
-//                        .clickable {
-//                            Toast
-//                                .makeText(context, "Image 点击事件", Toast.LENGTH_SHORT)
-//                                .show()
-//                        })
-//
+
         }
     }
+
+
 }
