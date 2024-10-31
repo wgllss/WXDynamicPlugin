@@ -81,6 +81,7 @@ class ComposeDemoActivity : BasePluginComposeActivity() {
                         layoutExamplexxx(paddingvalues, viewModel)
                     }, onClick = {
                         Toast.makeText(activity, "我是插件里面的", Toast.LENGTH_SHORT).show()
+                        finish()
                     })
                 }
             }
