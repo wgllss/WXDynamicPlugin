@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -16,6 +17,10 @@ android {
 
     buildFeatures {
         buildConfig true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.7.0"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -49,9 +54,10 @@ dependencies {
     compileOnly libs.google.material
     compileOnly libs.constraintlayout
 
-    compileOnly libs.androidx.lifecycle.runtime.ktx
+//    compileOnly libs.androidx.lifecycle.runtime.ktx
     compileOnly libs.androidx.lifecycle.livedata.ktx
     compileOnly libs.androidx.lifecycle.viewmodel.ktx
+//    compileOnly libs.androidx.activity
     compileOnly libs.androidx.activity.ktx
     compileOnly libs.androidx.fragment.ktx
 
@@ -62,6 +68,24 @@ dependencies {
     compileOnly libs.exoplayer.core
     compileOnly libs.exoplayer.ui
     compileOnly libs.google.extension.mediasession
+
+    //compose
+    compileOnly(libs.androidx.activity.compose)
+    compileOnly(platform(libs.androidx.compose.bom))
+    compileOnly(libs.androidx.ui)
+    compileOnly(libs.androidx.ui.graphics)
+    compileOnly(libs.androidx.ui.tooling.preview)
+    compileOnly(libs.androidx.material3)
+    compileOnly libs.androidx.constraintlayout.compose
+    compileOnly libs.androidx.runtime.livedata
+    compileOnly libs.coil.compose
+    compileOnly libs.androidx.navigation.compose
+    compileOnly libs.androidx.navigation.runtime.ktx
+    compileOnly libs.androidx.compose.material3.adaptive.navigation
+    compileOnly libs.androidx.compose.material3.adaptive
+    compileOnly libs.androidx.compose.material3.adaptive.layout
+    compileOnly libs.androidx.compose.material3.navigationSuite
+    compileOnly libs.androidx.compose.material3.windowSizeClass
 }
 
 def commandDex(buildType) {

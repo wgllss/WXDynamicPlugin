@@ -1,5 +1,6 @@
 package com.wgllss.dynamic.ui
 
+import android.annotation.SuppressLint
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
@@ -61,6 +62,7 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
     }
 
 
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         exitApp()
     }
@@ -125,12 +127,15 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
                 initFragment()
                 setCurrentFragment(homeTabFragment)
             }
+
             getPluginID(getSkinResources(), "fmt_b", SkinContains.packageName) -> {
                 setCurrentFragment(collectFragmentL)
             }
+
             getPluginID(getSkinResources(), "fmt_c", SkinContains.packageName) -> {
                 setCurrentFragment(sampleFragmentL)
             }
+
             getPluginID(getSkinResources(), "fmt_d", SkinContains.packageName) -> {
                 setCurrentFragment(settingFragmentL)
             }

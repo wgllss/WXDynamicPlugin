@@ -62,6 +62,9 @@ dependencies {
     compileOnly libs.androidx.navigation.ui.ktx
     compileOnly libs.glide
     kapt libs.glide.compiler
+
+    //compose
+    implementation(libs.androidx.activity.compose)
 }
 
 

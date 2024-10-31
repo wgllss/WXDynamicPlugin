@@ -51,5 +51,5 @@ protobuf {
 dependencies {
 //    implementation 'com.google.protobuf:protobuf-java:3.21.7'
     implementation libs.protobuf
-//    implementation 'com.google.protobuf:protoc:3.21.7'
+    implementation 'com.google.protobuf:protoc:3.21.7'
 }

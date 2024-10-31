@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
     implementation libs.protobuf
 
     implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')

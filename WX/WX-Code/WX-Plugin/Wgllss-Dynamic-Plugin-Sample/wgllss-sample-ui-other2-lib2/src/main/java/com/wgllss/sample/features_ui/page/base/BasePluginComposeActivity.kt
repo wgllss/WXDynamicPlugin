@@ -5,30 +5,24 @@ import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
-import androidx.annotation.NonNull
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
-import com.wgllss.core.activity.BaseActivity
-import com.wgllss.core.activity.BaseViewModePluginActivity
-import com.wgllss.core.units.ResourceUtils
-import com.wgllss.core.viewmodel.BaseViewModel
+import com.wgllss.core.activity.compose.BaseComposeActivity
 import com.wgllss.dynamic.plugin.manager.PluginResource
 import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate
-import com.wgllss.dynamic.sample.other2.BuildConfig
 
-open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseViewModePluginActivity<VM>(layoutName, BuildConfig.LIBRARY_PACKAGE_NAME), WXHostActivityDelegate {
+open class BasePluginComposeActivity : BaseComposeActivity(), WXHostActivityDelegate {
 
     private var isPlugin = false
-    protected lateinit var activity: FragmentActivity
+    protected lateinit var activity: ComponentActivity
     private lateinit var resourcesP: Resources
     private lateinit var mDefaultFactory: ViewModelProvider.Factory
 
-    override fun getSkinResources() = PluginResource.getSkinResources()
+    fun getSkinResources() = PluginResource.getSkinResources()
 
-    override fun getPluginResources() = PluginResource.getPluginResources("classes_other2_res")!!
-
+//    fun getPluginResources() = PluginResource.getPluginResources("classes_other2_res")!!
 
     override fun attachContext(context: FragmentActivity, resources: Resources) {
         isPlugin = true
@@ -37,36 +31,18 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         attachBaseContext(context)
     }
 
-    override fun attachContext(context: ComponentActivity?, resources: Resources?) {
-
+    override fun attachContext(context: ComponentActivity, resources: Resources) {
+        isPlugin = true
+        activity = context
+        resourcesP = resources
+        attachBaseContext(context)
     }
 
-    override fun initControl(savedInstanceState: Bundle?) {
-        ResourceUtils.setContentLayout(activity, resourcesPlugin, layoutName, packageNamePlugin)
-    }
-
-    override fun bindEvent() {
-        viewModel?.run {
-            showUIDialog.observe(activity) {
-                activity.takeIf { it is BaseActivity }?.run {
-                    if (it.isShow) {
-                        (activity as BaseActivity).showloading(it.msg)
-                    } else {
-                        (activity as BaseActivity).hideLoading()
-                    }
-                }
-            }
-            errorMsgLiveData.observe(activity) {
-                onToast(it)
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (!isPlugin) {
             super.onCreate(savedInstanceState)
         }
-        initX(savedInstanceState)
     }
 
     override fun onResume() {
@@ -79,14 +55,12 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
         if (!isPlugin) {
             super.onRestart()
         }
-        onChangeSkin(getSkinResources())
     }
 
     override fun onStart() {
         if (!isPlugin) {
             super.onStart()
         }
-        onChangeSkin(getSkinResources())
     }
 
     override fun onPause() {
@@ -148,7 +122,8 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) : BaseView
 
     override fun lazyInitValue() {
         if (!isPlugin) {
-            super.lazyInitValue()
+
         }
+
     }
 }

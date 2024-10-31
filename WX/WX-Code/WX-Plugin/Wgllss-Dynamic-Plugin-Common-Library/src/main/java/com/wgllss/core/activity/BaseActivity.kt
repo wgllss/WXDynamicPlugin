@@ -1,7 +1,12 @@
 package com.wgllss.core.activity
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
+import androidx.annotation.Nullable
+import androidx.compose.runtime.Composable
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
 import com.wgllss.core.dialog.CommonLoadingView
 import com.wgllss.core.ex.finishActivity
 import com.wgllss.core.units.StatusBarUtil
@@ -82,4 +87,5 @@ abstract class BaseActivity : FragmentActivity() {
             WActivityManager.exitApplication()
         }
     }
+
 }
