@@ -64,7 +64,7 @@ dependencies {
     kapt libs.glide.compiler
 
     //compose
-    implementation(libs.androidx.activity.compose)
+    compileOnly libs.androidx.activity.compose
 }
 
 

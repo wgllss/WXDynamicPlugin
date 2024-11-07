@@ -1,8 +1,8 @@
 package com.wgllss.dynamic.host.lib.runtime
 
 import android.text.TextUtils
-import com.wgllss.dynamic.host.lib.classloader.BuildConfig
 import java.lang.reflect.Field
+import com.wgllss.dynamic.host.lib.runtime.BuildConfig
 
 object MultiDynamicRuntime {
 

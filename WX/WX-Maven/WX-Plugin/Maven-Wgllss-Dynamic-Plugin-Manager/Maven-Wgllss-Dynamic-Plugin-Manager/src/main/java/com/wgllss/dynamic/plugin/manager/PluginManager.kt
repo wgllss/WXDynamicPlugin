@@ -67,6 +67,11 @@ class PluginManager private constructor() {
         private const val PluginSingleTaskActivity = "com.wgllss.dynamic.plugin.runtime.PluginSingleTaskActivity"
         private const val PluginSingleTopActivity = "com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
 
+        private const val PluginStandardComposeActivity = "com.wgllss.dynamic.plugin.runtime.PluginStandardComposeActivity"
+        private const val PluginSingleInstanceComposeActivity = "com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceComposeActivity"
+        private const val PluginSingleTaskComposeActivity = "com.wgllss.dynamic.plugin.runtime.PluginSingleTaskComposeActivity"
+        private const val PluginSingleTopComposeActivity = "com.wgllss.dynamic.plugin.runtime.PluginSingleTopComposeActivity"
+
         private const val PluginStartStickyService = "com.wgllss.dynamic.plugin.runtime.PluginStartStickyService"
         private const val PluginStartNotStickyService = "com.wgllss.dynamic.plugin.runtime.PluginStartNotStickyService"
         private const val PluginStartRedeliverIntentService = "com.wgllss.dynamic.plugin.runtime.PluginStartRedeliverIntentService"
@@ -142,8 +147,7 @@ class PluginManager private constructor() {
      */
     fun getWebRes(): Resources {
         val file = DynamicManageUtils.getDxFile(context, dldir, webResFileName)
-        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES
-                or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
+        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
         val packageManager = context.applicationContext.packageManager
         val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, flags)
         val applicationInfo = packageInfo!!.applicationInfo
@@ -155,8 +159,7 @@ class PluginManager private constructor() {
 
 
     private fun getResourcesForApplication(file: File): Resources {
-        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES
-                or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
+        val flags = (PackageManager.GET_META_DATA or PackageManager.GET_ACTIVITIES or PackageManager.GET_SERVICES or PackageManager.GET_PROVIDERS or PackageManager.GET_RECEIVERS)
         val packageManager = context.applicationContext.packageManager
         val packageInfo = packageManager.getPackageArchiveInfo(file.absolutePath, flags)
         val applicationInfo = packageInfo!!.applicationInfo
@@ -179,6 +182,22 @@ class PluginManager private constructor() {
 
     fun startPluginSingleTopActivity(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null) {
         startActivity(context, contentKey, PluginSingleTopActivity, activityName, packageName, intentOption)
+    }
+
+    fun startPluginStandardComposeActivity(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null) {
+        startActivity(context, contentKey, PluginStandardComposeActivity, activityName, packageName, intentOption)
+    }
+
+    fun startPluginSingleInstanceComposeActivity(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null) {
+        startActivity(context, contentKey, PluginSingleInstanceComposeActivity, activityName, packageName, intentOption)
+    }
+
+    fun startPluginSingleTaskComposeActivity(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null) {
+        startActivity(context, contentKey, PluginSingleTaskComposeActivity, activityName, packageName, intentOption)
+    }
+
+    fun startPluginSingleTopComposeActivity(context: Context, contentKey: String, activityName: String, packageName: String, intentOption: Intent? = null) {
+        startActivity(context, contentKey, PluginSingleTopComposeActivity, activityName, packageName, intentOption)
     }
 
     private fun startActivity(context: Context, contentKey: String, lunchName: String, activityName: String, packageName: String, intentOption: Intent? = null) {
@@ -324,23 +343,25 @@ class PluginManager private constructor() {
         android.util.Log.e("bindService", "context:${context.javaClass.name}")
         val connectionKey = StringBuilder(hostServiceName).append(context.javaClass.name).toString()
         if (!mapAidl.containsKey(hostServiceName)) {
-            val intent = getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)
-            val connection = object : ServiceConnection {
-                override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-                    val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
-                    mapAidl[hostServiceName] = aidl
-                }
+//            val intent =
+            getServiceIntent(context, contentKey, hostServiceName, pluginServiceName, packageName, intentOption)?.let {
+                val connection = object : ServiceConnection {
+                    override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                        val aidl = WXDynamicAidlInterface.Stub.asInterface(service)
+                        mapAidl[hostServiceName] = aidl
+                    }
 
-                override fun onServiceDisconnected(name: ComponentName?) {
+                    override fun onServiceDisconnected(name: ComponentName?) {
 
+                    }
                 }
-            }
-            context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
-            if (!mapConnection.containsKey(connectionKey)) {
-                mapConnection[connectionKey] = connection
-            }
-            if (!mapContextPluginService.containsKey(connectionKey)) {
-                mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+                context.bindService(it, connection, Context.BIND_AUTO_CREATE)
+                if (!mapConnection.containsKey(connectionKey)) {
+                    mapConnection[connectionKey] = connection
+                }
+                if (!mapContextPluginService.containsKey(connectionKey)) {
+                    mapContextPluginService[connectionKey] = mutableListOf(pluginServiceName)
+                }
             }
         } else {
             val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(contentKey, cotd[contentKey]!!))

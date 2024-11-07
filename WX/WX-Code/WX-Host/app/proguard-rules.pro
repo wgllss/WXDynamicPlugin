@@ -42,6 +42,7 @@
 -keep class androidx.fragment.app.FragmentActivity { }
 -keep class androidx.lifecycle.** { *; }
 
+
 -keep class com.wgllss.core.** { *; }
 -keep class com.wgllss.sample.** { *; }
 -keep class com.wgllss.dynamic.host.lib.**{}
@@ -59,9 +60,12 @@
 -keep class android.**{*;}
 -keep class android.app.**{*;}
 -keep class androidx.**{*;}
+-keep class androidx.activity.**{*;}
 -keep class kotlinx.**{*;}
+-keep class coil.**{*;}
 -keep class com.tencent.mmkv.**{*;}
 -keep class com.google.android.**{*;}
+-keep class com.google.android.exoplayer2**{*;}
 -keep class com.google.gson.**{*;}
 -keep class retrofit2.**{*;}
 -keep class okhttp3.**{*;}
@@ -73,6 +77,8 @@
 -keep class org.jsoup.**{*;}
 -keep class res.**{*;}
 -keep class com.wgllss.sample.skin.**{*;}
+-keep class androidx.compose.**{*;}
+-keep class androidx.constraintlayout.compose.**{*;}
 
 
 -keep class * extends androidx.startup.Initializer{}
@@ -125,6 +131,7 @@
 -keepclasseswithmembers class * {
     public <init>(android.content.Context, android.util.AttributeSet, int);
 }
+
 
 ## Databinding
 #-dontwarn android.databinding.**

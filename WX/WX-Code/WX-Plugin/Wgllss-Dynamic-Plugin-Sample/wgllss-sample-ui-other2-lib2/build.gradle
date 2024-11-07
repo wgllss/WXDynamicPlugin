@@ -43,6 +43,7 @@ dependencies {
 
     compileOnly project(':Wgllss-Dynamic-Plugin-Manager')
     compileOnly project(':Wgllss-Dynamic-Plugin-Library')
+
     compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
     compileOnly project(':Wgllss-Dynamic-Host-Download-Lib')
     compileOnly project(':Wgllss-Dynamic-Host-Lib-Impl')
@@ -57,7 +58,7 @@ dependencies {
 //    compileOnly libs.androidx.lifecycle.runtime.ktx
     compileOnly libs.androidx.lifecycle.livedata.ktx
     compileOnly libs.androidx.lifecycle.viewmodel.ktx
-//    compileOnly libs.androidx.activity
+    compileOnly libs.androidx.activity
     compileOnly libs.androidx.activity.ktx
     compileOnly libs.androidx.fragment.ktx
 

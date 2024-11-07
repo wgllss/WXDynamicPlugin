@@ -78,40 +78,43 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
 
     private fun onItemClick(item: SampleItemBean) {
         activity?.run {
-            if (item.id == 5) {
-                //webview
-                PluginManager.instance.startPluginSingleTaskActivity(
-                    this, "classes_other2_res",
-                    "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
-                    "com.wgllss.dynamic.sample.other2", Intent().apply {
+            when (item.id) {
+                5 -> { //webview
+                    PluginManager.instance.startPluginSingleTaskActivity(this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity", "com.wgllss.dynamic.sample.other2", Intent().apply {
                         putExtra("web_url_key", "I4D2IC730011819H")
                         putExtra("title_key", "红魔五周年发布")
                         putExtra("docid_key", "I4D2IC730011819H.html")
-                    }
-                )
-            } else if (item.id == 9) {
-                //音频
-                PluginManager.instance.startPluginSingleTaskActivity(
-                    this, "classes_other2_res",
-                    "com.wgllss.sample.features_ui.page.other2.activity.AudioActivity",
-                    "com.wgllss.dynamic.sample.other2"
-                )
-            } else if (item.id == 8) {
-                //视频
-                PluginManager.instance.startPluginSingleTaskActivity(
-                    this, "classes_other2_res",
-                    "com.wgllss.sample.features_ui.page.other2.activity.VideoActivity",
-                    "com.wgllss.dynamic.sample.other2"
-                )
-            } else {
-                PluginManager.instance.startStandardActivity(
-                    this, "classes_other2_res",
-                    "com.wgllss.sample.features_ui.page.other2.activity.Other2Activity",
-                    "com.wgllss.dynamic.sample.other2", Intent().apply {
+                    })
+                }
+
+                9 -> {
+                    //音频
+                    PluginManager.instance.startPluginSingleTaskActivity(
+                        this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.AudioActivity", "com.wgllss.dynamic.sample.other2"
+                    )
+                }
+
+                8 -> {
+                    //视频
+                    PluginManager.instance.startPluginSingleTaskActivity(
+                        this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.VideoActivity", "com.wgllss.dynamic.sample.other2"
+                    )
+                }
+
+                10 -> {
+                    //compose
+                    PluginManager.instance.startPluginStandardComposeActivity(this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.ComposeDemoActivity", "com.wgllss.dynamic.sample.other2", Intent().apply {
                         putExtra("action_type", item.id)
                         putExtra("itemName", item.itemName)
-                    }
-                )
+                    })
+                }
+
+                else -> {
+                    PluginManager.instance.startStandardActivity(this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.Other2Activity", "com.wgllss.dynamic.sample.other2", Intent().apply {
+                        putExtra("action_type", item.id)
+                        putExtra("itemName", item.itemName)
+                    })
+                }
             }
         }
     }

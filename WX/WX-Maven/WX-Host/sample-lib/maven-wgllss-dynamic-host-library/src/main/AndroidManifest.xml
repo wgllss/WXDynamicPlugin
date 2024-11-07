@@ -19,9 +19,17 @@
             android:name="com.wgllss.dynamic.plugin.runtime.PluginStandardActivity"
             android:launchMode="standard"
             android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginStandardComposeActivity"
+            android:launchMode="standard"
+            android:theme="@style/LauncherTheme2" />
 
         <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleInstanceComposeActivity"
             android:launchMode="singleInstance"
             android:theme="@style/LauncherTheme2" />
         <activity
@@ -29,8 +37,16 @@
             android:launchMode="singleTask"
             android:theme="@style/LauncherTheme2" />
         <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTaskComposeActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/LauncherTheme2" />
+        <activity
             android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopActivity"
             android:launchMode="singleTop"
+            android:theme="@style/LauncherTheme2" />
+        <activity
+            android:name="com.wgllss.dynamic.plugin.runtime.PluginSingleTopComposeActivity"
+            android:launchMode="singleInstance"
             android:theme="@style/LauncherTheme2" />
 
         <service

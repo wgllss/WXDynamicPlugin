@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.wgllss.dynamic.host.sample'
+    namespace 'com.wgllss.dynamic.host'
     compileSdk libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -46,6 +46,7 @@ android {
     buildTypes {
         debug {
             // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            debuggable false
             minifyEnabled true // 开启混淆
             shrinkResources false // 启动资源压缩
             zipAlignEnabled true // 开启zipalign优化
@@ -54,6 +55,7 @@ android {
         }
 
         release {
+            debuggable false
             minifyEnabled true // 开启混淆
             shrinkResources false // 启动资源压缩
             zipAlignEnabled true // 开启zipalign优化

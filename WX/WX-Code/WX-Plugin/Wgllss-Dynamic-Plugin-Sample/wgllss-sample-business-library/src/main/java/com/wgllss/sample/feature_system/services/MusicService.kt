@@ -37,10 +37,7 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
     private val playerListener by lazy { PlayerEventListener() }
 
     private val uAmpAudioAttributes by lazy {
-        AudioAttributes.Builder()
-            .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
-            .setUsage(C.USAGE_MEDIA)
-            .build()
+        AudioAttributes.Builder().setContentType(C.AUDIO_CONTENT_TYPE_MUSIC).setUsage(C.USAGE_MEDIA).build()
     }
 
     val exoPlayer: ExoPlayer by lazy {
@@ -52,19 +49,18 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
     }
 
     val mediaSession by lazy {
-        MediaSessionCompat(this, getString(R.string.app_name))
-            .apply {
-                setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS)
-                val pendingFlags = if (SdkIntUtils.isLollipop()) {
-                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-                } else {
-                    PendingIntent.FLAG_UPDATE_CURRENT
-                }
-                val sessionIntent = Intent(this@MusicService, NotificationTargetActivity::class.java)
-                val sessionActivityPendingIntent = PendingIntent.getActivity(this@MusicService, 0, sessionIntent, pendingFlags)
-                setSessionActivity(sessionActivityPendingIntent)
-                isActive = true
+        MediaSessionCompat(this, getString(R.string.app_name)).apply {
+            setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS or MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS)
+            val pendingFlags = if (SdkIntUtils.isLollipop()) {
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            } else {
+                PendingIntent.FLAG_UPDATE_CURRENT
             }
+            val sessionIntent = Intent(this@MusicService, NotificationTargetActivity::class.java)
+            val sessionActivityPendingIntent = PendingIntent.getActivity(this@MusicService, 0, sessionIntent, pendingFlags)
+            setSessionActivity(sessionActivityPendingIntent)
+            isActive = true
+        }
     }
 
     private val mediaSessionConnector by lazy {
@@ -112,15 +108,8 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
 
     override fun onCommand(player: Player, command: String, extras: Bundle?, cb: ResultReceiver?) = false
 
-    override fun getSupportedPrepareActions() = PlaybackStateCompat.ACTION_PREPARE_FROM_MEDIA_ID or
-            PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID or
-            PlaybackStateCompat.ACTION_PREPARE_FROM_SEARCH or
-            PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH or
-            PlaybackStateCompat.ACTION_PLAY_FROM_URI or
-            PlaybackStateCompat.ACTION_PREPARE_FROM_URI or
-            PlaybackStateCompat.ACTION_SEEK_TO or
-            PlaybackStateCompat.ACTION_SKIP_TO_NEXT or
-            PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS
+    override fun getSupportedPrepareActions() =
+        PlaybackStateCompat.ACTION_PREPARE_FROM_MEDIA_ID or PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID or PlaybackStateCompat.ACTION_PREPARE_FROM_SEARCH or PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH or PlaybackStateCompat.ACTION_PLAY_FROM_URI or PlaybackStateCompat.ACTION_PREPARE_FROM_URI or PlaybackStateCompat.ACTION_SEEK_TO or PlaybackStateCompat.ACTION_SKIP_TO_NEXT or PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS
 
     override fun onPrepare(playWhenReady: Boolean) {
     }
@@ -134,11 +123,7 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
     override fun onPrepareFromUri(uri: Uri, playWhenReady: Boolean, extras: Bundle?) {
         extras?.run {
             preparePlay(
-                getString(Constants.MEDIA_ID_KEY) ?: "",
-                getString(Constants.MEDIA_TITLE_KEY) ?: "",
-                getString(Constants.MEDIA_AUTHOR_KEY) ?: "",
-                getString(Constants.MEDIA_ARTNETWORK_URL_KEY) ?: "",
-                getString(Constants.MEDIA_URL_KEY) ?: ""
+                getString(Constants.MEDIA_ID_KEY) ?: "", getString(Constants.MEDIA_TITLE_KEY) ?: "", getString(Constants.MEDIA_AUTHOR_KEY) ?: "", getString(Constants.MEDIA_ARTNETWORK_URL_KEY) ?: "", getString(Constants.MEDIA_URL_KEY) ?: ""
             )
         }
     }
@@ -163,19 +148,26 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
 
     private inner class PlayerEventListener : Player.Listener {
 
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            super.onPlaybackStateChanged(playbackState)
+        }
+
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
             when (playbackState) {
                 Player.STATE_BUFFERING, Player.STATE_READY -> {
                     if (playbackState == Player.STATE_READY) {
                         if (playWhenReady) {
+
                         }
                         setPlaybackState(PlaybackStateCompat.STATE_PLAYING)
                     }
                     notificationManager.showNotificationForPlayer(exoPlayer)
                 }
+
                 Player.STATE_ENDED -> {
                     playNext()
                 }
+
                 else -> {
 //                    notificationManager.hideNotification()
                 }
@@ -185,8 +177,7 @@ class MusicService : MediaBrowserServiceCompat(), MediaSessionConnector.Playback
         private fun setPlaybackState(playbackState: Int) {
             val speed = exoPlayer.playbackParameters?.speed ?: 1.0f
             mediaSession.setPlaybackState(PlaybackStateCompat.Builder().apply {
-                setState(playbackState, exoPlayer.contentPosition, speed)
-                    .setActions(supportedPrepareActions)
+                setState(playbackState, exoPlayer.contentPosition, speed).setActions(supportedPrepareActions)
                 setExtras(Bundle().apply {
                     putLong(MediaMetadataCompat.METADATA_KEY_DURATION, exoPlayer.duration)
                 })

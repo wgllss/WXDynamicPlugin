@@ -41,13 +41,10 @@ android {
         }
     }
 
-    buildFeatures {
-        buildConfig true
-    }
-
     buildTypes {
         debug {
             // 假如打包后运行闪退，可以在调试模式下打开混淆查看日志找出混淆问题
+            debuggable false
             minifyEnabled true // 开启混淆
             shrinkResources false // 启动资源压缩
             zipAlignEnabled true // 开启zipalign优化
@@ -56,19 +53,20 @@ android {
         }
 
         release {
+            debuggable false
             minifyEnabled true // 开启混淆
             shrinkResources false // 启动资源压缩
             zipAlignEnabled true // 开启zipalign优化
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-        applicationVariants.all {
-            variant ->
-                variant.outputs.all {
-                    outputFileName = "WXDynamicPlugin_Sample_${variant.buildType.name}.apk"
-                }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "WXDynamicPlugin_Sample_${variant.buildType.name}.apk"
+            }
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -76,6 +74,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        buildConfig true
+//        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.7.0"
+    }
+
+//    lintOptions {
+//        abortOnError false
+//    }
 }
 
 dependencies {
@@ -94,4 +105,22 @@ dependencies {
     implementation project(path: ':wgllss-common-re-library')
     implementation project(path: ':wgllss-business-re-library')
     implementation project(path: ':wgllss-dynamic-host-library')
+
+//    //compose
+//    implementation(libs.androidx.activity.compose)
+//    implementation(platform(libs.androidx.compose.bom))
+//    implementation(libs.androidx.ui)
+//    implementation(libs.androidx.ui.graphics)
+//    implementation(libs.androidx.ui.tooling.preview)
+//    implementation(libs.androidx.material3)
+//    implementation libs.androidx.constraintlayout.compose
+//    implementation libs.androidx.runtime.livedata
+//    implementation libs.coil.compose
+//    implementation libs.androidx.navigation.compose
+//    implementation libs.androidx.navigation.runtime.ktx
+//    implementation libs.androidx.compose.material3.adaptive.navigation
+//    implementation libs.androidx.compose.material3.adaptive
+//    implementation libs.androidx.compose.material3.adaptive.layout
+//    implementation libs.androidx.compose.material3.navigationSuite
+//    implementation libs.androidx.compose.material3.windowSizeClass
 }

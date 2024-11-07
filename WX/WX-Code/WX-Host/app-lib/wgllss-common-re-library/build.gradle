@@ -70,4 +70,6 @@ dependencies {
     implementation libs.androidx.compose.material3.adaptive.layout
     implementation libs.androidx.compose.material3.navigationSuite
     implementation libs.androidx.compose.material3.windowSizeClass
+
+    implementation libs.collapsing.toolbar.scaffold
 }

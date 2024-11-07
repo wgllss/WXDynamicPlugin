@@ -14,15 +14,12 @@ import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.MenuProvider;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleOwner;
 
-import com.wgllss.core.activity.BaseActivity;
+import com.wgllss.core.activity.compose.BaseComposeActivity;
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
 import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate;
 
-public class HostPluginActivity extends BaseActivity {
+public class HostComposePluginActivity extends BaseComposeActivity {
     private PluginClassLoader pluginDexClassLoader;
     private Resources pluginResources;
     private WXHostActivityDelegate mHostDelegate;
@@ -68,7 +65,8 @@ public class HostPluginActivity extends BaseActivity {
         }
 
         pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
-        int flags = (PackageManager.GET_META_DATA | PackageManager.GET_ACTIVITIES | PackageManager.GET_SERVICES | PackageManager.GET_PROVIDERS | PackageManager.GET_RECEIVERS);
+        int flags = (PackageManager.GET_META_DATA | PackageManager.GET_ACTIVITIES | PackageManager.GET_SERVICES
+                | PackageManager.GET_PROVIDERS | PackageManager.GET_RECEIVERS);
         PackageManager packageManager = getApplicationContext().getPackageManager();
         PackageInfo packageInfo = packageManager.getPackageArchiveInfo(pluginApkPath, flags);
         ApplicationInfo applicationInfo = packageInfo.applicationInfo;
@@ -128,39 +126,14 @@ public class HostPluginActivity extends BaseActivity {
         if (hasFocus) {
             if (isFirst) {
                 isFirst = false;
-                mHostDelegate.lazyInitValue();
+                if (mHostDelegate != null) mHostDelegate.lazyInitValue();
             }
         }
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
     }
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         if (mHostDelegate != null) mHostDelegate.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public void initControl(Bundle savedInstanceState) {
-
-    }
-
-    @Override
-    public void bindEvent() {
-
-    }
-
-    @Override
-    public void initValue() {
-
-    }
-
-    @Override
-    public void addMenuProvider(@NonNull MenuProvider provider, @NonNull LifecycleOwner owner, @NonNull Lifecycle.State state) {
-
     }
 }

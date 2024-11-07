@@ -1,38 +1,22 @@
 [versions]
 
-androidxLegacyLegacySupportV42 = "1.0.0"
-autoService = "1.0"
-compileSdk = "34"
-kotlinpoet = "1.14.2"
 
-sqliteFramework = "2.4.0"
 targetSdkVersion = "34"
-minSdk = "21"
+minSdk = "24"
 
-converterGson = "2.9.0"
-glide = "5.0.0-rc01"
-#googleExtensionMediasession = "2.18.5"
-jsoupJsoup = "1.15.3"
-aviLibrary = "2.1.3"
-mmkv = "1.2.15"
-squareupLoggingInterceptorVersion = "4.12.0"
-swiperefreshlayoutVersion = "1.1.0"
-startupRuntimeVersion = "1.1.1"
 
-buildToolVersion = "33.0.0"
+
 
 agp = "8.6.0"
 #kotlin = "1.9.0"
 kotlin = "2.0.20"
 #protobuf_p_ver = ""
-#coreKtx = "1.10.1"
-coreKtx = "1.12.0"
+coreKtx = "1.10.1"
+#coreKtx = "1.12.0"
 junit = "4.14-SNAPSHOT"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-#appcompat = "1.6.1"
 appcompat = "1.7.0"
-material = "1.10.0"
 constraintlayout = "2.1.4"
 lifecycleRuntimeKtx = "2.6.1"
 lifecycleLivedataKtx = "2.6.1"
@@ -43,33 +27,45 @@ activityCompose = "1.9.2"
 composeBom = "2024.09.00"
 constraintlayoutCompose = "1.1.0-alpha09"
 androidxNavigation = "2.8.0"
-appcompatVersion = "1.6.1"
-materialVersion = "1.10.0"
-activity = "1.8.0"
+activity = "1.9.2"
 runtimeLivedata = "1.7.2"
 coilCompose = "2.7.0"
 navigationRuntimeKtx = "2.7.0-beta02"
-constraintlayoutVersion = "2.1.4"
+constraintlayoutVersion = "2.2.0-alpha09"
 collapsingToolbar = "2.3.5"
 protobufVer = "3.21.7"
 protobufPlugin = "0.9.3"
 okioVer = "3.9.0"
 room = "2.6.1"
-#androidxAppcompat = "1.7.0-alpha02"
 androidxAppcompat = "1.7.0"
 googleMaterial = "1.10.0"
 annotations = "5.0.0-rc01"
-wgllssDynamicHostConstantLib = "1.0.0.5"
-wgllssDynamicHostDownloadLib = "1.0.0.5"
+wgllssDynamicHostConstantLib = "1.0.0.6"
+wgllssDynamicHostDownloadLib = "1.0.0.6"
 wgllssDynamicHostLibImpl = "1.0.0.8"
 wgllssDynamicHostVersionLib = "1.0.0.5"
 xxpermissions = "16.2"
 palettektx = "1.0.0"
-exoplayer = "2.18.0"
+exoplayer = "2.18.5"
 recyclerview = "1.3.0"
 activityKtx = "1.8.0"
 fragmentKtx = "1.8.0"
 lifecycleLivedata = "2.0.0"
+
+androidxLegacyLegacySupportV42 = "1.0.0"
+autoService = "1.0"
+compileSdk = "34"
+kotlinpoet = "1.14.2"
+sqliteFramework = "2.4.0"
+converterGson = "2.9.0"
+glide = "5.0.0-rc01"
+#googleExtensionMediasession = "2.18.5"
+jsoupJsoup = "1.15.3"
+aviLibrary = "2.1.3"
+mmkv = "1.2.15"
+squareupLoggingInterceptorVersion = "4.12.0"
+swiperefreshlayoutVersion = "1.1.0"
+startupRuntimeVersion = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -120,7 +116,6 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 #androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
-avi-library = { module = "com.wang.avi:library", version.ref = "aviLibrary" }
 #material = { group = "com.google.android.material", name = "material", version.ref = "materialVersion" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
@@ -128,8 +123,10 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "androidxNavigation" }
 
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
-exoplayer-core = { group = "com.google.android.exoplayer", name = "exoplayer-core", version.ref = "exoplayer" }
-exoplayer-ui = { group = "com.google.android.exoplayer", name = "exoplayer-ui", version.ref = "exoplayer" }
+#exoplayer-core = { group = "com.google.android.exoplayer", name = "exoplayer-core", version.ref = "exoplayer" }
+#exoplayer-ui = { group = "com.google.android.exoplayer", name = "exoplayer-ui", version.ref = "exoplayer" }
+exoplayer-core = { module = "com.google.android.exoplayer:exoplayer-core", version.ref = "exoplayer" }
+exoplayer-ui = { module = "com.google.android.exoplayer:exoplayer-ui", version.ref = "exoplayer" }
 google-extension-mediasession = { module = "com.google.android.exoplayer:extension-mediasession", version.ref = "exoplayer" }
 
 #    implementation "me.onebone:toolbar-compose:2.3.5"
