@@ -34,13 +34,11 @@ class PlayModel : BaseViewModel() {
 
     //播放列表
     val liveData: MutableLiveData<MutableList<MediaBrowserCompat.MediaItem>> by lazy { MutableLiveData<MutableList<MediaBrowserCompat.MediaItem>>() }
-    val rootMediaId: LiveData<String> by lazy {
-        Transformations.map(musicServiceConnectionL.isConnected) { isConnected ->
-            if (isConnected) {
-                musicServiceConnectionL.rootMediaId
-            } else {
-                null
-            }
+    val rootMediaId: LiveData<String> = musicServiceConnectionL.isConnected.map { isConnected ->
+        if (isConnected) {
+            musicServiceConnectionL.rootMediaId
+        } else {
+            ""
         }
     }
 

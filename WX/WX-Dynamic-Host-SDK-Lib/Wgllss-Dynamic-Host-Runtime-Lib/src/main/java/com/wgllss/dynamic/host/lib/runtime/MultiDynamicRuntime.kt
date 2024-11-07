@@ -34,7 +34,9 @@ object MultiDynamicRuntime {
         }
         // 将ContainerClassLoader hack到PathClassloader之上
         try {
-            hackContainerClassLoader(containerKey, containerApk, pathClassLoader)
+            if (pathClassLoader != null) {
+                hackContainerClassLoader(containerKey, containerApk, pathClassLoader)
+            }
             if (BuildConfig.DEBUG)
                 android.util.Log.e("MultiDynamicRuntime", "containerApk插入成功，containerKey= $containerKey")
         } catch (e: Exception) {

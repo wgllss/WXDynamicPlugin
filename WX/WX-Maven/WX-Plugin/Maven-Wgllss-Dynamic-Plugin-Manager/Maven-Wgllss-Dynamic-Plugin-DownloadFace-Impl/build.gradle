@@ -50,7 +50,7 @@ def createCopyTask(buildType) {
     if (outputFile.exists()) {
         outputFile.delete()
     }
-    def inputFile = file("${getProject().getBuildDir()}/intermediates/aar_main_jar/${buildType}/classes.jar")
+    def inputFile = file("${getProject().getBuildDir()}/intermediates/aar_main_jar/${buildType}/sync${buildType}LibJars/classes.jar")
     def copyTask = tasks.create("assembleCopy${buildType.capitalize()}", Copy) {
         group = 'other'
         description = "复制${name}到dx环境中."

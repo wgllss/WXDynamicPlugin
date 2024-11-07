@@ -4,9 +4,11 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
+import androidx.activity.ComponentActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
 import com.wgllss.core.activity.BaseActivity
 import com.wgllss.core.activity.BaseViewModePluginActivity
 import com.wgllss.core.units.ResourceUtils
@@ -34,6 +36,10 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) :
         activity = context
         resourcesP = resources
         attachBaseContext(context)
+    }
+
+    override fun attachContext(context: ComponentActivity?, resources: Resources?) {
+
     }
 
     override fun initControl(savedInstanceState: Bundle?) {
@@ -128,18 +134,18 @@ open class BasePluginActivity<VM : BaseViewModel>(layoutName: String) :
         activity.requestedOrientation = requestedOrientation
     }
 
-    override fun getViewModelStore() = activity.viewModelStore
+    override val viewModelStore: ViewModelStore
+        get() = activity.viewModelStore
 
-    override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory {
-        if (!this::mDefaultFactory.isInitialized) {
-            mDefaultFactory = SavedStateViewModelFactory(
-                activity.application,
-                activity,
-                if (activity.intent != null) activity.intent.extras else null
-            )
+    override val defaultViewModelProviderFactory: ViewModelProvider.Factory
+        get() {
+            if (!this::mDefaultFactory.isInitialized) {
+                mDefaultFactory = SavedStateViewModelFactory(
+                    activity.application, activity, if (activity.intent != null) activity.intent.extras else null
+                )
+            }
+            return mDefaultFactory
         }
-        return mDefaultFactory
-    }
 
     override fun lazyInitValue() {
         if (!isPlugin) {

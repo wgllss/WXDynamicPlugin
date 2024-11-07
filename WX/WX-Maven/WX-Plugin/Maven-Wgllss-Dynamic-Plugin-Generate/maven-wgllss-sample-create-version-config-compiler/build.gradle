@@ -6,8 +6,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 dependencies {
@@ -19,7 +19,7 @@ dependencies {
     implementation libs.kotlinpoet
 
     implementation project(path: ':maven-wgllss-sample-create-version-config-annotations')
-//    implementation files("${project(":maven-wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/classes.jar")
+    implementation files("${project(":maven-wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
 
 //    implementation libs.wgllss.dynamic.host.constant.lib
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
