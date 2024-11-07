@@ -183,7 +183,7 @@
 &emsp;&emsp;该 14个文件打包如下:  
 <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/createfile.jpeg" width="628" height="277"/>
 
-&emsp;&emsp;点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令  
+&emsp;&emsp;点击 assembleCreateAllFileRelease 等待 14个文件生成 ，一次不行，再次点击执行命令，如果还不生成，点击当前项目下maven-wgllss-sample-create-version-config-app的另一个assembleCreateVersion2FileRelease，生成2个文件之后再执行assembleCreateAllFileRelease  
 &emsp;&emsp;14个文件生成在以下目录:可以拷贝到自己的服务器上面供下载:即上面修改的 getHostL()+getBaseL() 服务器文件夹下面 ,同时把我准备的WX-Resource/so 文件夹和 WX-Resource/skins 文件夹拷贝过去，这是供sample 工程演示所用的，另外皮肤资源包多个apk文件也可以自行通过源码工程打包  
 <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/14file.jpg" width="610" height="260"/>
 
