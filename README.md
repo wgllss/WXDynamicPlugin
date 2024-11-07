@@ -78,6 +78,7 @@
 * 一个app 分多个模块单独加载
 * 一个Activity中加载多个Apk中的View
 * 支持插件调试debug
+* 支持插件Compose
 * 等等……
 
 ## 插件化框架对比
