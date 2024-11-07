@@ -45,19 +45,26 @@ android {
 dependencies {
     compileOnly project(':maven-wgllss-common-re-library')
 
-    implementation libs.appcompat
-    implementation libs.androidx.recyclerview
-    implementation libs.google.material
+    compileOnly libs.appcompat
+    compileOnly libs.androidx.recyclerview
+    compileOnly libs.google.material
 
-//    implementation libs.androidx.activity.ktx
-//    implementation libs.androidx.fragment.ktx
-    implementation libs.androidx.core.ktx
-    implementation libs.swiperefreshlayout
+    compileOnly libs.androidx.lifecycle.runtime.ktx
+    compileOnly libs.androidx.lifecycle.livedata.ktx
+    compileOnly libs.androidx.lifecycle.viewmodel.ktx
+    compileOnly libs.androidx.activity.ktx
+    compileOnly libs.androidx.fragment.ktx
 
-    implementation libs.androidx.navigation.fragment.ktx
-    implementation libs.androidx.navigation.ui.ktx
-    implementation libs.glide
+    compileOnly libs.androidx.core.ktx
+    compileOnly libs.swiperefreshlayout
+
+    compileOnly libs.androidx.navigation.fragment.ktx
+    compileOnly libs.androidx.navigation.ui.ktx
+    compileOnly libs.glide
     kapt libs.glide.compiler
+
+    //compose
+    compileOnly libs.androidx.activity.compose
 }
 
 

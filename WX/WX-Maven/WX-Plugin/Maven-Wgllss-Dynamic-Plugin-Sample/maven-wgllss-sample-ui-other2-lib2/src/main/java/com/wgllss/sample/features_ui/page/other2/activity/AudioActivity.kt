@@ -19,7 +19,9 @@ class AudioActivity : BasePluginActivity<PlayModel>("activity_play") {
         viewModel.run {
             start()
             rootMediaId.observe(activity) {
-                it?.let {
+                it.takeIf {
+                    it.isNotEmpty()
+                }?.let {
                     subscribeByMediaID(it)
                     playMp3()
                 }
