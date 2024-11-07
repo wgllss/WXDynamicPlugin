@@ -100,7 +100,7 @@
 
 #### 环境准备
 
-* **AS设置JDK 选11，电脑java版本需要安装 1.8.xxx, 打开工程下 local.properties**
+* **AS设置JDK 选17，电脑java版本需要安装 1.8.xxx, 打开工程下 local.properties**
 
 ##### 以下为我本地电脑配置，需要添加一行下面一句，并改成自己电脑配置:
 
