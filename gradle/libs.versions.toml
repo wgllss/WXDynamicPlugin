@@ -1,7 +1,7 @@
 [versions]
 
 
-targetSdkVersion = "34"
+targetSdkVersion = "33"
 minSdk = "24"
 
 
