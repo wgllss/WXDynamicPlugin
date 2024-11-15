@@ -2,7 +2,7 @@
 
 ## 介绍
 
-####      **WXDynamicPlugin是由本人自住研发的Android插件框架**
+#### **WXDynamicPlugin是由本人自住研发的Android插件框架**
 
 ### 零反射，零HooK,全动态化，插件化框架，全网唯一结合启动优化的插件化架构
 
@@ -12,12 +12,12 @@
 
 ## 示例Sample截图
 
-|                                                                                                                                    |                                                                                                                                             |                                                                                                                                        |
-|------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>    | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>           | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>  |
+|                                                                                                                                                 |                                                                                                                                                      |                                                                                                                                                 |
+|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>    | <img src="https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/wx-pic/Screenshot_sc.png" width="220" height="448"/>                    | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_sample.jpg" width="220" height="448"/>  |
 | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_setting.png" width="220" height="448"/> | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_vedio.png" width="220" height="448"/>        | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_audio.png" width="220" height="448"/>   |
-| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>  | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/> | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/> |
-| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>  | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>      | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>      |
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_a2.png" width="220" height="448"/>      | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_notification.png" width="220" height="448"/> | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_webview.png" width="220" height="448"/> |
+| <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_cp.png" width="220" height="448"/>      | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_service.png" width="220" height="448"/>      | <img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_so.png" width="220" height="448"/>      |
 
 [//]: # (<img src="https://raw.githubusercontent.com/wgllss/WXDynamicPlugin/master/WX-Resource/wx-pic/Screenshot_home.png" width="220" height="448"/>)
 
@@ -129,6 +129,8 @@
 
 #### 推荐用方式二： Maven接入方式
 
+#### 为了方便编译和看，已经注释掉 settings.gradle 中第35行到 137行，需要看源码及源码方式接入（WX-Code下面），请自行放开注释
+
 #### 以 WX-Maven下目录结构介绍为例：
 
 #### WX-Host:   下面全部为host宿主项目代码
@@ -214,16 +216,20 @@
 #### [(十二) Compose的全动态插件化框架支持了，已更新到AGP 8.6,Kotlin2.0.20,支持Compose](https://juejin.cn/post/7435587382345482303)
 
 ## 本人其他开源：
+
 #### [那些大厂架构师是怎样封装网络请求的？](https://juejin.cn/post/7435904232597372940)
+
 #### [Kotlin+协程+Flow+Retrofit+OkHttp这么好用，不运行安装到手机可以调试接口吗?可以自己搭建一套网络请求工具](https://juejin.cn/post/7406675078810910761)
+
 #### [花式封装：Kotlin+协程+Flow+Retrofit+OkHttp +Repository，倾囊相授,彻底减少模版代码进阶之路](https://juejin.cn/post/7417847546323042345)
+
 #### [注解处理器在架构，框架中实战应用：MVVM中数据源提供Repository类的自动生成](https://juejin.cn/post/7392258195089162290)
 
 #### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力
 
 ## 欢迎光临：
 
-####   **[我的掘金地址](https://juejin.cn/user/356661835082573)**
+#### **[我的掘金地址](https://juejin.cn/user/356661835082573)**
 
 #### 关于我
 
