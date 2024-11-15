@@ -2,6 +2,7 @@ package com.wgllss.sample.features_ui.page.other2.fragment
 
 import android.content.*
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
@@ -26,7 +27,8 @@ class SampleBroadCastFragment : BasePluginFragment<SampleActivityViewModel>("fra
         super.onActivityCreated(savedInstanceState)
         btn_send_broadcast.setOnClickListener(this)
         val intentFilter = IntentFilter("action_key")
-        activity?.registerReceiver(testBroadCast, intentFilter)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) activity?.registerReceiver(testBroadCast, intentFilter, Context.RECEIVER_EXPORTED)
+        else activity?.registerReceiver(testBroadCast, intentFilter)
     }
 
     override fun onClick(v: View) {

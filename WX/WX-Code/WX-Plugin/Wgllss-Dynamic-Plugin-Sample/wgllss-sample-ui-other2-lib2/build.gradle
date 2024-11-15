@@ -36,57 +36,57 @@ android {
 }
 
 dependencies {
-    compileOnly project(':Wgllss-Dynamic-Plugin-Common-Library')
-    compileOnly project(':wgllss-common-re-library')
-    compileOnly project(':wgllss-business-re-library')
-    compileOnly project(':wgllss-sample-business-library')
+    implementation project(':Wgllss-Dynamic-Plugin-Common-Library')
+    implementation project(':wgllss-common-re-library')
+    implementation project(':wgllss-business-re-library')
+    implementation project(':wgllss-sample-business-library')
 
-    compileOnly project(':Wgllss-Dynamic-Plugin-Manager')
-    compileOnly project(':Wgllss-Dynamic-Plugin-Library')
+    implementation project(':Wgllss-Dynamic-Plugin-Manager')
+    implementation project(':Wgllss-Dynamic-Plugin-Library')
 
-    compileOnly project(':Wgllss-Dynamic-Host-Provider-Lib')
-    compileOnly project(':Wgllss-Dynamic-Host-Download-Lib')
-    compileOnly project(':Wgllss-Dynamic-Host-Lib-Impl')
-    compileOnly project(':Wgllss-Dynamic-Host-Loader-Lib')
+    implementation project(':Wgllss-Dynamic-Host-Provider-Lib')
+    implementation project(':Wgllss-Dynamic-Host-Download-Lib')
+    implementation project(':Wgllss-Dynamic-Host-Lib-Impl')
+    implementation project(':Wgllss-Dynamic-Host-Loader-Lib')
 
-    compileOnly libs.androidx.core.ktx
-    compileOnly libs.appcompat
-    compileOnly libs.androidx.recyclerview
-    compileOnly libs.google.material
-    compileOnly libs.constraintlayout
+    implementation libs.androidx.core.ktx
+    implementation libs.appcompat
+    implementation libs.androidx.recyclerview
+    implementation libs.google.material
+    implementation libs.constraintlayout
 
-//    compileOnly libs.androidx.lifecycle.runtime.ktx
-    compileOnly libs.androidx.lifecycle.livedata.ktx
-    compileOnly libs.androidx.lifecycle.viewmodel.ktx
-    compileOnly libs.androidx.activity
-    compileOnly libs.androidx.activity.ktx
-    compileOnly libs.androidx.fragment.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.activity
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.fragment.ktx
 
-    compileOnly libs.glide
-    compileOnly libs.palette.ktx
+    implementation libs.glide
+    implementation libs.palette.ktx
 
-    compileOnly libs.org.jsoup.jsoup
-    compileOnly libs.exoplayer.core
-    compileOnly libs.exoplayer.ui
+    implementation libs.org.jsoup.jsoup
+    implementation libs.exoplayer.core
+    implementation libs.exoplayer.ui
     compileOnly libs.google.extension.mediasession
 
     //compose
-    compileOnly(libs.androidx.activity.compose)
-    compileOnly(platform(libs.androidx.compose.bom))
-    compileOnly(libs.androidx.ui)
-    compileOnly(libs.androidx.ui.graphics)
-    compileOnly(libs.androidx.ui.tooling.preview)
-    compileOnly(libs.androidx.material3)
-    compileOnly libs.androidx.constraintlayout.compose
-    compileOnly libs.androidx.runtime.livedata
-    compileOnly libs.coil.compose
-    compileOnly libs.androidx.navigation.compose
-    compileOnly libs.androidx.navigation.runtime.ktx
-    compileOnly libs.androidx.compose.material3.adaptive.navigation
-    compileOnly libs.androidx.compose.material3.adaptive
-    compileOnly libs.androidx.compose.material3.adaptive.layout
-    compileOnly libs.androidx.compose.material3.navigationSuite
-    compileOnly libs.androidx.compose.material3.windowSizeClass
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation libs.androidx.constraintlayout.compose
+    implementation libs.androidx.runtime.livedata
+    implementation libs.coil.compose
+    implementation libs.androidx.navigation.compose
+    implementation libs.androidx.navigation.runtime.ktx
+    implementation libs.androidx.compose.material3.adaptive.navigation
+    implementation libs.androidx.compose.material3.adaptive
+    implementation libs.androidx.compose.material3.adaptive.layout
+    implementation libs.androidx.compose.material3.navigationSuite
+    implementation libs.androidx.compose.material3.windowSizeClass
 }
 
 def commandDex(buildType) {

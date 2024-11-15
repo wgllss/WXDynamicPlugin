@@ -12,7 +12,7 @@ object DynamicManageUtils {
         return StringBuilder().append(k).append("_").append(v).toString()
     }
 
-    fun getDxFile(context: Context, dir: String, fileName: String) = File(StringBuilder(context.filesDir.absolutePath).append(File.separator).append(dir).append(File.separator).append(fileName).toString())
+    fun getDxFile(context: Context, dir: String, fileName: String) = File(StringBuilder(context.filesDir.absolutePath).append(File.separator).append(dir).append(File.separator).append(fileName).toString()).apply { setReadOnly() }
 
     fun copyFileFromAssetsToSD(context: Context, desFile: File, fileName: String): Boolean {
         var copyIsFinish = false

@@ -15,13 +15,13 @@ dependencies {
     implementation libs.protobuf
     implementation libs.auto.service
     kapt libs.auto.service
-    compileOnly libs.kotlin.stdlib
+    implementation libs.kotlin.stdlib
     implementation libs.kotlinpoet
 
     implementation project(path: ':maven-wgllss-sample-create-version-config-annotations')
     implementation files("${project(":maven-wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
 
 //    implementation libs.wgllss.dynamic.host.constant.lib
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.7'
 }

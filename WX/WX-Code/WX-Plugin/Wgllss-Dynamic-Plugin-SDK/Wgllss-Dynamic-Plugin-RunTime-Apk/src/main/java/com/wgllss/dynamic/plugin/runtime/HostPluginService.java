@@ -12,6 +12,7 @@ import com.wgllss.dynamic.host.lib.classloader.PluginKey;
 import com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface;
 import com.wgllss.dynamic.runtime.library.WXHostServiceDelegate;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -29,10 +30,7 @@ public abstract class HostPluginService extends Service {
             @Override
             public void onBind(String serviceName, String packageName, String pluginApkPath) throws RemoteException {
                 android.util.Log.e("HostPluginService", "onBind(String serviceName):" + serviceName + "packageName:" + packageName + "pluginApkPath:" + pluginApkPath);
-                initPluginService(new Intent().putExtra(PluginKey.serviceNameKey, serviceName)
-                                .putExtra(PluginKey.privatePackageKey, packageName)
-                                .putExtra(PluginKey.pluginApkPathKey, pluginApkPath),
-                        true);
+                initPluginService(new Intent().putExtra(PluginKey.serviceNameKey, serviceName).putExtra(PluginKey.privatePackageKey, packageName).putExtra(PluginKey.pluginApkPathKey, pluginApkPath), true);
             }
 
             @Override
@@ -59,8 +57,7 @@ public abstract class HostPluginService extends Service {
     public void onStart(Intent intent, int startId) {
         if (map != null) {
             for (WXHostServiceDelegate service : map.values()) {
-                if (service != null)
-                    service.onStart(intent, startId);
+                if (service != null) service.onStart(intent, startId);
             }
         }
         super.onStart(intent, startId);
@@ -95,8 +92,7 @@ public abstract class HostPluginService extends Service {
     public void onDestroy() {
         if (map != null) {
             for (WXHostServiceDelegate service : map.values()) {
-                if (service != null)
-                    service.onDestroy();
+                if (service != null) service.onDestroy();
             }
         }
         super.onDestroy();
@@ -112,6 +108,8 @@ public abstract class HostPluginService extends Service {
                 if (!map.containsKey(serviceName)) {
                     String pluginApkPath = intent.getStringExtra(PluginKey.pluginApkPathKey);
                     String privatePackage = intent.getStringExtra(PluginKey.privatePackageKey);
+                    new File(pluginApkPath).setReadOnly();
+                    new File(getDir("dex", Context.MODE_PRIVATE).getAbsolutePath()).setReadOnly();
                     pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
                     WXHostServiceDelegate serviceDelegate = pluginDexClassLoader.getInterface(WXHostServiceDelegate.class, serviceName);
                     serviceDelegate.attachBaseContext(this);

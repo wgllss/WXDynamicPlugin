@@ -54,6 +54,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -417,4 +418,273 @@ fun layoutExamplexxx(innerPadding: PaddingValues, viewModel: ComposeDemoViewMode
     }
 
 
+}
+
+
+@Preview  //注释掉预览
+@Composable
+fun GreetingPreview() {
+    WXComposeXXXTheme {
+        layoutExample()
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun layoutExample(innerPadding: PaddingValues = PaddingValues(0.dp)) {
+    var offset by remember { mutableStateOf(0) }
+
+    val context = LocalContext.current
+    Column(
+        modifier = Modifier
+            .padding(innerPadding)
+            .background(Color.Yellow)
+            .verticalScroll(rememberScrollState())
+            .padding(5.dp)
+            .fillMaxWidth()
+            .fillMaxHeight(),
+//            verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        Text(
+            modifier = Modifier
+                .padding(8.dp)
+                .offset(offset.dp, offset.dp)
+                .border(2.dp, SolidColor(Color.Green), RoundedCornerShape(20.dp))
+                .background(Color.Cyan)
+                .padding(5.dp),
+            text = "compose 内容1:文字控件".trimIndent(),
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(116.dp)
+                .background(Color.LightGray)
+                .padding(8.dp)
+        ) {
+            Text(
+                text = "compose 内容2:文字控件 A", modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+//                        .padding(8.dp, 0.dp, 0.dp, 0.dp)
+                    .background(Color.Red)
+                    .align(Alignment.TopStart), textAlign = TextAlign.Center, style = TextStyle(fontSize = 18.sp), color = Color.White
+            )
+            Text(
+                modifier = Modifier
+                    .padding(8.dp, 58.dp, 0.dp, 0.dp)
+                    .fillMaxWidth()
+                    .height(50.dp)
+//                        .size(1000.dp, 50.dp)
+                    .background(Color.Green), textAlign = TextAlign.Center, style = TextStyle(fontSize = 18.sp), color = Color.Yellow, text = "compose 内容3:文字控件 B"
+
+            )
+        }
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(5.dp)
+                .background(Color.Magenta)
+                .padding(5.dp)
+        ) {
+            val (buttonID, textID) = createRefs()
+            Button(onClick = {
+                Toast.makeText(context, "点击我干嘛？", Toast.LENGTH_LONG).show()
+            }, modifier = Modifier.constrainAs(buttonID) {
+                top.linkTo(parent.top, margin = 16.dp)
+            }) {
+                Text("compose 内容4 button 控件")
+            }
+            // Assign reference "text" to the Text composable
+            // and constrain it to the bottom of the Button composable
+            Text("compose 内容5 text 控件",
+                Modifier
+                    .wrapContentHeight()
+                    .wrapContentWidth()
+                    .background(Color.Red)
+                    .constrainAs(textID) {
+                        top.linkTo(buttonID.bottom, margin = 16.dp)
+                    })
+        }
+
+
+        FlowColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .padding(5.dp)
+                .background(Color.White)
+                .padding(5.dp)
+        ) {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(30.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.LightGray), text = "compose 内容列表:文字控件", textAlign = TextAlign.Center, color = Color.Black
+            )
+
+        }
+    }
 }

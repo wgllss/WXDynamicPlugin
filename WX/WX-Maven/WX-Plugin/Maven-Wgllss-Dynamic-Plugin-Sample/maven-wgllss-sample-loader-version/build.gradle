@@ -32,8 +32,8 @@ android {
 dependencies {
     compileOnly libs.kotlin.stdlib
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.5'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.7'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
 }
 
 

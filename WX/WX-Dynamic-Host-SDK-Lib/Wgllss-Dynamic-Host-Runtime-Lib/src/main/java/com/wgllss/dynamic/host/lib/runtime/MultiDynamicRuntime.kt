@@ -3,6 +3,7 @@ package com.wgllss.dynamic.host.lib.runtime
 import android.text.TextUtils
 import java.lang.reflect.Field
 import com.wgllss.dynamic.host.lib.runtime.BuildConfig
+import java.io.File
 
 object MultiDynamicRuntime {
 
@@ -37,8 +38,7 @@ object MultiDynamicRuntime {
             if (pathClassLoader != null) {
                 hackContainerClassLoader(containerKey, containerApk, pathClassLoader)
             }
-            if (BuildConfig.DEBUG)
-                android.util.Log.e("MultiDynamicRuntime", "containerApk插入成功，containerKey= $containerKey")
+            if (BuildConfig.DEBUG) android.util.Log.e("MultiDynamicRuntime", "containerApk插入成功，containerKey= $containerKey")
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
@@ -79,9 +79,11 @@ object MultiDynamicRuntime {
 
     @Throws(Exception::class)
     private fun hackContainerClassLoader(containerKey: String, containerApk: InstalledApk, pathClassLoader: ClassLoader) {
+        File(containerApk.oDexPath).setReadOnly()
+        File(containerApk.apkFilePath).setReadOnly()
+        containerApk.libraryPath?.let { File(it).setReadOnly() }
         val containerClassLoader = ContainerClassLoader(
-            containerKey, containerApk.apkFilePath, containerApk.oDexPath,
-            containerApk.libraryPath, pathClassLoader.parent, pathClassLoader
+            containerKey, containerApk.apkFilePath, containerApk.oDexPath, containerApk.libraryPath, pathClassLoader.parent, pathClassLoader
         )
         hackParentClassLoader(pathClassLoader, containerClassLoader)
     }

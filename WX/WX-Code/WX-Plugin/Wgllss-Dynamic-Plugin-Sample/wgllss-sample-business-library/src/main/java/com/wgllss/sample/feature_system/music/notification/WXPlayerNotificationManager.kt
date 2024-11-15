@@ -1,5 +1,6 @@
 package com.wgllss.sample.feature_system.music.notification
 
+import android.Manifest
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,8 +9,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.os.Build
 import android.os.Build.VERSION
 import android.os.Handler
 import android.os.Looper
@@ -17,6 +20,7 @@ import android.os.Message
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.media.session.MediaButtonReceiver
@@ -91,9 +95,11 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
             MSG_START_OR_UPDATE_NOTIFICATION -> if (player != null) {
                 startOrUpdateNotification(player!!,  /* bitmap= */null)
             }
+
             MSG_UPDATE_NOTIFICATION_BITMAP -> if (player != null && isNotificationStarted && currentNotificationTag == msg.arg1) {
                 startOrUpdateNotification(player!!, msg.obj as Bitmap)
             }
+
             else -> return false
         }
         return true
@@ -163,11 +169,7 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
             }
         }
 
-        val style = androidx.media.app.NotificationCompat.MediaStyle()
-            .setMediaSession(mediaSession.sessionToken)
-            .setShowCancelButton(true)
-            .setShowActionsInCompactView(0, 1, 2, 3)
-            .setCancelButtonIntent(MediaButtonReceiver.buildMediaButtonPendingIntent(context, PlaybackStateCompat.ACTION_STOP))
+        val style = androidx.media.app.NotificationCompat.MediaStyle().setMediaSession(mediaSession.sessionToken).setShowCancelButton(true).setShowActionsInCompactView(0, 1, 2, 3).setCancelButtonIntent(MediaButtonReceiver.buildMediaButtonPendingIntent(context, PlaybackStateCompat.ACTION_STOP))
 
         builder?.apply {
             setStyle(style)
@@ -219,8 +221,7 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
 
     private fun getOngoing(player: Player): Boolean {
         val playbackState = player.playbackState
-        return ((playbackState == Player.STATE_BUFFERING || playbackState == Player.STATE_READY)
-                && player.playWhenReady)
+        return ((playbackState == Player.STATE_BUFFERING || playbackState == Player.STATE_READY) && player.playWhenReady)
     }
 
 
@@ -232,9 +233,13 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
             return
         }
         val notification: Notification = builder!!.build()
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return
+        }
         notificationManagerCompat.notify(notificationId, notification)
         if (!isNotificationStarted) {
-            context.registerReceiver(notificationBroadcastReceiver, intentFilter)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) context.registerReceiver(notificationBroadcastReceiver, intentFilter, Context.RECEIVER_EXPORTED)
+            else context.registerReceiver(notificationBroadcastReceiver, intentFilter)
         }
         notificationsListener?.onNotificationPosted(notificationId, notification, ongoing || !isNotificationStarted)
         isNotificationStarted = true
@@ -263,8 +268,7 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
 
     private fun retrievePlaybackAction(action: String): PendingIntent {
         val intent = Intent(action).setPackage(context.packageName)
-        val pendingFlags = if (SdkIntUtils.isLollipop())
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        val pendingFlags = if (SdkIntUtils.isLollipop()) PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         else PendingIntent.FLAG_UPDATE_CURRENT
         return PendingIntent.getBroadcast(context, instanceId, intent, pendingFlags);
     }
@@ -297,11 +301,7 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
         private suspend fun resolveUriAsBitmap(uri: String): Bitmap? {
             return withContext(Dispatchers.IO) {
                 try {
-                    Glide.with(context).applyDefaultRequestOptions(glideOptions)
-                        .asBitmap()
-                        .load(uri)
-                        .submit(NOTIFICATION_LARGE_ICON_SIZE, NOTIFICATION_LARGE_ICON_SIZE)
-                        .get()
+                    Glide.with(context).applyDefaultRequestOptions(glideOptions).asBitmap().load(uri).submit(NOTIFICATION_LARGE_ICON_SIZE, NOTIFICATION_LARGE_ICON_SIZE).get()
                 } catch (e: Exception) {
                     null
                 }
@@ -320,8 +320,15 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
     private inner class PlayerListener : Player.Listener {
         override fun onEvents(player: Player, events: Player.Events) {
             if (events.containsAny(
-                    Player.EVENT_PLAYBACK_STATE_CHANGED, Player.EVENT_PLAY_WHEN_READY_CHANGED, Player.EVENT_IS_PLAYING_CHANGED, Player.EVENT_TIMELINE_CHANGED, Player.EVENT_PLAYBACK_PARAMETERS_CHANGED,
-                    Player.EVENT_POSITION_DISCONTINUITY, Player.EVENT_REPEAT_MODE_CHANGED, Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED, Player.EVENT_MEDIA_METADATA_CHANGED
+                    Player.EVENT_PLAYBACK_STATE_CHANGED,
+                    Player.EVENT_PLAY_WHEN_READY_CHANGED,
+                    Player.EVENT_IS_PLAYING_CHANGED,
+                    Player.EVENT_TIMELINE_CHANGED,
+                    Player.EVENT_PLAYBACK_PARAMETERS_CHANGED,
+                    Player.EVENT_POSITION_DISCONTINUITY,
+                    Player.EVENT_REPEAT_MODE_CHANGED,
+                    Player.EVENT_SHUFFLE_MODE_ENABLED_CHANGED,
+                    Player.EVENT_MEDIA_METADATA_CHANGED
                 )
             ) {
                 postStartOrUpdateNotification()
@@ -340,15 +347,19 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
                     }
                     player?.play()
                 }
+
                 ACTION_PAUSE -> {
                     player?.pause()
                 }
+
                 ACTION_PREVIOUS -> {
                     mediaSession.controller?.transportControls?.skipToPrevious()
                 }
+
                 ACTION_NEXT -> {
                     mediaSession.controller?.transportControls?.skipToNext()
                 }
+
                 Intent.ACTION_SCREEN_OFF, Intent.ACTION_POWER_CONNECTED, Intent.ACTION_SCREEN_ON -> {//锁屏显示歌词等等
                     if (MMKVHelp.isOpenLockerUI() && player!!.isPlaying) {
                         try {
@@ -361,9 +372,11 @@ class WXPlayerNotificationManager(private val context: Context, private val medi
                         }
                     }
                 }
+
                 ACTION_CONTENT -> {
 
                 }
+
                 else -> {
 
                 }

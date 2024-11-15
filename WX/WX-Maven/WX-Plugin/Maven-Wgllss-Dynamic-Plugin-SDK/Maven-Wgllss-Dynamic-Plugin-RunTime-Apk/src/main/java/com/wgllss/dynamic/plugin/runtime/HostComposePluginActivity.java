@@ -19,6 +19,8 @@ import com.wgllss.core.activity.compose.BaseComposeActivity;
 import com.wgllss.dynamic.host.lib.classloader.PluginKey;
 import com.wgllss.dynamic.runtime.library.WXHostActivityDelegate;
 
+import java.io.File;
+
 public class HostComposePluginActivity extends BaseComposeActivity {
     private PluginClassLoader pluginDexClassLoader;
     private Resources pluginResources;
@@ -63,7 +65,8 @@ public class HostComposePluginActivity extends BaseComposeActivity {
             activityName = savedInstanceState.getString(PluginKey.activityNameKey);
             privatePackage = savedInstanceState.getString(PluginKey.privatePackageKey);
         }
-
+        new File(pluginApkPath).setReadOnly();
+        new File(getDir("dex", Context.MODE_PRIVATE).getAbsolutePath()).setReadOnly();
         pluginDexClassLoader = new PluginClassLoader(privatePackage, pluginApkPath, getDir("dex", Context.MODE_PRIVATE).getAbsolutePath(), null, getClassLoader());
         int flags = (PackageManager.GET_META_DATA | PackageManager.GET_ACTIVITIES | PackageManager.GET_SERVICES
                 | PackageManager.GET_PROVIDERS | PackageManager.GET_RECEIVERS);

@@ -24,7 +24,7 @@ class WXDynamicLoader private constructor() {
 
     fun installPlugin(context: Context, face: IDynamicDownLoadFace, vImpl: ILoaderVersion) {
         this.context = context
-        val file = getDxFile(context, dldir, versionFile)
+        val file = getDxFile(context, dldir, versionFile).apply { setReadOnly() }
         val optPath = context.getDir("dex", Context.MODE_PRIVATE).absolutePath
         val parent = javaClass.classLoader
         File(file.parent).takeIf { !it.exists() }?.mkdirs()

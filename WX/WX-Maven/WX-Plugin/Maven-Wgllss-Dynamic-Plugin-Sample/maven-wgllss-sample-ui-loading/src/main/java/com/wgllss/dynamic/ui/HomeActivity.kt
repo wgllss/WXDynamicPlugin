@@ -43,7 +43,8 @@ class HomeActivity : Activity() {
         imageView.setImageResource(com.wgllss.host.skin.R.drawable.loading)
         setContentView(imageView)
         val intentFilter = IntentFilter(BroadCastAction.DOWNLOAD_HOME_COMPLETE_ACTION)
-        registerReceiver(downLoadCompleteBroadCast, intentFilter)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) registerReceiver(downLoadCompleteBroadCast, intentFilter, Context.RECEIVER_EXPORTED)
+        else registerReceiver(downLoadCompleteBroadCast, intentFilter)
     }
 
     override fun onDestroy() {
@@ -67,6 +68,7 @@ class HomeActivity : Activity() {
                             e.printStackTrace()
                         }
                     }
+
                     else -> {}
                 }
             }

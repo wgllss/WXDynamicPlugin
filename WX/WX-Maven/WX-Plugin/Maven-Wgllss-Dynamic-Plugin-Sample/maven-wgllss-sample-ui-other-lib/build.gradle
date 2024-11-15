@@ -38,11 +38,11 @@ dependencies {
     compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Manager')
 
     compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Runtime-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.3'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.0.8'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.7'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.8'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.5'
 
     compileOnly libs.androidx.core.ktx
     compileOnly libs.appcompat

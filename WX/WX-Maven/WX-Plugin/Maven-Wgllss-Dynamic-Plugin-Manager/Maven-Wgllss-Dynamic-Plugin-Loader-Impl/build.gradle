@@ -30,9 +30,9 @@ android {
 }
 
 dependencies {
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Base-Lib:1.0.0.7'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.5'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.5'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Base-Lib:1.0.1.3'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.8'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
 }
 
 

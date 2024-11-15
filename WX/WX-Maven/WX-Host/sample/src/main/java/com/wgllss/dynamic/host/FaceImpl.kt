@@ -19,11 +19,11 @@ class FaceImpl : IDynamicDownLoadFace {
 
     private var baseXL: String = ""
 
-//    override fun getHostL() = "http://192.168.3.108:8080/assets/WXDynamicPlugin/"
+    override fun getHostL() = "http://192.168.3.108:8080/assets/WXDynamicPlugin/"
 //    override fun getHostL() = "http://192.168.1.9:8080/assets/WXDynamicPlugin/"
     //todo 自己本地搭一个服务器，或者 自己服务器 或者 像我一样在gitee上面在自己的项目下建一个文件当作服务器 供下载,
     // 切记不要往往我的 gitee 项目上面推
-    override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/"
+//    override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/"
 
     /** 0:WXDynamicPlugin 动态化插件框架 理论上已经做到了可以完全不动宿主,但是如果一定要动宿主 可以提供以下思路:
      *  1:可以根据 宿主版本号得到 宿主版本支持的 的插件,
