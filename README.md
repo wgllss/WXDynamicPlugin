@@ -215,7 +215,18 @@
 
 #### [(十二) Compose的全动态插件化框架支持了，已更新到AGP 8.6,Kotlin2.0.20,支持Compose](https://juejin.cn/post/7435587382345482303)
 
-## 本人其他开源：
+
+## 作者开源 Compose可视化图表库
+
+#### [(一)Compose曲线图表库WXChart，你只需要提供数据配置就行了](https://juejin.cn/post/7438835112790605865 "https://juejin.cn/post/7438835112790605865")\
+
+#### [(二)Compose折线图，贝赛尔曲线图，柱状图，圆饼图，圆环图。带动画和点击效果](https://juejin.cn/post/7442228138501259283 "https://juejin.cn/post/7442228138501259283")\
+
+#### [(三)全网最火视频，Compose代码写出来，动态可视化趋势视频，帅到爆](https://juejin.cn/post/7449238845214244875 "https://juejin.cn/post/7449238845214244875")\
+
+#### [(四)全网最火可视化趋势视频实现深度解析，同时新增条形图表](https://juejin.cn/post/7449910229573943350)
+
+## 本人其他开源文章：
 
 #### [那些大厂架构师是怎样封装网络请求的？](https://juejin.cn/post/7435904232597372940)
 
@@ -224,6 +235,14 @@
 #### [花式封装：Kotlin+协程+Flow+Retrofit+OkHttp +Repository，倾囊相授,彻底减少模版代码进阶之路](https://juejin.cn/post/7417847546323042345)
 
 #### [注解处理器在架构，框架中实战应用：MVVM中数据源提供Repository类的自动生成](https://juejin.cn/post/7392258195089162290)
+
+#### [Android串口，USB，打印机，扫码枪，支付盒子，键盘，鼠标，U盘等开发使用一网打尽](https://juejin.cn/post/7439231301869305910)
+
+#### [多台Android设备局域网下的数据备份如何实现？](https://juejin.cn/post/7444378661934055464)
+
+#### [轻松搞定Android蓝牙打印机，双屏异显及副屏分辨率适配解决办法](https://juejin.cn/post/7446820939943428107)
+
+#### [一个Kotlin版Demo带你入门JNI,NDK编程](https://juejin.cn/post/7452181029996380171)
 
 #### 感谢阅读，欢迎给给个星，你们的支持是我开源的动力
 
