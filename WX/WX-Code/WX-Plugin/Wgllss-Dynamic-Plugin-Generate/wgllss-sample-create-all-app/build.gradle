@@ -48,19 +48,38 @@ def createVersionJson(assembleReleaseTask, buildType) {
     if (outputFile.exists()) {
         outputFile.delete()
     }
-    tasks.create("assembleCreateAllFile${buildType.capitalize()}", Copy) {
-        group = 'other'
-        description = "复制json到 指定输出目录"
-        from(inputFile.getParent()) {
-            include(inputFile.name)
-//            rename { outputFile.name }
+
+    def inputFileJar = file("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
+    def outputSrcFile = file("${project(":wgllss-sample-create-version-config-compiler").projectDir}/libs/classes.jar")
+    if (outputSrcFile.exists()) {
+        outputSrcFile.delete()
+    }
+    def assembleCopyJarToLibs = tasks.create("assembleCopyJarToLibs") {
+        doLast {
+            copy {
+                from(inputFileJar.getParent()) {
+                    include(inputFileJar.name)
+                    rename { outputSrcFile.name }
+                }
+                into(outputSrcFile.getParent())
+            }
         }
-        into(outputFile.getParent())
-    }.dependsOn(assembleReleaseTask.name)
-    return assembleReleaseTask
-            .dependsOn(assemblecleanJson.name)
-            .dependsOn(":wgllss-sample-loader-version:assembleDxCommandAndCopy")
+    }.dependsOn(":wgllss-sample-loader-version:assembleDxCommandAndCopy")
             .dependsOn(":wgllss-sample-loader-version:assembleRelease")
+
+
+    return tasks.create("assembleCreateAllFile${buildType.capitalize()}") {
+        doLast {
+            copy {
+                from(inputFile.getParent()) {
+                    include(inputFile.name)
+                    rename { outputFile.name }
+                }
+                into(outputFile.getParent())
+            }
+        }
+    }.dependsOn(assembleReleaseTask.name)
+            .dependsOn(assembleCopyJarToLibs.name)
 
             .dependsOn(":Wgllss-Dynamic-Plugin-RunTime-Apk:assembleCopy")
 

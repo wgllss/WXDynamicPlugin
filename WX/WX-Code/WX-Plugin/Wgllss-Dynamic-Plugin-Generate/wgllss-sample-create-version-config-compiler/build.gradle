@@ -19,7 +19,7 @@ dependencies {
     implementation libs.kotlinpoet
 
     implementation project(path: ':wgllss-sample-create-version-config-annotations')
-    implementation files("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
+//    implementation files("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
 
 
     implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
