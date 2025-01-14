@@ -21,7 +21,7 @@ class DownLoadFaceImpl : IDynamicDownLoadFace {
 
     //    override fun getHostL() = "http://192.168.3.21:8080/assets/WXDynamicPlugin/"
 //    override fun getHostL() = "http://192.168.1.9:8080/assets/WXDynamicPlugin/"
-    override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master/WX-Resource/"
+    override fun getHostL() = "https://gitee.com/wgllss888/WXDynamicPlugin/raw/master-gradle7_1-agp4_2_1/WX-Resource/"
 
     /** 0:WXDynamicPlugin 动态化插件框架 理论上已经做到了可以完全不动宿主,但是如果一定要动宿主 可以提供以下思路:
      *  1:可以根据 宿主版本号得到 宿主版本支持的 的插件,
