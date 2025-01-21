@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    implementation libs.kotlin.stdlib
+//    implementation libs.kotlin.stdlib
 
 //    compileOnly "androidx.core:core-ktx:$rootProject.ext.kotlin_version"
     compileOnly project(path: ':maven-wgllss-common-re-library')

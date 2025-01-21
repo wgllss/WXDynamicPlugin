@@ -165,6 +165,8 @@ java {
 
 #### 上面介绍 直接 run运行 ,打开app 进入宿主，直接下载的插件 为我已经放在准好的服务器上面了
 
+#### maven接入方式 请不要设置代理抓包！！！
+
 &emsp;&emsp;可以通过源码工程自行打包，上传到自己的服务器上部署，方法如下:  
 &emsp;&emsp;找到 WX/WX-Maven/WX-Host/sample/ com.wgllss.dynamic.host.FaceImpl
 
