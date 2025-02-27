@@ -2,6 +2,8 @@
 
 ## 介绍
 
+#### 最新接入研究配置参考文章介绍  [Compose的全动态插件化框架支持了，已更新到AGP 8.6,Kotlin2.0.20,支持Compose](https://juejin.cn/post/7435587382345482303)
+
 #### **WXDynamicPlugin是由本人自住研发的Android插件框架**
 
 ### 零反射，零HooK,全动态化，插件化框架，全网唯一结合启动优化的插件化架构
