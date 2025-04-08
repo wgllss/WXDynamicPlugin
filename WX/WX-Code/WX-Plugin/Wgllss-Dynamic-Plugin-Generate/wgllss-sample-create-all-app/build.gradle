@@ -51,11 +51,11 @@ def createVersionJson(assembleReleaseTask, buildType) {
 
     def inputFileJar = file("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
     def outputSrcFile = file("${project(":wgllss-sample-create-version-config-compiler").projectDir}/libs/classes.jar")
-    if (outputSrcFile.exists()) {
-        outputSrcFile.delete()
-    }
     def assembleCopyJarToLibs = tasks.create("assembleCopyJarToLibs") {
         doLast {
+            if (outputSrcFile.exists()) {
+                outputSrcFile.delete()
+            }
             copy {
                 from(inputFileJar.getParent()) {
                     include(inputFileJar.name)

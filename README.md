@@ -103,12 +103,12 @@
 #### 环境准备
 
 * **AS设置JDK 选17，电脑java版本需要安装 1.8.xxx, 打开工程下 local.properties**
-* **最新版本AS(Android Studio Ladybug 2024.2.1 Patch 3)以上提示JDK需要 21时：需要修改如下2个工程：**
-* **maven-wgllss-sample-create-version-config-compiler 和 maven-wgllss-sample-create-version-config-annotations工程都需要java版本需要改成如下21**
+* **最新版本AS(Android Studio Ladybug 2024.2.1 Patch 3)以上提示JDK需要 17时：需要修改如下2个工程：**
+* **maven-wgllss-sample-create-version-config-compiler 和 maven-wgllss-sample-create-version-config-annotations工程都需要java版本需要改成如下17**
 ```
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 ```
 
