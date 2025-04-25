@@ -31,4 +31,5 @@ android {
 
 dependencies {
     implementation project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+    implementation libs.androidx.activity
 }

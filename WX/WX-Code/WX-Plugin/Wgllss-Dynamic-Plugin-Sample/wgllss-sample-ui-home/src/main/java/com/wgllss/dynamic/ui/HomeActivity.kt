@@ -129,14 +129,23 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
             }
 
             getPluginID(getSkinResources(), "fmt_b", SkinContains.packageName) -> {
+                if (!isLoadSuccess()) {
+                    return true
+                }
                 setCurrentFragment(collectFragmentL)
             }
 
             getPluginID(getSkinResources(), "fmt_c", SkinContains.packageName) -> {
+                if (!isLoadSuccess()) {
+                    return true
+                }
                 setCurrentFragment(sampleFragmentL)
             }
 
             getPluginID(getSkinResources(), "fmt_d", SkinContains.packageName) -> {
+                if (!isLoadSuccess()) {
+                    return true
+                }
                 setCurrentFragment(settingFragmentL)
             }
         }
@@ -156,5 +165,15 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
             navigationView.itemTextColor = colorList
             navigationView.itemIconTintList = colorList
         }
+    }
+
+    private fun isLoadSuccess(): Boolean {
+        showloading("请稍后...")
+        val status = PluginManager.instance.isLoadSuccessByKey("classes_other_dex", "classes_other_res")
+        hideLoading()
+        if (!status) {
+            onToast("缺少插件")
+        }
+        return status
     }
 }

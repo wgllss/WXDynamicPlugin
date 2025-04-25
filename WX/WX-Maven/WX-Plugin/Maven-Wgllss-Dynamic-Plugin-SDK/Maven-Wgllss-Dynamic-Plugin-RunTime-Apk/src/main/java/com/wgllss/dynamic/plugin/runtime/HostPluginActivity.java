@@ -131,7 +131,8 @@ public class HostPluginActivity extends BaseActivity {
         if (hasFocus) {
             if (isFirst) {
                 isFirst = false;
-                mHostDelegate.lazyInitValue();
+                if (mHostDelegate != null)
+                    mHostDelegate.lazyInitValue();
             }
         }
     }

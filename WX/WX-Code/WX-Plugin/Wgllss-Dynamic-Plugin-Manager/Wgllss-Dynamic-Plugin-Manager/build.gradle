@@ -32,6 +32,8 @@ android {
 dependencies {
     compileOnly libs.androidx.core.ktx
     compileOnly libs.appcompat
+    compileOnly libs.androidx.activity
+
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Common-Library')
 
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Library')

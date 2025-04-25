@@ -78,6 +78,13 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
 
     private fun onItemClick(item: SampleItemBean) {
         activity?.run {
+            showloading("请稍后...")
+            val status = PluginManager.instance.isLoadSuccessByKey("classes_other2_dex", "classes_other2_res")
+            hideLoading()
+            if (!status) {
+                onToast("缺少插件")
+                return
+            }
             when (item.id) {
                 5 -> { //webview
                     PluginManager.instance.startPluginSingleTaskActivity(this, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity", "com.wgllss.dynamic.sample.other2", Intent().apply {

@@ -131,7 +131,7 @@ class AptCreateConfigProcessor : AbstractProcessor() {
         }
         pluginMode.putAllMapDl(map)
         loader.getOthers().forEach { (key, value) ->
-            var isApkRes = key.contains("_res")
+            val isApkRes = key.contains("_res")
             pluginMode.addOthers(PluginMode._PluginMode._Plugin.newBuilder().setV(value).setDlu(key).setIsApkRes(isApkRes).build())
         }
         return pluginMode.build()

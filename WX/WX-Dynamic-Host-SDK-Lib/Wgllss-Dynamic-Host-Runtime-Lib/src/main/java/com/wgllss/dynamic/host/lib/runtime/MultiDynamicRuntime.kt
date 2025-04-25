@@ -15,13 +15,13 @@ object MultiDynamicRuntime {
      * @param containerKey 插件业务对应的key，不随插件版本变动
      * @param containerApk 插件zip包中的runtimeApk
      */
-    fun loadContainerApk(containerKey: String, containerApk: InstalledApk): Boolean {
+    fun loadContainerApk(containerKey: String, apkFilePathEx: String, oDexPathEx: String): Boolean {
         // 根据key去查找对应的ContainerClassLoader
         val pathClassLoader = MultiDynamicRuntime::class.java.classLoader
         val containerClassLoader = findContainerClassLoader(containerKey)
         if (containerClassLoader != null) {
             val apkFilePath = containerClassLoader.apkPath
-            if (TextUtils.equals(apkFilePath, containerApk.apkFilePath)) {
+            if (TextUtils.equals(apkFilePath, apkFilePathEx)) {
                 //已经加载相同版本的containerApk了,不需要加载
                 return false
             } else {
@@ -36,7 +36,7 @@ object MultiDynamicRuntime {
         // 将ContainerClassLoader hack到PathClassloader之上
         try {
             if (pathClassLoader != null) {
-                hackContainerClassLoader(containerKey, containerApk, pathClassLoader)
+                hackContainerClassLoader(containerKey, apkFilePathEx, oDexPathEx, pathClassLoader)
             }
             if (BuildConfig.DEBUG) android.util.Log.e("MultiDynamicRuntime", "containerApk插入成功，containerKey= $containerKey")
         } catch (e: Exception) {
@@ -78,12 +78,12 @@ object MultiDynamicRuntime {
     }
 
     @Throws(Exception::class)
-    private fun hackContainerClassLoader(containerKey: String, containerApk: InstalledApk, pathClassLoader: ClassLoader) {
-        File(containerApk.oDexPath).setReadOnly()
-        File(containerApk.apkFilePath).setReadOnly()
-        containerApk.libraryPath?.let { File(it).setReadOnly() }
+    private fun hackContainerClassLoader(containerKey: String, apkFilePath: String, oDexPath: String, pathClassLoader: ClassLoader) {
+        File(oDexPath).setReadOnly()
+        File(apkFilePath).setReadOnly()
+//        libraryPath?.let { File(it).setReadOnly() }
         val containerClassLoader = ContainerClassLoader(
-            containerKey, containerApk.apkFilePath, containerApk.oDexPath, containerApk.libraryPath, pathClassLoader.parent, pathClassLoader
+            containerKey, apkFilePath, oDexPath, null, pathClassLoader.parent, pathClassLoader
         )
         hackParentClassLoader(pathClassLoader, containerClassLoader)
     }

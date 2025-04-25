@@ -2,6 +2,7 @@ package com.wgllss.dynamic.host.lib.loader
 
 import android.content.Context
 import com.wgllss.dynamic.host.lib.download.IDynamicDownLoadFace
+import kotlinx.coroutines.Deferred
 
 interface ILoaderManager {
 
@@ -58,5 +59,9 @@ interface ILoaderManager {
     fun initDynamicRunTime(context: Context, contentKey: String, fileAbsolutePath: String)
 
     fun initHomeCreate(context: Context, classLoader: ClassLoader)
+
+    fun isFShowLoadFlag(): Boolean
+
+    fun getOtherLoadStatus(): MutableMap<String, Deferred<Boolean>>
 
 }

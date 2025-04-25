@@ -11,7 +11,6 @@ import android.text.TextUtils
 import com.wgllss.core.activity.BaseViewPluginResActivity
 import com.wgllss.core.activity.WActivityManager
 import com.wgllss.core.units.WLog
-import com.wgllss.dynamic.host.lib.classloader.PluginKey
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.RESOURCE_SKIN
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.WEB_ASSETS
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.dldir
@@ -21,6 +20,7 @@ import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils.getDlfn
 import com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface
 import com.wgllss.sample.feature_system.savestatus.MMKVHelp
+import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 
@@ -48,6 +48,8 @@ class PluginManager private constructor() {
 
     /**others dex*/
     private val cotd by lazy { WXDynamicLoader.instance.loader.getCotdImpl() }
+
+    private val mapOtherLoadStatus by lazy { WXDynamicLoader.instance.loader.getOtherLoadStatus() }
 
     private val context by lazy { WXDynamicLoader.instance.context }
     private val skinMap by lazy { ConcurrentHashMap<String, Resources>() }
@@ -488,5 +490,20 @@ class PluginManager private constructor() {
                 }
             }
         }
+    }
+
+    /**  可用来当other没有下载 加载完时候，进行等待 **/
+    fun isLoadSuccessByKey(keyDex: String, keyRes: String): Boolean {
+        var status = false
+        runBlocking {
+            status = if (WXDynamicLoader.instance.loader.isFShowLoadFlag()) {
+                if (mapOtherLoadStatus.containsKey(keyDex) && mapOtherLoadStatus.containsKey(keyRes))
+                    mapOtherLoadStatus[keyDex]!!.await() && mapOtherLoadStatus[keyRes]!!.await()
+                else false
+            } else {
+                true
+            }
+        }
+        return status
     }
 }

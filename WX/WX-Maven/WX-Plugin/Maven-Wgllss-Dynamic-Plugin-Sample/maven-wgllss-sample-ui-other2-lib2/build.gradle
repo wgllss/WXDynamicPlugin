@@ -45,8 +45,8 @@ dependencies {
 
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
     implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.5'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.8'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.9'
 
     implementation libs.androidx.core.ktx
     implementation libs.appcompat

@@ -26,14 +26,14 @@ class WXDynamicLoader private constructor() {
         this.context = context
         val file = getDxFile(context, dldir, versionFile).apply { setReadOnly() }
         val optPath = context.getDir("dex", Context.MODE_PRIVATE).absolutePath
-        val parent = javaClass.classLoader
-        File(file.parent).takeIf { !it.exists() }?.mkdirs()
-        getClassImpl(ILoaderVersion::class.java, face.getLoadVersionClassName(), file, optPath, parent, file.exists(), vImpl)?.run {
+        val parent = javaClass.classLoader!!
+        file.parent?.let { File(it).takeIf { !it.exists() }?.mkdirs() }
+        getClassImpl(ILoaderVersion::class.java, face.getLoadVersionClassName(), file, optPath, parent, file.exists(), vImpl).run {
             val fileCdldd = getDxFile(context, dldir, getDlfn(getCdlfd().second, getCdlfd().third))
             val faceImpl = getClassImpl(IDynamicDownLoadFace::class.java, getCdlfd().first, fileCdldd, optPath, parent, fileCdldd.exists() && !TextUtils.isEmpty(getCdlfd().first), face)
             val fileClmd = getDxFile(context, dldir, getDlfn(getClmd().second, getClmd().third))
             loader = getClassImpl(ILoaderManager::class.java, getClmd().first, fileClmd, optPath, parent, fileClmd.exists() && !TextUtils.isEmpty(getClmd().first), WXLoaderManagerImpl())
-            loader?.initDynamicLoader(context, getV(), getClfd(), getClmd(), getCdlfd(), getMapDLU(), getOthers(), faceImpl, isMustShowLoading())
+            loader.initDynamicLoader(context, getV(), getClfd(), getClmd(), getCdlfd(), getMapDLU(), getOthers(), faceImpl, isMustShowLoading())
         }
     }
 }

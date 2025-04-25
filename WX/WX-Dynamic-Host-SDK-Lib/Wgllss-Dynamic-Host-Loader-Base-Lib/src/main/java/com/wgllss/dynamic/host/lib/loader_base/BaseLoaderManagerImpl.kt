@@ -2,6 +2,9 @@ package com.wgllss.dynamic.host.lib.loader_base
 
 import android.app.Application
 import android.content.Context
+import android.text.TextUtils
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.CDLFD
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.CLMD
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.FIRST
@@ -17,9 +20,10 @@ import com.wgllss.dynamic.host.lib.home.ILoadHome
 import com.wgllss.dynamic.host.lib.loader.ILoaderManager
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils.getDlfn
 import com.wgllss.dynamic.host.lib.runtime.ContainerClassLoader
-import com.wgllss.dynamic.host.lib.runtime.InstalledApk
 import com.wgllss.dynamic.host.lib.runtime.MultiDynamicRuntime
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -49,13 +53,20 @@ open class BaseLoaderManagerImpl : ILoaderManager {
 
     protected lateinit var faceImpl: IDynamicDownLoadFace
 
-    protected var mapOthers = mutableMapOf<String, String>()
+    protected val mapOthers by lazy { mutableMapOf<String, String>() }
+
+    /** 第一次安装 需要下载other ,监听其他插件是否加载完成，可能进入首页后，others 内的插件还没有下载完成，没有加载，导致第一次点击崩溃 **/
+    protected val mapOthersIsLoadComplete by lazy { mutableMapOf<String, Deferred<Boolean>>() }
+    protected val obj by lazy { Any() }
 
     /** 是否显示启动加载页面标志 **/
     protected var isShowLoadFlag = false
 
     /** 代表前面的 lib dx 是否加载完成 ，只有加载完成了之后才能加载 others**/
+    @Volatile
     protected var libIsLoadComplete = false
+
+    @Volatile
     protected var firstLoadSuccess = false
 
     /** 是否有旧的文件需要删除*/
@@ -76,16 +87,12 @@ open class BaseLoaderManagerImpl : ILoaderManager {
 
     override fun getDownloadFace() = faceImpl
 
+    override fun isFShowLoadFlag() = isShowLoadFlag
+
+    override fun getOtherLoadStatus() = mapOthersIsLoadComplete
+
     override fun initDynamicLoader(
-        context: Context,
-        v: Int,
-        clfd: Triple<String, String, Int>,
-        clmd: Triple<String, String, Int>,
-        cdlfd: Triple<String, String, Int>,
-        mapDlu: MutableMap<String, Pair<String, Int>>,
-        cotd: MutableMap<String, Int>,
-        faceImpl: IDynamicDownLoadFace,
-        isMustShowLoading: Boolean
+        context: Context, v: Int, clfd: Triple<String, String, Int>, clmd: Triple<String, String, Int>, cdlfd: Triple<String, String, Int>, mapDlu: MutableMap<String, Pair<String, Int>>, cotd: MutableMap<String, Int>, faceImpl: IDynamicDownLoadFace, isMustShowLoading: Boolean
     ) {
         this.v = v
 
@@ -105,23 +112,25 @@ open class BaseLoaderManagerImpl : ILoaderManager {
 
     override fun initDynamicRunTime(context: Context, contentKey: String, fileAbsolutePath: String) {
         val oDexPath = context.getDir("dex", Application.MODE_PRIVATE).absolutePath
-        val installedApk = InstalledApk(fileAbsolutePath, oDexPath, null)
-        MultiDynamicRuntime.loadContainerApk(contentKey, installedApk)
+        MultiDynamicRuntime.loadContainerApk(contentKey, fileAbsolutePath, oDexPath)
     }
 
     override fun initHomeCreate(context: Context, classLoader: ClassLoader) {
         libIsLoadComplete = true
-        classLoader?.parent?.takeIf {
+        classLoader.parent?.takeIf {
             it is ContainerClassLoader
         }?.run {
             (this as ContainerClassLoader).getInterface(ILoadHome::class.java, clfd.first).run {
                 loadHomeCreate(context)
-                mapOthers?.forEach {
-                    initDynamicRunTime(context, it.key, it.value)
+                synchronized(obj) {
+                    mapOthers.forEach {
+                        initDynamicRunTime(context, it.key, it.value)
+                    }
                 }
             }
         }
     }
+
 
     private fun initPlugin(context: Context, key: String, fileName: String) {
         if (key == HOME) initPluginFirst(context, fileName) else initPluginLib(context, fileName)
@@ -175,29 +184,29 @@ open class BaseLoaderManagerImpl : ILoaderManager {
     /**
      * 检查配置
      */
+    @OptIn(DelicateCoroutinesApi::class)
     private fun checkConfig(context: Context) {
         GlobalScope.launch {
             try {
                 val dynamicHelper = DynamicDownloadPlugin(faceImpl)
                 var needDownloadOther = false
-                cotd?.forEach { (key, v) ->
-                    val file = DynamicManageUtils.getDxFile(context, dldir, "${key}_${v}")
+                cotd.forEach { (key, v) ->
+                    val file = DynamicManageUtils.getDxFile(context, dldir, getDlfn(key, v))
                     if (file.exists()) {
-                        if (!key.contains("_res"))
-                            initDynamicRunTime(context, key, file.absolutePath)
+                        if (!key.contains("_res")) initDynamicRunTime(context, key, file.absolutePath)
                     } else {
                         needDownloadOther = true
                     }
                 }
                 val result = dynamicHelper.getPluginInfo()
-                result?.run {
+                result.run {
                     log("BaseLoaderManagerImpl.v  ${this@BaseLoaderManagerImpl.v} v:$v libIsLoadComplete:$libIsLoadComplete")
                     val isFirstLoad = this@BaseLoaderManagerImpl.v == 1000
                     if (isFirstLoad && this@BaseLoaderManagerImpl.v == v) {
                         /**  第一次加载第一版版 时 的 others  **/
                         othersList?.forEach {
                             it.run {
-                                doOthers(context, this@launch, dynamicHelper, dlu, getDlfn(dlu, v), isApkRes, libIsLoadComplete) { }
+                                doOthers(context, this@launch, dynamicHelper, dlu, getDlfn(dlu, v), isApkRes, needDownloadOther) { }
                             }
                         }
                         return@launch
@@ -208,7 +217,7 @@ open class BaseLoaderManagerImpl : ILoaderManager {
                             v.takeIf { ver ->
                                 !cotd.containsKey(dlu) || needDownloadOther || isFirstLoad || ver > cotd[dlu]!!
                             }?.run {
-                                val isCondition = libIsLoadComplete && (isFirstLoad || needDownloadOther || firstLoadSuccess)
+                                val isCondition = (isFirstLoad || needDownloadOther || firstLoadSuccess)
                                 doOthers(context, this@launch, dynamicHelper, dlu, getDlfn(dlu, v), isApkRes, isCondition) {
                                     if (isFirstLoad || needDownloadOther) {
                                         cotd[it.dlu] = v
@@ -253,24 +262,28 @@ open class BaseLoaderManagerImpl : ILoaderManager {
      * @param apkElseBlock :是apk纯资源res Apk 处理方式
      */
     private fun doOthers(context: Context, scope: CoroutineScope, dynamicHelper: DynamicDownloadPlugin, dlu: String, dlfn: String, isApkRes: Boolean, ifCondition: Boolean, apkElseBlock: () -> Unit) {
-        scope.async {
+        mapOthersIsLoadComplete[dlu] = scope.async {
+            var result = false
             dynamicHelper.initDynamicPlugin(context, dlu, dldir, dlfn).run {
-                if (!isApkRes)
-                    synchronized(firstLoadSuccess) {
-                        if (ifCondition)
-                            initDynamicRunTime(context, dlu, fileAbsolutePath)
-                        else {
-                            mapOthers[dlu] = fileAbsolutePath
+                if (!TextUtils.isEmpty(fileAbsolutePath) && !TextUtils.isEmpty(fileAbsolutePath.trim())) {
+                    if (!isApkRes) synchronized(obj) {
+                        if (ifCondition) {
+                            if (libIsLoadComplete) {
+                                initDynamicRunTime(context, dlu, fileAbsolutePath)
+                            } else {
+                                mapOthers[dlu] = fileAbsolutePath
+                            }
                         }
                     }
-                else
-                    apkElseBlock.invoke()
+                    else apkElseBlock.invoke()
+                    result = true
+                }
             }
+            result
         }
     }
 
     private fun log(message: String) {
-        if (faceImpl.isDebug())
-            android.util.Log.e("BaseLoaderManagerImpl", message)
+        if (faceImpl.isDebug()) android.util.Log.e("BaseLoaderManagerImpl", message)
     }
 }
