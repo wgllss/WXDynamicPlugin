@@ -97,14 +97,14 @@ class SampleFragment : BasePluginFragment<SampleViewModel>("fragment_sample") {
             /** 方案一写法 other2 首次下载写法 end  **/
 
             /** 方案二写法 other2 点击时候下载安装 start  **/
-            lifecycleScope.launch {
-                PluginManager.instance.dynamicLoadPlugin(this@run, Pair("classes_other2_dex", 1000), Pair("classes_other2_res", 1000))
-                    .onStart { showloading("加载中...") }.onCompletion { hideLoading() }.catch {
-                        onToast(it.parseErrorString())
-                    }.collect {
-                        itemID(this@run, item)
-                    }
-            }
+//            lifecycleScope.launch {
+//                PluginManager.instance.dynamicLoadPlugin(this@run, Pair("classes_other2_dex", 1000), Pair("classes_other2_res", 1000))
+//                    .onStart { showloading("加载中...") }.onCompletion { hideLoading() }.catch {
+//                        onToast(it.parseErrorString())
+//                    }.collect {
+//                        itemID(this@run, item)
+//                    }
+//            }
             /** 方案二写法 other2 首次下载写法 end  **/
         }
     }
