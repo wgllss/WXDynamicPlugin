@@ -44,6 +44,7 @@ dependencies {
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Base-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
 }
 
 

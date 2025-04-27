@@ -9,12 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.wgllss.core.ex.getIntToDip
 import com.wgllss.core.ex.initColors
+import com.wgllss.core.ex.parseErrorString
 import com.wgllss.core.fragment.BaseViewModelFragment
 import com.wgllss.core.units.WLog
 import com.wgllss.core.widget.DividerGridItemDecoration
@@ -26,6 +28,10 @@ import com.wgllss.dynamic.sample.feature_home.pkg.ResourceContains
 import com.wgllss.dynamic.sample.feature_home.viewmodels.HomeTabViewModel
 import com.wgllss.dynamic.sample.feature_startup.startup.HomeContains
 import com.wgllss.dynamic.sample.feature_startup.startup.LaunchInflateKey
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.packageName) {
@@ -108,6 +114,14 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
             addOnItemTouchListener(object : OnRecyclerViewItemClickListener(this) {
                 override fun onItemClickListener(itemRootView: View, position: Int) {
                     activity?.run {
+                        /** 方案一写法 other2 首次下载写法 start  **/
+                        showloading("请稍后...")
+                        val status = PluginManager.instance.isLoadSuccessByKey("classes_other2_dex", "classes_other2_res")
+                        hideLoading()
+                        if (!status) {
+                            onToast("缺少插件")
+                            return
+                        }
                         PluginManager.instance.startPluginSingleTaskActivity(
                             this, "classes_other2_res",
                             "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
@@ -117,6 +131,23 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
                                 putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
                             }
                         )
+                        /** 方案一写法 other2 首次下载写法 end  **/
+
+
+                        /** 方案二写法 other2 点击时候下载安装 start  **/
+//                        lifecycleScope.launch {
+//                            PluginManager.instance.dynamicLoadPlugin(this@run, Pair("classes_other2_dex", 1000), Pair("classes_other2_res", 1000)).onStart { showloading("加载中...") }.onCompletion { hideLoading() }.catch {
+//                                onToast(it.parseErrorString())
+//                            }.collect {
+//                                PluginManager.instance.startPluginSingleTaskActivity(
+//                                    this@run, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity", "com.wgllss.dynamic.sample.other2", Intent().apply {
+//                                        putExtra("web_url_key", homeNewsAdapter.getItem(position).docid)
+//                                        putExtra("title_key", homeNewsAdapter.getItem(position).title)
+//                                        putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
+//                                    })
+//                            }
+//                        }
+                        /** 方案二写法 other2 首次下载写法 end  **/
                     }
                 }
 
@@ -160,16 +191,14 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
                 homeNewsAdapter.addFooter()
             }
             enableLoadeMore[key]?.observe(viewLifecycleOwner) {
-                if (!it)
-                    homeNewsAdapter.removeFooter()
+                if (!it) homeNewsAdapter.removeFooter()
             }
             showUIDialog.observe(viewLifecycleOwner) {
-                if (!isLoadOffine)
-                    if (!isClick) {
-                        swipeRefreshLayout.isRefreshing = it.isShow && !isLoadingMore(key)
-                    } else {
-                        if (it.isShow) showloading(it.msg) else hideLoading()
-                    }
+                if (!isLoadOffine) if (!isClick) {
+                    swipeRefreshLayout.isRefreshing = it.isShow && !isLoadingMore(key)
+                } else {
+                    if (it.isShow) showloading(it.msg) else hideLoading()
+                }
             }
             errorMsgLiveData.observe(viewLifecycleOwner) {
                 onToast(it)

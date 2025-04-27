@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wgllss.core.activity.BaseViewModelActivity
+import com.wgllss.core.ex.parseErrorString
 import com.wgllss.core.ex.switchFragment
 import com.wgllss.core.units.ResourceUtils
 import com.wgllss.dynamic.plugin.manager.PluginManager
@@ -21,6 +22,9 @@ import com.wgllss.sample.features_ui.page.home.fragment.CollectFragment
 import com.wgllss.sample.features_ui.page.home.fragment.SampleFragment
 import com.wgllss.sample.features_ui.page.home.fragment.SettingFragment
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -125,23 +129,46 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
                 initFragment()
                 setCurrentFragment(homeTabFragment)
             }
+
             getPluginID(getSkinResources(), "fmt_b", SkinContains.packageName) -> {
-                if (!isLoadSuccess()) {
-                    return true
-                }
+                /** 方案一写法 other 首次下载写法 start  **/
+                if (!isLoadSuccess()) return true
                 setCurrentFragment(collectFragmentL)
+                /** 方案一写法 other 首次下载写法 end  **/
+
+
+                /** 方案二写法 other 点击时候下载安装 start  **/
+//                downLoadPlugin {
+//                    setCurrentFragment(collectFragmentL)
+//                }
+                /** 方案二写法 other 点击时候下载安装 end  **/
             }
+
             getPluginID(getSkinResources(), "fmt_c", SkinContains.packageName) -> {
-                if (!isLoadSuccess()) {
-                    return true
-                }
+                /** 方案一写法 other 首次下载写法 start  **/
+                if (!isLoadSuccess()) return true
                 setCurrentFragment(sampleFragmentL)
+                /** 方案一写法 other 首次下载写法 end  **/
+
+
+                /** 方案二写法 other 点击时候下载安装 start  **/
+//                downLoadPlugin {
+//                    setCurrentFragment(sampleFragmentL)
+//                }
+                /** 方案二写法 other 点击时候下载安装 end  **/
             }
+
             getPluginID(getSkinResources(), "fmt_d", SkinContains.packageName) -> {
-                if (!isLoadSuccess()) {
-                    return true
-                }
+                /** 方案一写法 other 首次下载写法 start  **/
+                if (!isLoadSuccess()) return true
                 setCurrentFragment(settingFragmentL)
+                /** 方案一写法 other 首次下载写法 end  **/
+
+                /** 方案二写法 other 点击时候下载安装 start  **/
+//                downLoadPlugin {
+//                    setCurrentFragment(settingFragmentL)
+//                }
+                /** 方案二写法 other 点击时候下载安装 end  **/
             }
         }
         return true
@@ -162,13 +189,27 @@ open class HomeActivity : BaseViewModelActivity<HomeViewModel>(ResourceContains.
         }
     }
 
+    //方案一写法 other 首次下载写法
     private fun isLoadSuccess(): Boolean {
         showloading("请稍后...")
+        //协程中主协程阻塞式，等到other 下载完，加载完后再执行后面的逻辑
         val status = PluginManager.instance.isLoadSuccessByKey("classes_other_dex", "classes_other_res")
         hideLoading()
         if (!status) {
             onToast("缺少插件")
         }
         return status
+    }
+
+    // 方案二写法 other 点击时候下载安装
+    private fun downLoadPlugin(loadCompleteBlock: () -> Unit) {
+        lifecycleScope.launch {
+            PluginManager.instance.dynamicLoadPlugin(this@HomeActivity, Pair("classes_other_dex", 1000), Pair("classes_other_res", 1000))
+                .onStart { showloading("加载中...") }.onCompletion { hideLoading() }.catch {
+                    onToast(it.parseErrorString())
+                }.collect {
+                    loadCompleteBlock.invoke()
+                }
+        }
     }
 }

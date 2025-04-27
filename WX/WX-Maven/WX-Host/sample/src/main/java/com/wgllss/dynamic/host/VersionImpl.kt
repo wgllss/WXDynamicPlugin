@@ -14,9 +14,7 @@ class VersionImpl : ILoaderVersion {
 
     override fun getClfd() = Triple(
         //配置loading 页插件实现 及版本号 对应 maven-wgllss-sample-loader-version 工程
-        "com.wgllss.dynamic.impl.ILoadHomeImpl",
-        "loading",
-        1000
+        "com.wgllss.dynamic.impl.ILoadHomeImpl", "loading", 1000
     )
 
     //配置 动态实现根据版本下载插件 及版本号 对应 Maven-Wgllss-Dynamic-Plugin-Loader-Impl 工程
@@ -39,6 +37,8 @@ class VersionImpl : ILoaderVersion {
         DynamicPluginConstant.RESOURCE_SKIN to Pair("classes_common_skin_res", 1000), // maven-wgllss-sample-skin-resource-apk 插件工程 和 版本号
         DynamicPluginConstant.HOME to Pair("classes_home_dex", 1000) //maven-wgllss-sample-ui-home 插件工程 和 版本号
     )
+
+//    override fun getOthers() = mutableMapOf<String, Int>()
 
     override fun getOthers() = mutableMapOf(
         "classes_other_dex" to 1000,  //maven-wgllss-sample-ui-other-lib 插件工程 和 版本号

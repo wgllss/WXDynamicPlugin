@@ -108,8 +108,16 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
             addOnItemTouchListener(object : OnRecyclerViewItemClickListener(this) {
                 override fun onItemClickListener(itemRootView: View, position: Int) {
                     activity?.run {
+                        /** 方案一写法 other2 首次下载写法 start  **/
+                        showloading("请稍后...")
+                        val status = PluginManager.instance.isLoadSuccessByKey("classes_other2_dex", "classes_other2_res")
+                        hideLoading()
+                        if (!status) {
+                            onToast("缺少插件")
+                            return
+                        }
                         PluginManager.instance.startPluginSingleTaskActivity(
-                            this, "classes_other2_res",
+                            this@run, "classes_other2_res",
                             "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity",
                             "com.wgllss.dynamic.sample.other2", Intent().apply {
                                 putExtra("web_url_key", homeNewsAdapter.getItem(position).docid)
@@ -117,6 +125,23 @@ class HomeFragment : BaseViewModelFragment<HomeTabViewModel>(ResourceContains.pa
                                 putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
                             }
                         )
+                        /** 方案一写法 other2 首次下载写法 end  **/
+
+
+                        /** 方案二写法 other2 点击时候下载安装 start  **/
+//                    lifecycleScope.launch {
+//                        PluginManager.instance.dynamicLoadPlugin(this@run, Pair("classes_other2_dex", 1000), Pair("classes_other2_res", 1000)).onStart { showloading("加载中...") }.onCompletion { hideLoading() }.catch {
+//                            onToast(it.parseErrorString())
+//                        }.collect {
+//                            PluginManager.instance.startPluginSingleTaskActivity(
+//                                this@run, "classes_other2_res", "com.wgllss.sample.features_ui.page.other2.activity.WebViewActivity", "com.wgllss.dynamic.sample.other2", Intent().apply {
+//                                    putExtra("web_url_key", homeNewsAdapter.getItem(position).docid)
+//                                    putExtra("title_key", homeNewsAdapter.getItem(position).title)
+//                                    putExtra("docid_key", StringBuilder(homeNewsAdapter.getItem(position).docid).append(".html").toString())
+//                                })
+//                        }
+//                    }
+                        /** 方案二写法 other2 首次下载写法 end  **/
                     }
                 }
 

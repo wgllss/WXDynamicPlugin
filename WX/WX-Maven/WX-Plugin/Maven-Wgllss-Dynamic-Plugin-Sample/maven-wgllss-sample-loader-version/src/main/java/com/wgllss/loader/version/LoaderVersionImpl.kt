@@ -59,6 +59,8 @@ class LoaderVersionImpl : ILoaderVersion {
         HOME to Pair("classes_home_dex", 1002)//maven-wgllss-sample-ui-home 插件工程 和 版本号
     )
 
+//    override fun getOthers() = mutableMapOf<String, Int>()
+
     override fun getOthers() = mutableMapOf(
         "classes_other_dex" to 1000,  //maven-wgllss-sample-ui-other-lib 插件工程 和 版本号
         "classes_other_res" to 1000, //maven-wgllss-sample-ui-other 插件工程 和 版本号

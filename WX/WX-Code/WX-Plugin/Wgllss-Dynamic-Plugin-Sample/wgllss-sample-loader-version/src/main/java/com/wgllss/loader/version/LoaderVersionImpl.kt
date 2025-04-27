@@ -16,9 +16,7 @@ class LoaderVersionImpl : ILoaderVersion {
     override fun isMustShowLoading() = false
 
     override fun getClfd() = Triple(
-        "com.wgllss.dynamic.impl.ILoadHomeImpl",
-        "loading",
-        1000
+        "com.wgllss.dynamic.impl.ILoadHomeImpl", "loading", 1000
     )
 
     override fun getClmd() = Triple("", "", 0)
@@ -39,10 +37,10 @@ class LoaderVersionImpl : ILoaderVersion {
         HOME to Pair("classes_home_dex", 1000)
     )
 
+//    override fun getOthers() = mutableMapOf<String, Int>()
+
     override fun getOthers() = mutableMapOf(
-        "classes_other_dex" to 1000,
-        "classes_other_res" to 1000,
-        "classes_other2_dex" to 1000,
-        "classes_other2_res" to 1000
+        "classes_other_dex" to 1000, "classes_other_res" to 1000, "classes_other2_dex" to 1000, "classes_other2_res" to 1000
     )
+
 }

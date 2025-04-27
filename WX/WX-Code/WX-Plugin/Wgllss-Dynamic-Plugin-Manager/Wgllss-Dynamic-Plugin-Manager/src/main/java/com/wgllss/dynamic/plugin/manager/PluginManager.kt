@@ -15,11 +15,19 @@ import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.RESOURCE_SKIN
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.WEB_ASSETS
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.dldir
 import com.wgllss.dynamic.host.lib.constant.DynamicPluginConstant.versionFile
+import com.wgllss.dynamic.host.lib.download.DynamicDownloadPlugin
+import com.wgllss.dynamic.host.lib.download.IDynamicDownLoadFace
 import com.wgllss.dynamic.host.lib.impl.WXDynamicLoader
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils
 import com.wgllss.dynamic.host.lib.loader_base.DynamicManageUtils.getDlfn
 import com.wgllss.dynamic.runtime.library.WXDynamicAidlInterface
 import com.wgllss.sample.feature_system.savestatus.MMKVHelp
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -496,14 +504,48 @@ class PluginManager private constructor() {
     fun isLoadSuccessByKey(keyDex: String, keyRes: String): Boolean {
         var status = false
         runBlocking {
-            status = if (WXDynamicLoader.instance.loader.isFShowLoadFlag()) {
-                if (mapOtherLoadStatus.containsKey(keyDex) && mapOtherLoadStatus.containsKey(keyRes))
-                    mapOtherLoadStatus[keyDex]!!.await() && mapOtherLoadStatus[keyRes]!!.await()
+            status = if (WXDynamicLoader.instance.loader.isFShowLoadFlag() || cotd.isEmpty()) {
+                if (mapOtherLoadStatus.containsKey(keyDex) && mapOtherLoadStatus.containsKey(keyRes)) mapOtherLoadStatus[keyDex]!!.await() && mapOtherLoadStatus[keyRes]!!.await()
                 else false
             } else {
                 true
             }
         }
         return status
+    }
+
+    /**
+     * 按需下载 other 2,other 3 other 4,other 5 (每一个包含dex 和 res apk 2个文件)
+     * 文件须放在 FaceImpl 配置的getBaseL() 服务器目录下面即可
+     * @param context： 上下问
+     * @param dexName： dex文件民
+     * @param resApkName： resApkName文件名
+     */
+    fun dynamicLoadPlugin(context: Context, dexName: Pair<String, Int>, resApkName: Pair<String, Int>): Flow<Int> {
+        if (cotd.containsKey(dexName.first) && cotd.containsKey(resApkName.first)) {
+            return flowOf(0)
+        }
+        val loader = WXDynamicLoader.instance.loader
+        val face = loader.getDownloadFace()
+        val dexFileUrl = StringBuilder().append(face.getBaseL()).append(dexName.first).toString()
+        val resApkFileUrl = StringBuilder().append(face.getBaseL()).append(resApkName.first).toString()
+        val dynamicHelper = DynamicDownloadPlugin(face)
+        return flow {
+            dynamicHelper.initDynamicPlugin(context, dexFileUrl, dldir, getDlfn(dexName.first, dexName.second)).run {
+                cotd[dexName.first] = dexName.second
+                if (!TextUtils.isEmpty(fileAbsolutePath) && !TextUtils.isEmpty(fileAbsolutePath.trim())) {
+                    loader.initDynamicRunTime(context, contentKey, fileAbsolutePath)
+                } else {
+                    throw Exception("文件下载异常")
+                }
+            }
+            emit(0)
+        }.zip(flow {
+            dynamicHelper.initDynamicPlugin(context, resApkFileUrl, dldir, getDlfn(resApkName.first, resApkName.second))
+            cotd[resApkName.first] = resApkName.second
+            emit(0)
+        }) { _, _ ->
+            return@zip 0
+        }.flowOn(Dispatchers.IO)
     }
 }
