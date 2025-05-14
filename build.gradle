@@ -12,6 +12,7 @@ ext {
     def properties = new Properties()
     properties.load(inputSteam)
     workingDirPath = properties.getProperty('workingDirPath')
+    jdkDirPath = properties.getProperty('jdkDirPath')
 }
 
 task clean(type: Delete) {
