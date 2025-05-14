@@ -3,6 +3,7 @@
 ## 介绍
 
 #### 最新接入研究配置参考文章介绍  [Compose的全动态插件化框架支持了，已更新到AGP 8.6,Kotlin2.0.20,支持Compose](https://juejin.cn/post/7435587382345482303)
+
 #### 插件化模块按需下载首页之外模块  [按需下载!!全动态插件化框架WXDynamicPlugin解析怎么支持的](https://juejin.cn/post/7497428040484241462)
 
 #### **WXDynamicPlugin是由本人自住研发的Android插件框架**
@@ -99,6 +100,17 @@
 | 版本控制代码动态化     | 不支持         | 支持 ✅            |
 | 插件调试debug     | 不支持         | 支持 ✅            |
 
+## 示例运行：
+
+* **方式1：扫码安装即可**
+* **方式2：拉取代码，查看空壳子宿主工程，运行sample**
+* **以上两种运行实例方式宿主都是空壳子，所有插件存放在我配置的服务器地址**
+* **想把插件换成自己服务器上面，自己打包插件，想看插件具体写法，请放开 settings.gradle 中第167行 到 230行的注释 (为了拉取下来只运行宿主空壳子注释掉了)，并按照下面文档进行相关配置**
+
+#### 最新接入研究配置参考文章介绍  [Compose的全动态插件化框架支持了，已更新到AGP 8.6,Kotlin2.0.20,支持Compose](https://juejin.cn/post/7435587382345482303)
+
+#### 插件化模块按需下载首页之外模块  [按需下载!!全动态插件化框架WXDynamicPlugin解析怎么支持的](https://juejin.cn/post/7497428040484241462)
+
 ## 编译与开发环境
 
 #### 环境准备
@@ -106,6 +118,7 @@
 * **AS设置JDK 选17，电脑java版本需要安装 1.8.xxx, 打开工程下 local.properties**
 * **最新版本AS(Android Studio Ladybug 2024.2.1 Patch 3)以上提示JDK需要 17时：需要修改如下2个工程：**
 * **maven-wgllss-sample-create-version-config-compiler 和 maven-wgllss-sample-create-version-config-annotations工程都需要java版本需要改成如下17**
+
 ```
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -140,7 +153,7 @@ java {
 
 #### 推荐用方式二： Maven接入方式
 
-#### 为了方便编译和看，已经注释掉 settings.gradle 中第35行到 137行，需要看源码及源码方式接入（WX-Code下面），请自行放开注释
+#### 为了方便编译查看，已经注释掉 settings.gradle 中第35行到 137行，需要看源码及源码方式接入（WX-Code下面），请自行放开注释
 
 #### 以 WX-Maven下目录结构介绍为例：
 
@@ -230,7 +243,6 @@ java {
 
 #### [(十三)按需下载!!全动态插件化框架WXDynamicPlugin解析怎么支持的](https://juejin.cn/post/7497428040484241462)
 
-
 ## 作者开源 Compose可视化图表库
 
 #### [(一)Compose曲线图表库WXChart，你只需要提供数据配置就行了](https://juejin.cn/post/7438835112790605865 "https://juejin.cn/post/7438835112790605865")\
@@ -242,9 +254,13 @@ java {
 #### [(四)全网最火可视化趋势视频实现深度解析，同时新增条形图表](https://juejin.cn/post/7449910229573943350)
 
 #### [(五)庆元旦，出排名，手撸全网火爆的排名视频，排名动态可视化](https://juejin.cn/post/7454386729702375465)
+
 #### [(六)Android六边形战士能力图绘制，Compose实现](https://juejin.cn/post/7457449985530757161)
+
 #### [(七)ndroid之中美PK,赛事PK对比图Compose实现](https://juejin.cn/post/7462544107527389247)
+
 #### [(八)Android之等级金字塔之Compose智能实现](https://juejin.cn/post/7468865451134091275)
+
 #### [(九)地图之Compose轻松绘制,可视化带点击事件，可扩展二次开发](https://juejin.cn/post/7485936146070356006)
 
 ## 本人其他开源文章：
