@@ -1,0 +1,46 @@
+plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+
+android {
+    compileSdk libs.versions.compileSdk.get().toInteger()
+    namespace "com.wgllss.dynamic.host.lib"
+
+    defaultConfig {
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.7'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-VersionK-Lib:1.0.00'
+
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Protobuf-Lib:1.0.0.7'
+    implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    implementation libs.androidx.activity
+    implementation libs.protobuf
+    implementation libs.okio
+}

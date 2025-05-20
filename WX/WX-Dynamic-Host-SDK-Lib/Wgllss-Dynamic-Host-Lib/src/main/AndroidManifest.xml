@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wgllss.dynamic.host.lib">
+    <application>
+        <provider
+            android:name="com.wgllss.dynamic.host.lib.provider.WXPluginContentProvider"
+            android:exported="true"
+            android:authorities="${applicationId}.wx.dynamic.plugin.author" />
+    </application>
+</manifest>

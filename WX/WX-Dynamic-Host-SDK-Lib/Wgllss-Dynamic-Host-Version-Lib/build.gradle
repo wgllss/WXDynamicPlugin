@@ -1,0 +1,14 @@
+plugins {
+    alias(libs.plugins.java.library)
+    alias(libs.plugins.java.kotlin)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+dependencies {
+    implementation libs.kotlin.stdlib
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
