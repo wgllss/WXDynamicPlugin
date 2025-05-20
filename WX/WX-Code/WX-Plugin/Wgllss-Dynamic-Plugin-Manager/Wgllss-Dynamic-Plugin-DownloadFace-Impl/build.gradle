@@ -30,9 +30,11 @@ android {
 }
 
 dependencies {
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
     compileOnly project(path: ':wgllss-common-re-library')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 }
 
 

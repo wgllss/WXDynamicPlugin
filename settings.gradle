@@ -38,19 +38,9 @@ rootProject.name = "WXDynamicPlugin"
 //include ':wgllss-common-re-library'
 //include ':wgllss-dynamic-host-library'
 //include ':wgllss-dynamic-host-skin-resource-lib'
-////
-//include ':Wgllss-Dynamic-Host-Version-Lib'
-//include ':Wgllss-Dynamic-Host-Home-Lib'
-//include ':Wgllss-Dynamic-Host-ClassLoader-Lib'
-//include ':Wgllss-Dynamic-Host-Runtime-Lib'
-//include ':Wgllss-Dynamic-Host-Download-Lib'
-//include ':Wgllss-Dynamic-Host-Protobuf-Lib'
-//include ':Wgllss-Dynamic-Host-Constant-Lib'
-//include ':Wgllss-Dynamic-Host-Loader-Lib'
-//include ':Wgllss-Dynamic-Host-Loader-Base-Lib'
-//include ':Wgllss-Dynamic-Host-Provider-Lib'
-//include ':Wgllss-Dynamic-Host-Lib-Impl'
 //
+//include ':Wgllss-Dynamic-Host-Version-Lib'
+//include ':Wgllss-Dynamic-Host-Lib'
 //
 //include ':Wgllss-Dynamic-Plugin-Common-Library'
 //
@@ -99,17 +89,9 @@ rootProject.name = "WXDynamicPlugin"
 //project(':wgllss-dynamic-host-library').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-library')
 //project(':wgllss-dynamic-host-skin-resource-lib').projectDir = file('WX/WX-Code/WX-Host/app-lib/wgllss-dynamic-host-skin-resource-lib')
 //
-//project(':Wgllss-Dynamic-Host-Version-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Version-Lib')
-//project(':Wgllss-Dynamic-Host-Home-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Home-Lib')
-//project(':Wgllss-Dynamic-Host-ClassLoader-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-ClassLoader-Lib')
-//project(':Wgllss-Dynamic-Host-Runtime-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Runtime-Lib')
-//project(':Wgllss-Dynamic-Host-Download-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Download-Lib')
-//project(':Wgllss-Dynamic-Host-Protobuf-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Protobuf-Lib')
-//project(':Wgllss-Dynamic-Host-Constant-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Constant-Lib')
-//project(':Wgllss-Dynamic-Host-Loader-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Lib')
-//project(':Wgllss-Dynamic-Host-Loader-Base-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Loader-Base-Lib')
-//project(':Wgllss-Dynamic-Host-Provider-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Provider-Lib')
-//project(':Wgllss-Dynamic-Host-Lib-Impl').projectDir = file('WX/WX-Dynamic-Host-SDK-lib/Wgllss-Dynamic-Host-Lib-Impl')
+//project(':Wgllss-Dynamic-Host-Version-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-Lib/Wgllss-Dynamic-Host-Version-Lib')
+//project(':Wgllss-Dynamic-Host-Lib').projectDir = file('WX/WX-Dynamic-Host-SDK-Lib/Wgllss-Dynamic-Host-Lib')
+//
 //
 //project(':Wgllss-Dynamic-Plugin-Common-Library').projectDir = file('WX/WX-Code/WX-Plugin/Wgllss-Dynamic-Plugin-Common-Library')
 //
@@ -164,7 +146,7 @@ project(':maven-wgllss-common-re-library').projectDir = file('WX/WX-Maven/WX-Hos
 project(':maven-wgllss-dynamic-host-library').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-library')
 project(':maven-wgllss-dynamic-host-skin-resource-lib').projectDir = file('WX/WX-Maven/WX-Host/sample-lib/maven-wgllss-dynamic-host-skin-resource-lib')
 
-//
+
 //include ':Maven-Wgllss-Dynamic-Plugin-Common-Library'
 //
 //include ':Maven-Wgllss-Dynamic-Plugin-Manager'

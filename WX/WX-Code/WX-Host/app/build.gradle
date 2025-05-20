@@ -96,10 +96,10 @@ dependencies {
     implementation libs.google.material
     implementation libs.constraintlayout
 
-    implementation project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
     implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')
-    implementation project(path: ':Wgllss-Dynamic-Host-Download-Lib')
-    implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+    implementation project(path: ':Wgllss-Dynamic-Host-Lib')
+//    implementation project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+//    implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
 
     implementation project(path: ':wgllss-dynamic-host-skin-resource-lib')
     implementation project(path: ':wgllss-common-re-library')

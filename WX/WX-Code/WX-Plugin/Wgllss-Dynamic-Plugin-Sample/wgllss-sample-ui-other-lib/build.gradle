@@ -38,12 +38,15 @@ dependencies {
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Manager')
 
 
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Runtime-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 
 
     compileOnly libs.androidx.core.ktx

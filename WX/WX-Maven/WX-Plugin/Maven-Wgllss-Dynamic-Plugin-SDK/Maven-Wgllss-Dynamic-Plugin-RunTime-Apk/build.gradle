@@ -30,11 +30,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        applicationVariants.all {
-            variant ->
-                variant.outputs.all {
-                    outputFileName = "classes_wgllss_dynamic_plugin_runtime"
-                }
+        applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "classes_wgllss_dynamic_plugin_runtime"
+            }
         }
     }
     compileOptions {
@@ -51,7 +50,8 @@ dependencies {
 //    compileOnly libSupportAppcompat
     implementation project(':Maven-Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Common-Library')
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.7'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.7'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib:1.0.02'
 }
 
 

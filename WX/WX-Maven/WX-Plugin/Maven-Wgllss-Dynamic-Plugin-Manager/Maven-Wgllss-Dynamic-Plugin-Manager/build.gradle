@@ -39,12 +39,14 @@ dependencies {
     compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':maven-wgllss-sample-business-library')
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.7'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Base-Lib:1.0.1.7'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.9'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-ClassLoader-Lib:1.0.0.7'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Base-Lib:1.0.1.7'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.9'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-VersionK-Lib:1.0.00'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib:1.0.02'
 }
 
 

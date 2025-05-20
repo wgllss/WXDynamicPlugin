@@ -33,10 +33,13 @@ dependencies {
     compileOnly project(path: ':wgllss-common-re-library')
     compileOnly project(path: ':wgllss-dynamic-host-skin-resource-lib')
 
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 
     compileOnly libs.startup.runtime
     compileOnly libs.androidx.core.ktx

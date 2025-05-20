@@ -22,7 +22,8 @@ dependencies {
 //    implementation files("${project(":wgllss-sample-loader-version").getBuildDir()}/intermediates/aar_main_jar/release/syncReleaseLibJars/classes.jar")
 
 
-    implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    implementation project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')
     implementation project(path: ':Wgllss-Dynamic-Host-Version-Lib')
 
 //    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'

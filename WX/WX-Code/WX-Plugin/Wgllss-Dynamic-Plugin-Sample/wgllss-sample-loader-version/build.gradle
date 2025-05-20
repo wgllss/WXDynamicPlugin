@@ -31,8 +31,10 @@ android {
 
 dependencies {
     compileOnly libs.kotlin.stdlib
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
     compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 }
 
 

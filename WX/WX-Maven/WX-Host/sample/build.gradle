@@ -90,10 +90,10 @@ dependencies {
     implementation libs.google.material
     implementation libs.constraintlayout
 
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Constant-Lib:1.0.0.6'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.7'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-VersionK-Lib:1.0.00'
+    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib:1.0.02'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Version-Lib:1.0.0.7'
 
     implementation project(path: ':maven-wgllss-dynamic-host-skin-resource-lib')
     implementation project(path: ':maven-wgllss-common-re-library')

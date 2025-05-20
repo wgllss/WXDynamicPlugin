@@ -40,8 +40,9 @@ dependencies {
     compileOnly project(path: ':maven-wgllss-sample-ui-other-lib')
     compileOnly project(path: ':Maven-Wgllss-Dynamic-Plugin-Manager')
 
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Home-Lib:1.0.0.7'
-    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Home-Lib:1.0.0.7'
+//    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib:1.0.02'
 
     compileOnly libs.androidx.sqlite.framework
     compileOnly libs.androidx.core.ktx

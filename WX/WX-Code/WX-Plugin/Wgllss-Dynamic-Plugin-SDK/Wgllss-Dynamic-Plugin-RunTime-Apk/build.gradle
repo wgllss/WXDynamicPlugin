@@ -50,7 +50,7 @@ dependencies {
     compileOnly libs.appcompat
     implementation project(':Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Common-Library')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 }
 
 

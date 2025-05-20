@@ -39,12 +39,15 @@ dependencies {
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Library')
     compileOnly project(path: ':wgllss-sample-business-library')
 
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Base-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Constant-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib-Impl')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Loader-Base-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-ClassLoader-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Download-Lib')
+
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Version-Lib')
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
 }
 
 

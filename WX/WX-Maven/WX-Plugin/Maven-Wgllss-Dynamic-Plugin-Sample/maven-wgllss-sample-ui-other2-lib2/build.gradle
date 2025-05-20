@@ -43,10 +43,11 @@ dependencies {
     implementation project(':Maven-Wgllss-Dynamic-Plugin-Manager')
     implementation project(':Maven-Wgllss-Dynamic-Plugin-Library')
 
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
-    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.9'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Provider-Lib:1.0.0.6'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Download-Lib:1.0.0.8'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Lib-Impl:1.0.1.7'
+//    implementation 'io.github.wgllss:Wgllss-Dynamic-Host-Loader-Lib:1.0.0.9'
+    compileOnly 'io.github.wgllss:Wgllss-Dynamic-Host-Lib:1.0.02'
 
     implementation libs.androidx.core.ktx
     implementation libs.appcompat

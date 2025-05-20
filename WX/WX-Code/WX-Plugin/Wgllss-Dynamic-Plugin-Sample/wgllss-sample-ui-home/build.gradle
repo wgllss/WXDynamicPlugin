@@ -40,8 +40,11 @@ dependencies {
     compileOnly project(path: ':wgllss-sample-ui-other-lib')
     compileOnly project(path: ':Wgllss-Dynamic-Plugin-Manager')
 
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Home-Lib')
-    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Home-Lib')
+//    compileOnly project(path: ':Wgllss-Dynamic-Host-Provider-Lib')
+
+    compileOnly project(path: ':Wgllss-Dynamic-Host-Lib')
+
     compileOnly libs.androidx.sqlite.framework
     compileOnly libs.androidx.core.ktx
     compileOnly libs.appcompat
