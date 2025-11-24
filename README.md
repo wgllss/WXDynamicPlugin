@@ -94,7 +94,7 @@
 | 插件加载逻辑        | 宿主->管理器->插件 | 宿主->插件 ✅        |
 | 首次插件下载到展示首页耗时 | 3~5s以上？     | 1s内 ✅           |
 | 插件已经到本地后加载速度  | 1500ms以上?   | 500ms内 ✅        |
-| 全动态化          | 支持          | 支持 ✅            |
+| 全动态化          | 不分支持        | 支持 ✅            |
 | 插件化框架动态化      | 支持          | 支持 ✅            |
 | 下载逻辑代码动态化     | 不支持         | 支持 ✅            |
 | 版本控制代码动态化     | 不支持         | 支持 ✅            |
@@ -115,7 +115,16 @@
 
 #### 环境准备
 
-* **AS设置JDK 选17，电脑java版本需要安装 1.8.xxx, 打开工程下 local.properties**
+* **AS设置JDK 选17，电脑java版本需要安装 1.8.xxx(这是电脑安装的JDK,电脑!!!,不是AS), 打开工程下 local.properties**
+
+```
+workingDirPath=D\:\\android_software\\android_sdk\\android_sdk\\build-tools\\32.0.0\\
+```
+
+* **如果电脑安装了几个版本的JDK,再次安装的JDK1.8.xxx后,因为有多个JDK共存，可拉取master-d8分支,单独配置JDK环境变量如下：**
+```
+jdkDirPath=C\:\\Program Files\\Java\\jdk1.8.0_181\\
+```
 * **最新版本AS(Android Studio Ladybug 2024.2.1 Patch 3)以上提示JDK需要 17时：需要修改如下2个工程：**
 * **maven-wgllss-sample-create-version-config-compiler 和 maven-wgllss-sample-create-version-config-annotations工程都需要java版本需要改成如下17**
 
@@ -129,10 +138,6 @@ java {
 * **最新版本AS(Android Studio Meerkat Feature Drop | 2024.3.2)以上提示JDK需要 21时：需要修改上面配置2个工程改成21：**
 
 ##### 以下为我本地电脑配置，需要添加一行下面一句，并改成自己电脑配置:
-
-```
- workingDirPath=D\:\\android_software\\android_sdk\\android_sdk\\build-tools\\32.0.0\\
-```
 
 ##### 然后在IDE中选择 app 或 sample 模块直接运行，如下:
 
